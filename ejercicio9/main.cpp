@@ -8,10 +8,6 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-void set(){
-
-
-}
 
 /*
  * 
@@ -47,18 +43,31 @@ public:
         }
     }
 };
+int setnombres(equipo *constante){
+//De esto tengo que hacer una funcion genereica...... ademas me permite hacer como entrar objectos en una funcion.
+    std::cout << "Intentado hacer el la funcion () \n";
+    constante->getmonstar();
+    return 0;
+
+}
+
 void p1(){
-    equipo joan;
+    equipo *joan = new equipo;
+    equipo consta;
+    joan = &consta;
     char nom[] = "jona0";
     char nom2[] = "Alejandria";
     char im[200];
     char aux[] = "0FIN";
-    joan.setnombrar(nom);
-    joan.setnombrar(nom2);
-    joan.getmonstar();
+    joan->setnombrar(nom);
+    joan->setnombrar(nom2);
+    joan->getmonstar();
     std::cout << "Para salir es ......:   " << aux[0] << "\n";
 //esto es para hacer la entrada de equipos
+    //primero es pasar el objecto referenciado a la funcion.
+    setnombres(joan);
         int i; 
+        int e = 0;
         do{
                 int e = 0;
         do{
@@ -76,8 +85,8 @@ void p1(){
             cambio[g] = im[g];
             std::cout << "La g es: " << g << "\n";
         }
-        joan.setnombrar(cambio);
-        joan.getmonstar();
+        joan->setnombrar(cambio);
+        joan->getmonstar();
         std::cout << "La im vale:   "<< im << "\n";
         i = 0;
         }while(im[i] != aux[0] || im[i - 1] != aux[0]);
