@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 using namespace std;
-void(){
+void set(){
 
 
 }
@@ -57,7 +57,7 @@ void p1(){
     joan.setnombrar(nom2);
     joan.getmonstar();
     std::cout << "Para salir es ......:   " << aux[0] << "\n";
-
+//esto es para hacer la entrada de equipos
         int i; 
         do{
                 int e = 0;
