@@ -7,11 +7,27 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <stdlib.h> // esta es la liberria de rand()
+
 using namespace std;
 
 /*
  * 
  */
+class partidos : public equipo {
+public:
+    /*partidos(aux) :  equipo() {
+        aux = 0;
+    }*/
+    int setpartidos(int n[]){
+        //Este es para realizar los partidos se hara el azar i se tienen que refernciar.
+        if(rand() % 2 == 0){
+            return n[1];
+        }else{
+            return n[0];
+        }
+    }
+};
 char aux[5] = "0FIN";
 class equipo{
 public:
@@ -40,7 +56,7 @@ public:
                 std::cout << nombre[i][ii];
                 ii++;
             }while(nombre[i][ii] != 0);
-            std::cout << "\n";
+            std::cout << "\nLa referencia es  " << i <<"\n";
         }
     }
 };
@@ -57,11 +73,8 @@ int setnombres(equipo *constante){
         do{
             std::cin >> im[i];
             i++;
-            std::cout << "11111\n"; 
             for(int ii = 0; ii < i; ii++){
-                std::cout << "For\n";
-                if(im[ii] == aux[0]){ 
-                    std::cout << "11111\n"; 
+                if(im[ii] == aux[0]){  
                     e++;
                 }
             }
@@ -76,9 +89,9 @@ int setnombres(equipo *constante){
         constante->getmonstar();
         std::cout << "La im vale:   "<< im << "\n";
         i = 0;
-        for(int ii = 0; ii < i; ii++){
-                if(im[ii] == aux[0] || im[ii] == aux[1]){
-                    d++;
+        for(int ii = 1; ii < i; ii++){
+                if(im[ii - 1] == aux[0] && im[ii] == aux[1]){
+                    //d++;
                 }
             }
         }while(d > 0);
@@ -96,13 +109,20 @@ void p1(){
     joan->setnombrar(nom2);
     joan->getmonstar();
     std::cout << "Para salir es ......:   " << aux[0] << "\n";
-//esto es para hacer la entrada de equipos
-    //primero es pasar el objecto referenciado a la funcion.
-    setnombres(joan);
+        //esto es para hacer la entrada de equipos
+        //primero es pasar el objecto referenciado a la funcion.
+    setnombres(joan);//Aqui hay un error que se tiene que resolver para la funcion de salida del char.
+    std::cout << "Este se sale de la funcion\n";
+    joan->getmonstar();
         
 }
+void p2(){
+
+
+}
 int main(int argc, char** argv) {
-    p1();
+    p1();//Equipo.
+    p2();
     return 0;
 }
 
