@@ -12,6 +12,7 @@ using namespace std;
 /*
  * 
  */
+char aux[5] = "0FIN";
 class equipo{
 public:
     char nombre[200][200];
@@ -45,36 +46,19 @@ public:
 };
 int setnombres(equipo *constante){
 //De esto tengo que hacer una funcion genereica...... ademas me permite hacer como entrar objectos en una funcion.
-    std::cout << "Intentado hacer el la funcion () \n";
+    std::cout << "Intentado hacer el la funcion (), el paso por referencia de un objeto \n";
     constante->getmonstar();
-    return 0;
-
-}
-
-void p1(){
-    equipo *joan = new equipo;
-    equipo consta;
-    joan = &consta;
-    char nom[] = "jona0";
-    char nom2[] = "Alejandria";
+    int i; 
+    int d = 0;
     char im[200];
-    char aux[] = "0FIN";
-    joan->setnombrar(nom);
-    joan->setnombrar(nom2);
-    joan->getmonstar();
-    std::cout << "Para salir es ......:   " << aux[0] << "\n";
-//esto es para hacer la entrada de equipos
-    //primero es pasar el objecto referenciado a la funcion.
-    setnombres(joan);
-        int i; 
         int e = 0;
         do{
-                int e = 0;
+                 e = 0;
         do{
             std::cin >> im[i];
             i++;
             for(int ii = 0; ii < i; ii++){
-                if(im[ii] == aux[0]){
+                if(im[ii] == *aux[0]){
                     e++;
                 }
             }
@@ -85,11 +69,34 @@ void p1(){
             cambio[g] = im[g];
             std::cout << "La g es: " << g << "\n";
         }
-        joan->setnombrar(cambio);
-        joan->getmonstar();
+        constante->setnombrar(cambio);
+        constante->getmonstar();
         std::cout << "La im vale:   "<< im << "\n";
         i = 0;
-        }while(im[i] != aux[0] || im[i - 1] != aux[0]);
+        for(int ii = 0; ii < i; ii++){
+                if(im[ii] == *aux[0] || im[ii] == *aux[1]){
+                    d++;
+                }
+            }
+        }while(d > 0);
+    return 0; //aqui se tiene que consegir retornar un objeto por referencia.
+
+}
+
+void p1(){
+    equipo *joan = new equipo;
+    equipo consta;
+    joan = &consta;
+    char nom[] = "jona0";
+    char nom2[] = "Alejandria";
+    joan->setnombrar(nom);
+    joan->setnombrar(nom2);
+    joan->getmonstar();
+    std::cout << "Para salir es ......:   " << *aux[0] << "\n";
+//esto es para hacer la entrada de equipos
+    //primero es pasar el objecto referenciado a la funcion.
+    setnombres(joan);
+        
 }
 int main(int argc, char** argv) {
     p1();
