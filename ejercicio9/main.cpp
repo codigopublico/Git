@@ -58,7 +58,9 @@ int setnombres(equipo *constante){
             std::cin >> im[i];
             i++;
             for(int ii = 0; ii < i; ii++){
-                if(im[ii] == *aux[0]){
+                std::cout << "For\n";
+                if(im[ii] == aux[0]){ 
+                    std::cout << "11111\n"; 
                     e++;
                 }
             }
@@ -74,7 +76,7 @@ int setnombres(equipo *constante){
         std::cout << "La im vale:   "<< im << "\n";
         i = 0;
         for(int ii = 0; ii < i; ii++){
-                if(im[ii] == *aux[0] || im[ii] == *aux[1]){
+                if(im[ii] == aux[0] || im[ii] == aux[1]){
                     d++;
                 }
             }
@@ -92,7 +94,7 @@ void p1(){
     joan->setnombrar(nom);
     joan->setnombrar(nom2);
     joan->getmonstar();
-    std::cout << "Para salir es ......:   " << *aux[0] << "\n";
+    std::cout << "Para salir es ......:   " << aux[0] << "\n";
 //esto es para hacer la entrada de equipos
     //primero es pasar el objecto referenciado a la funcion.
     setnombres(joan);
