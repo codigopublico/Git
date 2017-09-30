@@ -1,0 +1,327 @@
+dev (41)
+
+ * Stable api 1.0.5:1
+ * Stable api 1.0.4:1
+ * Stable api 1.0.3:1
+ * Stable api 1.0.2:1
+ * Stable api 1.0.1:1
+ * Change prototype of otr_send()
+ * Changeset 0c78d31c753d
+
+  -- Mikael Berthe, 2015-11-05
+
+dev (40)
+
+ * Add settings_get_mcabber_config_dir()
+ * Changeset ccd4ffa41a1b
+
+  -- Mikael Berthe, 2015-10-17
+
+dev (39)
+
+ * Add gpg_is_version1()
+ * Changeset 8811fe9d6ef0
+
+  -- Mikael Berthe, 2015-10-07
+
+dev (38)
+
+ * Change prototype of hk_message_out()
+ * Add HBB_PREFIX_CARBON
+ * Add option 'clear_unread_on_carbon'
+ * Min API 38
+ * Changeset ee3a40ffcd8b
+
+  -- Mikael Berthe, 2015-10-04
+
+dev (37)
+
+ * Add gpg_get_private_key_id()
+ * Changeset 84252c616919
+
+  -- Mikael Berthe, 2015-10-04
+
+dev (36)
+
+ * Change prototype of gpg_encrypt()
+ * Min API 36
+ * Changeset e3b66c8ead4f
+
+  -- Mikael Berthe, 2015-10-04
+
+dev (35)
+
+ * Stable api 1.0.0:1
+ * Change prototype of hk_message_in()
+ * Min API 35
+ * Changeset 443d05b24762
+
+  -- Mikael Berthe, 2014-10-04
+
+dev (34)
+
+ * Add carbons_enabled()
+ * Changeset 2ce6dd6861ea
+
+  -- Mikael Berthe, 2014-10-04
+
+dev (33)
+
+ * Changeset 2f294c2b6778
+   Change readline_do_completion() prototype
+ * Changesets 2f294c2b6778, d3348deb32bd
+   Add iline compl_do_fwd, iline compl_do_bwd
+   Remove iline compl_do
+
+  -- Mikael Berthe, 2014-07-06
+
+dev (32)
+
+   Add "hook-mdr-received" hook
+ * Changeset e702073612de
+
+  -- Mikael Berthe, 2014-07-06
+
+dev (31)
+
+   Add xmpp_get_bookmark_password()
+ * Changeset f063e36425a2
+
+  -- Mikael Berthe, 2014-07-06
+
+dev (30)
+
+ * Message carbons
+
+  -- Mikael Berthe, 2014-05-11
+
+dev (29)
+
+ * Changeset 113d3b96ae3e
+   Add option 'attention_char'
+
+  -- Mikael Berthe, 2014-05-11
+
+dev (28)
+
+ * Stable api 0.10.3:1
+ * Changeset 88b6e9707e02
+   Add option 'ssl_ciphers'
+ * Changeset 91a8f3740a1a
+   Add option 'ssl_ca'
+ * Changeset 16b04d64ec88
+   Add 'color_timestamp' and HBB_PREFIX_DELAYED
+
+  -- Mikael Berthe, 2014-05-08
+
+dev (27)
+
+ * Changeset 8da280d34b48
+   Rename the FIFO code file names (internal + module)
+ * Changeset 9fb1ccf291cc
+   Switch to libotr v4 API
+
+  -- Mikael Berthe, 2013-09-29
+
+dev (26)
+
+ * Changeset 69699ba3010f
+   Add 'iq_time_hide'
+ * Changeset 79659eb4f66f
+   Add 'iq_version_hide_version'
+
+  -- Mikael Berthe, 2013-04-28
+
+dev (25)
+
+ * Stable api 0.10.2:1
+ * Changeset 998feaa54ef0
+ * Add ut_unescape_tabs_cr() to utils.h
+
+  -- Mikael Berthe, 2012-11-28
+
+dev (24)
+
+ * Changeset 0cb8ea02e472
+ * completion-sorting patch
+ * Change compl_add_category() to accept flags arg
+ * Define MCABBER_API_HAVE_COMPL_FLAGS
+
+  -- Myhailo Danylenko, 2012-10-20
+
+dev (23)
+
+ * Changeset 8dc418af3e72
+   Add buddy_(get|set)activeresource() functions
+
+  -- Hermitifier, 2012-03-01
+
+dev (22)
+
+ * Changeset a73ce708c2c9
+   Add xmpp_get_bookmark_autojoin() function
+
+  -- Hermitifier, 2012-02-23
+
+dev (21)
+
+ * Changeset 51f032d5ca22
+   New and reworked caps_*() functions
+
+  -- Hermitifier, 2011-10-03
+
+dev (20)
+
+ * Add cmd_set_safe() and cmd_is_safe()
+ * Changeset dd65a18dc480
+
+  -- Mikael Berthe, 2011-03-27
+
+dev (19)
+
+ * cmd_add now returns gpointer id
+ * cmd_del accepts gpointer id instead of command name
+ * Min API 19
+ * Changeset ad77110343d6
+
+  -- Mikael Berthe, 2011-03-27
+
+dev (18)
+
+ * Changeset 6febc7d1f760
+   Add room setopt flag_joins
+ * Changeset e6beab22099b
+   Change prototype of xmpp_set_storage_bookmark()
+
+  -- Mikael Berthe, 2011-03-26
+
+dev (17)
+
+ * Add NS_X_CONFERENCE (direct MUC invitations)
+
+  -- Mikael Berthe, 2011-03-14
+
+dev (16)
+
+ * Stable api 0.10.1:1
+ * Add "error" argument to the message-in hooks
+ * Changeset 3cabdacf58df
+
+  -- Mikael Berthe, 2010-05-16
+
+dev (15)
+
+ * Add "hook-subscription" hook
+ * Changeset 5d37cee8c6c6
+
+  -- Mikael Berthe, 2010-04-17
+
+dev (14)
+
+ * Add "delayed" argument to the message-in hooks
+ * Changeset ea3f9b4f3558
+
+  -- Mikael Berthe, 2010-04-11
+
+dev (13)
+
+ * Stable api 0.10.0:1
+ * Rename jep00{22,85} to xep00{22,85}
+ * Rename buddy_resource_jep{22,85}() to buddy_resource_xep{22,85}()
+ * Changeset e45d13074721
+
+  -- Mikael Berthe, 2010-04-03
+
+dev (12)
+
+ * Add scr_getlogwinheight()
+ * Changeset d13315366ba5
+
+  -- Mikael Berthe, 2010-03-24
+
+dev (11)
+
+ * s/MORE_HOOK/MORE_HANDLER/ in handler return code
+ * Changeset 1c3efa9bc422
+
+  -- Mikael Berthe, 2010-03-22
+
+dev (10)
+
+ * Add "hook-unread-list-change"
+ * Changeset 9daf6b3f30d6
+
+  -- Mikael Berthe, 2010-03-21
+
+dev (9)
+
+ * Add roster UI priority
+   roster_setuiprio(), roster_getuiprio(), buddy_getuiprio(),
+   scr_setattentionflag_if_needed()
+ * Changeset b135572fcd26
+
+  -- Mikael Berthe, 2010-03-21
+
+dev (8)
+
+ * Changeset 47699a09ceb3
+   Rework the whole hook system.  Hook handler API slightly modified.
+ * Changeset 5e2db25fdb17
+   Rename "hook-message-in" to "hook-post-message-in"
+ * Changeset 246c5d359c97
+   Add "hook-pre-message-in"
+   Incoming messages can be filtered.
+
+  -- Mikael Berthe, 2010-03-20
+
+dev (7)
+
+ * Add scr_gettextheight()
+ * Changeset 6e0a8bfb3a01
+
+  -- Myhailo Danylenko, 2010-03-14
+
+dev (6)
+
+ * Add urgent flag to the hook-message-in hook
+ * Changeset 1f913c92c9b2
+
+  -- Mikael Berthe, 2010-03-14
+
+dev (5)
+
+ * Add resource name to the hook-message-in hook
+ * Changeset 5c043358ded0
+
+  -- Mikael Berthe, 2010-03-14
+
+dev (4)
+
+ * Big API cleanup (functions renamed)
+ * Min API 4
+ * Changeset e4378fbab5d7
+
+  -- Mikael Berthe, 2010-03-14
+
+dev (3)
+
+ * settings_set_guard() returns success status and will refuse to replace an
+   existing guard
+ * Min API 3
+ * Changeset d80a9e32ab1a
+
+ -- Myhailo Danylenko, 2010-03-13
+
+dev (2)
+
+ * Add api.h
+ * Add scr_gettextwidth() (61f0482d3993)
+ * Changeset e7ce50fe19a9
+
+ -- Myhailo Danylenko, 2010-03-13
+
+dev (1)
+
+ * Initial API version
+
+ -- Myhailo Danylenko, 2010-03-13

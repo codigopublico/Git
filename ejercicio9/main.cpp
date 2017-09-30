@@ -12,27 +12,14 @@
 using namespace std;
 
 /*
- * 
+ *Esto se ha de pasar e a limpio. 
  */
-class partidos : public equipo {
-public:
-    /*partidos(aux) :  equipo() {
-        aux = 0;
-    }*/
-    int setpartidos(int n[]){
-        //Este es para realizar los partidos se hara el azar i se tienen que refernciar.
-        if(rand() % 2 == 0){
-            return n[1];
-        }else{
-            return n[0];
-        }
-    }
-};
+
 char aux[5] = "0FIN";
 class equipo{
 public:
     char nombre[200][200];
-    int aux;
+    int aux = 0;
     char *pn;
     equipo(){
         //*pn = &nombre;
@@ -56,12 +43,13 @@ public:
                 std::cout << nombre[i][ii];
                 ii++;
             }while(nombre[i][ii] != 0);
-            std::cout << "\nLa referencia es  " << i <<"\n";
+            std::cout << "  La referencia es  " << i <<"\n";
         }
     }
 };
 int setnombres(equipo *constante){
 //De esto tengo que hacer una funcion genereica...... ademas me permite hacer como entrar objectos en una funcion.
+    //tengo que hacer una mejor funcion de esto.
     std::cout << "Intentado hacer el la funcion (), el paso por referencia de un objeto \n";
     constante->getmonstar();
     int i; 
@@ -98,7 +86,47 @@ int setnombres(equipo *constante){
     return 0; //aqui se tiene que consegir retornar un objeto por referencia.
 
 }
-
+class partidos : public equipo  {
+public:
+    //0  significa que perdio i 1 significa que gano el partido de modo que se tiene que hacer la estructura. 
+    int n[200][1];//esta es uno de los enfretamientos el 0 es la refernecia que deven ser en las elecciones
+    int n2[200][1];//esta es la otra lista de enfrentamientos
+    partidos() :  equipo() {
+        
+    }
+    void jugarand(){
+        //Este es para realizar los partidos se hara el azar i se tienen que refernciar.
+        for(int t = 0; t < aux; t++){
+        if(rand() % 2 == 0){
+            n[t][1] = 0;
+            n2[t][1] = 1;
+        }else{
+            n2[t][1] = 0;
+            n[t][1] = 1;
+        }
+        }
+    }
+    int getpart(){
+    //esta es la seccion en la que se muestran los partidos los partidos.
+        
+    }
+};
+class liga : public partidos   {
+public:
+    // es por las funciones virtuales o porque es para hcerlo lo que se tiene que hacer es simplenemte es hacer que las classes hagan las variables las herencias i todo lo demas i hacer una super funcion que los gestione todo.
+    liga() : partidos(){
+        
+    }
+    void systema(){
+        for(int i = 0; i < aux; i++){
+            if(i%2 == 0){
+                n[i][0] = i;
+            }else{
+                n2[i][0] = i;
+            }
+        }
+    }
+};
 void p1(){
     equipo *joan = new equipo;
     equipo consta;
