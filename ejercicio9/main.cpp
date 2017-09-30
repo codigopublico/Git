@@ -53,10 +53,11 @@ int setnombres(equipo *constante){
     char im[200];
         int e = 0;
         do{
-                 e = 0;
+                int e = 0;
         do{
             std::cin >> im[i];
             i++;
+            std::cout << "11111\n"; 
             for(int ii = 0; ii < i; ii++){
                 std::cout << "For\n";
                 if(im[ii] == aux[0]){ 
