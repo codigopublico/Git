@@ -23,6 +23,7 @@ class equipo{
     public:
     char nombre[200][200]; //Este es el arry de arrays que verifica que todo funcione bien.
     int aux = 0;//Esta es la que cuenta el numero de equipos introducidos.
+    int ref[200];//Esta es la referencias de los nombres que existen.
     equipo(){
         //*pn = &nombre;
         aux = 0;
@@ -33,6 +34,7 @@ class equipo{
             nombre[aux][i] = nom[i];
             i++;
         }while(nom[i - 1] != 0);
+        ref[aux] = aux;
         aux++;
     }
     void getmonstar(){
@@ -43,7 +45,7 @@ class equipo{
             ii = 0;
             do{
                 std::cout << nombre[i][ii];
-
+                //aqui tendria que ir nombre de esta forma: nombre[ref[i]][ii]
                 ii++;
             }while(nombre[i][ii] != 0);
             std::cout << "  La referencia es  " << i << "\n";
@@ -96,16 +98,19 @@ public:
     // Esta se carga de jugar los partidos.
     int n[2]; 
     int r;
+    int l[2][10]; //este es el que se encarga de enfernatar los 0 ccon los 1. 
     partidos() : equipo(){
        
     }
     void jugar(){
+        //Aqui se tiene que hacer poner en la ref el que gane i quitar el que pierde.
+        for(int i = 0; i < aux/2 ; i++){
         if(rand()%2 == 0){
-            n[1] = 0;
-            n[0] = 1;
+            
         }else{
                 n[1] = 1;
                 n[0] = 0;
+        }
         }
         
     }
@@ -117,42 +122,44 @@ public:
         aux = 0;
     }
     void crearliga(){
-        int l[2][200]; //Aqui tienen que ir los id's de los que se tienen que enfrentar.
-        int ii;
+ //Aqui tienen que ir los id's de los que se tienen que enfrentar. Se tiene que poner en la classe superior.
+        int ii = 0;
+        int q2[2];
+        q2[0] = 0;
+        q2[1] = 0;
         for(int i = 0; i < aux; i++){
             if(i%2 == 0){
-                l[1][i] = i;
-                //std::cout << "   Un bando a enfertar es .. ";
-                //ii = 0;
-                /*while(nombre[i][ii] != 0) {
-                    std::cout << nombre[i][ii];
-                ii++;*/
-            //}
-        }else{
-                l[0][i - 1] = i; 
+                l[0][q2[0]] = i;
+                q2[0]++;
+            }else{
+                l[1][q2[1]] = i;
+                q2[1]++;
             }
-            std::cout << "\n";
+            ii++;
         }
-        for(int i = 0; i < aux / 2; i++){
+        std::cout << ii <<"\n";
+        for(int i = 0; i < ii/2; i++){
             for(int e = 0; e < 2; e++){
+                //El problema esta aqui ya que hay una violacion de segmento si borro esto funciona pero con muchos errores i aun hace falta hacer ir las funciones de partidos i englovarlas en una 
                 if(e == 0){
-                    std::cout << "     El equipo    ";
+                    std::cout << "     El equipo    " ;
                 }else{
                     std::cout << "     el equipo    ";
                 }
                 
-            ii = 0;
-            while(nombre[i][ii] != 0) {
-                std::cout << nombre[l[e][i]][ii];
-                ii++;
+                q2[0] = 0;
+            while(nombre[l[e][i]][q2[0]] != 0) {
+                std::cout << nombre[l[e][i]][q2[0]];//esta es laexpresion que esta mal
+                q2[0]++;
             }
             if( e < 1 ){
             std::cout << "   se enfrenta a   ";
             }
             }
-            std::cout << "\n";
+            std::cout  <<"\n";
+            }
         }
-    }
+    
 };
 void fliga(){
 //Esta es la funcion madre de todo el proyecto que organizara todas las classes de arriva en objetos.
@@ -162,8 +169,10 @@ void fliga(){
     setnombres(base);
     //base->getmonstar();
     base->crearliga();
+    delete base;
 }
 int main(int argc, char** argv) {
     fliga();
     return 0;
 }
+//Todo lo que sea de nombre se tiene que poner en la referencia. 
