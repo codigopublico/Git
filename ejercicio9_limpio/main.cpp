@@ -44,10 +44,10 @@ class equipo{
             std::cout << "Los nombres de los equipos son:    ";
             ii = 0;
             do{
-                std::cout << nombre[i][ii];
+                std::cout << nombre[ref[i]][ii];
                 //aqui tendria que ir nombre de esta forma: nombre[ref[i]][ii]
                 ii++;
-            }while(nombre[i][ii] != 0);
+            }while(nombre[ref[i]][ii] != 0);
             std::cout << "  La referencia es  " << i << "\n";
         }
     }
@@ -96,23 +96,44 @@ int setnombres(equipo *constante){
 class partidos : public equipo  {
 public:
     // Esta se carga de jugar los partidos.
-    int n[2]; 
-    int r;
     int l[2][10]; //este es el que se encarga de enfernatar los 0 ccon los 1. 
     partidos() : equipo(){
        
     }
     void jugar(){
+        int r[2];
+        r[0] = 0;
+        r[1] = 0;
         //Aqui se tiene que hacer poner en la ref el que gane i quitar el que pierde.
-        for(int i = 0; i < aux/2 ; i++){
+        std::cout << "Los perdores son :    \n";
+        for(int i = 0; i < aux/2; i++){
         if(rand()%2 == 0){
-            
+            std::cout << l[0][i] << "\n";
+            l[0][i] = 0;
         }else{
-                n[1] = 1;
-                n[0] = 0;
+            std::cout << l[1][i] << "\n";
+            l[1][i] = 0;
         }
+            }
+        r[0] = 1;
+        for(int i = 0; i < aux/2; i++){
+        for(int e = 0; e < 2; e++ ){
+            if(l[e][i] != 0){
+                ref[r[0]] = l[e][i];
+                r[0]++;
+            }
+            }
         }
-        
+        std::cout << "\n Los ganadores son:        \n";
+        aux = r[0];
+        for(int i = 0; i < r[0]; i++){
+            int ii = 0;
+            while(nombre[ref[i]][ii] != 0){
+                std::cout << nombre[ref[i]][ii];
+                ii++;
+            }
+            std::cout << "\n";
+        }
     }
 };
 class liga : public partidos   {
@@ -168,7 +189,10 @@ void fliga(){
     std::cout << "\nCreacion de una liga \n" << "Para empezar pon los nombres de los equipos \n";
     setnombres(base);
     //base->getmonstar();
-    base->crearliga();
+    for(int i = 0; i < 2; i++){
+        base->crearliga();
+        base->jugar();
+    }
     delete base;
 }
 int main(int argc, char** argv) {
