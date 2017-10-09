@@ -12,6 +12,7 @@
 #include <term.h>
 #include <curses.h>
 #include <unistd.h>
+#include <iostream>
 /*
  * Este es un programa para leer el teclado....
  */
@@ -33,6 +34,7 @@ void init_keyborad(){
 
 }
 void close_keyborad(){
+    tcgetattr(0, &initial_settings);
     tcsetattr(0, TCSANOW, &initial_settings);
 
 }
@@ -70,7 +72,7 @@ void detectarpulsaciones(){
         sleep(1);
         if(kbhit()){
             ch = readch();
-            printf("Your key is %c \n", ch);
+            std::cout << "La lectura del teclado es ..." << ch <<"\n";
             
         }
         
@@ -80,11 +82,12 @@ void detectarpulsaciones(){
 }
 void modificar(){
 int ch = 0;
-    while(ch != '0'){
+    while(ch != 13){
         sleep(1);
         if(kbhit()){
             ch = readch();
-            printf("Your key is %c \n", ch);
+            std::cout << "\n  La lectura del teclado es ..." << ch <<"     \n";
+            printf("%c", ch);
             
         }
         
