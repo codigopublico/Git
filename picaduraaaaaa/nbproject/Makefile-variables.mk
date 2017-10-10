@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=leerteclado2
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/leerteclado2
+CND_ARTIFACT_NAME_Debug=picaduraaaaaa
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/picaduraaaaaa
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=leerteclado2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/leerteclado2.tar
+CND_PACKAGE_NAME_Debug=picaduraaaaaa.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/picaduraaaaaa.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=leerteclado2
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/leerteclado2
+CND_ARTIFACT_NAME_Release=picaduraaaaaa
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/picaduraaaaaa
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=leerteclado2.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/leerteclado2.tar
+CND_PACKAGE_NAME_Release=picaduraaaaaa.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/picaduraaaaaa.tar
 #
 # include compiler specific variables
 #

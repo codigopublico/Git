@@ -84,7 +84,7 @@ int ch = 0;
         sleep(1);
         if(kbhit()){
             ch = readch();
-            printf("Your key is %c \n", ch);
+            printf("Your key is %c", ch);
             
         }
         

@@ -65,40 +65,49 @@ int readch(){
     read(0, &ch, 1);
     return ch;
 }
-void detectarpulsaciones(){
-    int ch = 0;
-    while(ch != 'q'){
-        printf("Loping\n");
+char* detectarpulsaciones(){
+    int i = 0;
+    int ii = 0;
+    char *ch2 = new char[200];
+    while(ch2[i] != 13){
         sleep(1);
         if(kbhit()){
-            ch = readch();
-            std::cout << "La lectura del teclado es ..." << ch <<"\n";
-            
+            ch2[i] = readch();
+            std::cout <<  ch2[i];
+            i++;
         }
-        
+    }
+    std::cout << "\n La palabra inroducida es ...\n";
+    for(int i = 0; ch2[i] != 0; i++){
+        std::cout << ch2[i];
     }
     close_keyborad();       
-    exit(0);
+    return ch2;
 }
 void modificar(){
-int ch = 0;
+char ch;
+char ch2[200];
+int i = 1;
     while(ch != 13){
-        sleep(1);
+        sleep(0.5);
         if(kbhit()){
             ch = readch();
-            std::cout << "\n  La lectura del teclado es ..." << ch <<"     \n";
-            printf("%c", ch);
-            
+            i++;
+            ch2[i] = ch;
+            std::cout << ch;
         }
-        
     }
-    close_keyborad();       
+    close_keyborad();
+    std::cout << "\nLa lectura total es: \n";
+    for(int i = 0; ch2[i] != 13; i++){
+    std::cout << ch2[i];
+}
     exit(0);
 }
 
 int main(int argc, char** argv) {
-    //detectarpulsaciones();
-    modificar();
+    std::cout << "\nEste es el retorno" <<detectarpulsaciones() << "\n";
+    //modificar();
     return 0;
 }
 

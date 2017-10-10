@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=leerteclado2
+PROJECTNAME=capitulo9
 
 # Active Configuration
 DEFAULTCONF=Debug

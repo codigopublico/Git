@@ -12,9 +12,9 @@ CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/leerteclado2
-OUTPUT_BASENAME=leerteclado2
-PACKAGE_TOP_DIR=leerteclado2/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/picaduraaaaaa
+OUTPUT_BASENAME=picaduraaaaaa
+PACKAGE_TOP_DIR=picaduraaaaaa/
 
 # Functions
 function checkReturnCode
@@ -59,15 +59,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/leerteclado2/bin"
+makeDirectory "${NBTMPDIR}/picaduraaaaaa/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/leerteclado2.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/picaduraaaaaa.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/leerteclado2.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/picaduraaaaaa.tar *
 checkReturnCode
 
 # Cleanup
