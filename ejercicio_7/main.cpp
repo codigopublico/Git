@@ -99,20 +99,21 @@ using namespace std;
  
  }
 void fin(){
-    std::cout << "Iniciando el fin\n";
-    oagenda alex ;
+    std::cout << "Iniciando la agenda\n";
+    oagenda alex2 ;
     string nom = "laura";
     int imput2;
     for(int i = 0; i < 10; i++){
-    alex.setreguistro(34, nom);
-    alex.setreguistro(12390, "desconocido");
+    alex2.setreguistro(34, nom);
+    alex2.setreguistro(12390, "desconocido");
     }
-    alex.mostrar();
-    alex.rmn(nom);
-    alex.mostrar();
+    alex2.mostrar();
+    alex2.rmn(nom);
+    alex2.mostrar();
+    oagenda alex;
     std::cout << "Fin de la prueva \n Para salir de la agenda es de Fin \n";
     while(nom != "FIN"){
-        std::cout << "Que quieres hacer poner(p) un nombre eliminar(e) o mostrar agenda(m)\n";
+        std::cout << "Que quieres hacer poner(p) un nombre eliminar(e)  mostrar agenda(m) salir(FIN)\n";
         std::cin >> nom ;
         if(nom == "p"){
             std::cout << "El numero";
@@ -213,11 +214,16 @@ cout << endl;
 
 
 int main(int argc, char** argv) {
-    //p1();
-    //p2();
-    //p3();//falta mirar el array de char.
-    //p4();
-    //fin();
+    p1();
+    cin.get();
+    p2();
+    cin.get();
+    p3();//falta mirar el array de char.
+    cin.get();
+    p4();
+    cin.get();
+    fin();
+    cin.get();
     return 0;
 }
 

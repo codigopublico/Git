@@ -38,7 +38,9 @@ using namespace std;
     void mostrar(){
         std::cout << "viendo la agenda: \n";
         for(int i = 0; i < max; i++){
+            if(numer[i] != 0 || nombre[i] != "0" ){
             std::cout << "numero:  " << numer[i] << "\n" << "nombre: "<< nombre[i] << "  \n";
+            }
         
         }
         
@@ -58,9 +60,9 @@ using namespace std;
         }
         int i = 0;
         int cambio = 0;
-        std::cout << "\n max - aux  " << max -aux << "\n";
-        int b; 
-        std::cin >> b; 
+        //std::cout << "\n max - aux  " << max -aux << "\n";
+       //int b; 
+       //std::cin >> b; las lienas comentadas a continuacion son para depurar el programa
         a = 0;
         while(a < (max - aux) || a == (max - aux)){
             if(numer[i] == 0 ){
@@ -78,7 +80,7 @@ using namespace std;
                 i = 0;
             }
             i++;
-            std::cout << "NUMER DE RM " << numer[i] << " nombre " <<  nombre[i] <<"\n"; 
+            //std::cout << "NUMER DE RM " << numer[i] << " nombre " <<  nombre[i] <<"\n"; 
         }
         
         
@@ -97,16 +99,36 @@ using namespace std;
  
  }
 void fin(){
-    std::cout << "Iniciando el fin\n";
-    oagenda alex ;
-    char nom[] = "laura";
-    for(int i = 0; i < 30; i++){
-    alex.setreguistro(34, nom);
-    alex.setreguistro(12390, "desconocido");
+    std::cout << "Iniciando la agenda\n";
+    oagenda alex2 ;
+    string nom = "laura";
+    int imput2;
+    for(int i = 0; i < 10; i++){
+    alex2.setreguistro(34, nom);
+    alex2.setreguistro(12390, "desconocido");
     }
-    alex.mostrar();
-    alex.rmn(nom);
-    alex.mostrar();
+    alex2.mostrar();
+    alex2.rmn(nom);
+    alex2.mostrar();
+    oagenda alex;
+    std::cout << "Fin de la prueva \n Para salir de la agenda es de Fin \n";
+    while(nom != "FIN"){
+        std::cout << "Que quieres hacer poner(p) un nombre eliminar(e) o mostrar agenda(m)\n";
+        std::cin >> nom ;
+        if(nom == "p"){
+            std::cout << "El numero";
+            std::cin >> imput2;
+            std::cout << "El nombre";
+            std::cin >> nom;
+            alex.setreguistro(imput2, nom);
+    } if(nom == "e"){
+        std::cout << "Nombre a eliminar\n";
+        std::cin >> nom; 
+        alex.rmn(nom);
+    } if(nom == "m"){
+        alex.mostrar();
+    }
+    }   
     //std::cout << alex.setnombre();
 }
 void p1(){
@@ -142,33 +164,34 @@ for(int i=0; i<5; i++)
 
 }
 void p3(){
+    //tengo que hacer una funcion generica de esto que me devuelva los char.
     int aux = 10;
-    int aux2 = 5;
-    char nom[aux2][aux];
+    int aux2 = 25;
+    int a = 0;
+    string nom[aux];
     std::cout << "Nombres\n";
-    for(int i = 0; i < aux2; i++){
-        for(int ii = 0; ii < aux; ii++){
-        std::cin >> nom[i][ii];
-	if(nom[ii][i] == 0x0A){
-		break;
-}
+    for(int i = 0; i < aux; i++){
+        std::cin >> nom[i];
+        a++;
+        if(nom[i] == "FIN"){
+            break;
         }
-    
+    }
+   
     std::cout << "El numbre de la escritura es \n";
-    for(int i = 0; i < aux2; i++){
-        for(int ii = 0; ii < aux; ii++){
-	if(nom[i][ii] == 0x0A ){
+    for(int i = a; i >= 0 ; i--){
+        for(int ii = 0; ii < aux2; ii++){
+	if(nom[i][ii] == '1' ){
 		break;
 	}
-        std::cout << nom[i][ii];
-
+        std::cout << nom[i][ii] << "  ";
         }
         std::cout << "\n";
     }
 
 }
-}
-/*void p4(){
+
+void p4(){
 //completar aquí
     int aux[3] = {4, 5, 0};
     int precios[aux[0]][aux[1]];
@@ -187,15 +210,20 @@ cout << precios[i][j] << " ";
 cout << endl;
 }
 
-}*/
+}
 
 
 int main(int argc, char** argv) {
     p1();
+    cin.get();
     p2();
+    cin.get();
     p3();//falta mirar el array de char.
-    //p4();
+    cin.get();
+    p4();
+    cin.get();
     fin();
+    cin.get();
     return 0;
 }
 
