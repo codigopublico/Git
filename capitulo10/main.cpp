@@ -167,9 +167,14 @@ void final(){
     prueva[1]->entar(laura, 1);
     prueva[1]->saludo();
     std::cout << prueva[1]->nclasse << " \n" ;
+    //Esta es la parte del menu
+    std::cout << "\nInciado el menu de las classes\n";
+    std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), Poner una classe(c), eliminar ,classe o alumno,(e), poner notas(n)";
 }
 int main(int argc, char** argv) {
     final();
+    std::cout << "Pulsa una tecla para terminar\n";
+    cin.get();
     return 0;
 }
 
