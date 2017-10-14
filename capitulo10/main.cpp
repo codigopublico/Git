@@ -12,7 +12,7 @@
 using namespace std;
 
 /*
- *Falta poner una funcion que englove todas las demas funciones.
+ *Nada mas falta poner como se hara el menu.
  */
 int max = 200;
 
@@ -107,27 +107,24 @@ public:
     
 };
 class director{
-public:
-    classe *res; 
+public: 
+    classe *res2[200];
     int conta;
     int max;
     director(){
         max = 200;
-        conta = 0;
-        for(int i = 0; i < max; i++){
-            classe *res[i];
-        }
+        conta = 0; 
+        
     }
     void ingresar_classe(classe virtua){
         std::cout << "Haciendo la classe virtual\n";
-                classe *res[conta] = new classe virtua;
+                res2[conta] = &virtua;
                 conta++;
     }
-    void mostrar(){
-        std::cout << "hola\n"; 
+    void mostrar(){ 
         for(int i = 0; i < conta; i++){
-            for(int ii = 0; ii < res[i]->nom[i].conta; ii++){
-        std::cout << "Los alumnos son " << res[i]->nom[ii].nombre << " de la classe "<<res[i]->nom[ii].classes ;
+            for(int ii = 0; ii < res2[i]->nom[i].conta; ii++){
+        std::cout << "Los alumnos son " << res2[i]->nom[ii].nombre << " de la classe "<<res2[i]->nom[ii].classes << "\n" ;
         }
         }
     } 
@@ -158,13 +155,18 @@ void final(){
     sofware.mnotas();
     sofware.cmedia();
     mates.cmedia();
-    //mates.amedia();
+    mates.amedia();
     //sofware.amedia();
     director bigdata;
     bigdata.ingresar_classe(mates);
-    //bigdata.ingresar_classe(sofware);
-    //bigdata.mostrar();
-    
+    bigdata.ingresar_classe(sofware);
+    bigdata.mostrar();
+    //Esta parte es para hacer pruevas de sofware i cuando la base del ejercio este terminado se eliminara
+    classe *prueva[200];
+    prueva[1] = &mates;
+    prueva[1]->entar(laura, 1);
+    prueva[1]->saludo();
+    std::cout << prueva[1]->nclasse << " \n" ;
 }
 int main(int argc, char** argv) {
     final();
