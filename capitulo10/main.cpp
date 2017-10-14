@@ -53,7 +53,9 @@ public:
     }
     classe(){
         conta = 0;
-        nclasse = "Sin_classe";
+    }
+    void nnclasse(string inclasse){
+        nclasse = inclasse;
     }
     void entar(alumno inom, int total){
         int i = 0;
@@ -129,6 +131,8 @@ public:
         }
     } 
 };
+alumno vlaura[200];
+classe vclasse[200];
 void final(){
     int aux = 20;
     string nom = "alex";
@@ -169,7 +173,36 @@ void final(){
     std::cout << prueva[1]->nclasse << " \n" ;
     //Esta es la parte del menu
     std::cout << "\nInciado el menu de las classes\n";
-    std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), Poner una classe(c), eliminar ,classe o alumno,(e), poner notas(n)";
+    int i = 0;
+    int e = 0;
+    while(nom != "FIN"){
+    std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), \nGestionar una classe(c), \neliminar ,classe o alumno,(e), \nponer notas(n)\n";
+    std::cout << "\nFin para terminar\n";
+    std::cin >> nom;
+    if(nom == "p"){
+        std::cout << "\nDime su nombre\n";
+        std::cin >> nom;
+        vlaura[i].igresar(nom);
+        i++;
+    }
+    if(nom == "c"){
+        std::cout << "\nQue quieres hacer crear una classe(c),\n o poner alumnos en una classe(entrar)\n";
+        std::cin >> nom; 
+        if(nom == "c"){
+            std::cout << "\n Dime el nombre de la classe\n";
+            std::cin >> nom;
+            vclasse[e].nnclasse(nom);
+            e++;
+        }
+        if(nom == "entrar"){
+            std::cout << "\nlas classes disponibles son las siguientes. \n";
+            for(int r = 0; r < e; r++){
+                std::cout << "classe  " << vclasse[e].nclasse << "\n";
+            }
+        }
+    }
+    
+    }
 }
 int main(int argc, char** argv) {
     final();
