@@ -8,10 +8,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
+#include <stdlib.h> // esta es la liberria de rand()
 using namespace std;
 
 /*
- *Falta ponerle las classes i  classificar para ello i hacerlo random. Todo. Para manya
+ *Falta poner una funcion que englove todas las demas funciones.
  */
 int max = 200;
 
@@ -22,6 +23,7 @@ public:
     string nombre;
     int *notas;
     int conta;
+    string classes[200];
     alumno(){
         max = 200;
         int *nota = new int[max];
@@ -65,24 +67,26 @@ public:
     for(int i = 0; i < conta; i++){
         std::cout << "\nNotas de  " << nom[i].nombre << "  ";
         for(int ii = 0; ii < nom[i].conta; ii++){
-            std::cout << "  " << nom[i].notas[ii] << "\n";
+            std::cout << "  " << nom[i].notas[ii] << " de la classe  " << nom[i].classes[ii] ;
         }
         std::cout << "\n";
         }
     }
+    void pnotas(int nota, int ref){
+        nom[ref].classes[nom[ref].conta] = nclasse;
+        nom[ref].pnotas(nota);
+    }
 };
 void final(){
-    alumno virtua;
-    alumno alex;
+    int aux = 20;
+    string nom = "alex";
+    alumno hola;
     classe mates("mates");
-    string nom2[] = {"maria", "Joan"};
-    alex.igresar(nom2[1]);
-    alex.pnotas(8);
-    virtua.igresar(nom2[0]);
-    mates.entar(virtua, 1);
-    mates.entar(alex, 1);
-    mates.saludo();
-    mates.mnotas();
+    hola.igresar(nom);
+    for(int i = 0; i < aux; i++){
+        classe.entar(hola, 1);
+    }
+    classe.saludo();
     
 }
 int main(int argc, char** argv) {
