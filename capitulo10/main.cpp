@@ -108,21 +108,26 @@ public:
 };
 class director{
 public:
-    classe res[200];
+    classe *res; 
     int conta;
+    int max;
     director(){
+        max = 200;
         conta = 0;
+        for(int i = 0; i < max; i++){
+            classe *res[i];
+        }
     }
     void ingresar_classe(classe virtua){
         std::cout << "Haciendo la classe virtual\n";
-                res[conta] = virtua;
+                classe *res[conta] = new classe virtua;
                 conta++;
     }
     void mostrar(){
         std::cout << "hola\n"; 
         for(int i = 0; i < conta; i++){
-            for(int ii = 0; ii < res[i].nom[i].conta; ii++){
-        std::cout << "Los alumnos son " << res[i].nom[ii].nombre << " de la classe "<<res[i].nom[ii].classes ;
+            for(int ii = 0; ii < res[i]->nom[i].conta; ii++){
+        std::cout << "Los alumnos son " << res[i]->nom[ii].nombre << " de la classe "<<res[i]->nom[ii].classes ;
         }
         }
     } 
@@ -156,7 +161,7 @@ void final(){
     //mates.amedia();
     //sofware.amedia();
     director bigdata;
-    //bigdata.ingresar_classe(mates);
+    bigdata.ingresar_classe(mates);
     //bigdata.ingresar_classe(sofware);
     //bigdata.mostrar();
     
