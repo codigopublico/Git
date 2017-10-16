@@ -12,7 +12,7 @@
 using namespace std;
 
 /*
- *Nada mas falta poner como se hara el menu.
+ *Falta como poner eleminar i mostrar reguistros.
  */
 int max = 200;
 
@@ -137,6 +137,7 @@ void final(){
     int aux = 20;
     string nom = "alex";
     string fem = "laura";
+    int n;
     alumno hola;
     alumno laura;
     laura.igresar(fem);
@@ -175,6 +176,7 @@ void final(){
     std::cout << "\nInciado el menu de las classes\n";
     int i = 0;
     int e = 0;
+    int f;
     while(nom != "FIN"){
     std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), \nGestionar una classe(c), \neliminar ,classe o alumno,(e), \nponer notas(n)\n";
     std::cout << "\nFin para terminar\n";
@@ -197,8 +199,20 @@ void final(){
         if(nom == "entrar"){
             std::cout << "\nlas classes disponibles son las siguientes. \n";
             for(int r = 0; r < e; r++){
-                std::cout << "classe  " << vclasse[e].nclasse << "\n";
+                std::cout << "classe  " << vclasse[r].nclasse << "   "<<r << "\n";
             }
+            std::cout << "Eligue una classe con la refernecia mostrada\n";
+            std::cin >> n;
+            f = n;
+            std::cout << "Eliguieste la classe " << vclasse[n].nclasse << "\n";
+            std::cout << "Ahora eligue un alumno/a\n Los disponibles son \n ";
+            for(int r = 0; r < i; r++){
+            std::cout << " " << vlaura[r].nombre << r << "  (ref)";
+            }
+            std::cout << "Ahora dime una referencia \n";
+            std::cin >> n;
+            vclasse[f].entar(vlaura[n], 1);
+            
         }
     }
     
