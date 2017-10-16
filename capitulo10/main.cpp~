@@ -214,14 +214,6 @@ void final(){
             vclasse[f].entar(vlaura[n], 1);
             
         }
-        if(nom == "n"){
-        std::cout << "Dime la classe que quieres poner o cambiar las notas\n";
-        std::cout << "Las classes disponibles son las siguientes \n";
-        for(int r = 0; r < e; r++){
-        vlclasse[r]. //continuar aqui
-        }
-        std::cin >> n; 
-        }
     }
     
     }
