@@ -12,37 +12,49 @@ using namespace std;
 /*
  * 
  */
-int max;
-class banco{
+//int max = 200;
+class banco : public cuenta {
 public:
-    int r;
-    banco(){
-        r = 0;
+    
+   
+    void select(int inid){
+        id = inid;
     }
-    struct cuentas{//aqui tiene que ser un array.
-        int d;
-        string titular;
-    };
     
 }; 
-class cuenta : public banco{
+class cuenta : public operar {
 public:
+    int r = 0;
+    
     void crear(string nom){
-        cuentas.titular = nom;
+        cuentas[r].titular = nom;
         r++;
     }
 };
-class operar : public cuenta{
+class operar{//esta es la base de datos i las operaciones matematicas.....
 public:
-     
-    operar(){};
+    int r;
+    int id;
+    struct cuento{
+        int d;
+        string titular;
+    }cuentas[200];//aqui se define todo el nombre de la estructrua del array
+    operar(){
+    r = 0;
+    id = 0;
+    };
     void ingresar(int n){
-        cuentas.d = cuentas.d + n;
+        cuentas[id].d = cuentas[id].d + n;
     
     }
 };
-
+void p1(){
+    banco by;
+    //by.crear("joan");
+    
+}
 int main(int argc, char** argv) {
+    p1();
 
     return 0;
 }
