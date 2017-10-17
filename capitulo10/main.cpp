@@ -12,7 +12,7 @@
 using namespace std;
 
 /*
- *Falta como poner eleminar i mostrar reguistros.
+ *Falta hacer lo de eliminar.
  */
 int max = 200;
 
@@ -106,6 +106,16 @@ public:
     }
 
     }
+    void sacaral(int r){
+        for(int i = 0; i < conta; i++){
+            if(r < i){
+                nom[200] = nom[i - 1];
+                nom[i - 1] = nom[i];
+                nom[i] = nom[200];
+            }
+        }
+        conta--;
+    }
     
 };
 class director{
@@ -133,6 +143,16 @@ public:
 };
 alumno vlaura[200];
 classe vclasse[200];
+void sacarclasse(int r, int e){
+for(int i = 0; i <= e; i++){//nada mas hace falta esto...........
+            if(r < i){
+                vclasse[200] = vclasse[i - 1];
+                vclasse[i - 1] = vclasse[i];
+                vclasse[i] = vclasse[200];
+            }
+        }
+        e--;
+}
 void final(){
     int aux = 20;
     string nom = "alex";
@@ -178,7 +198,7 @@ void final(){
     int e = 0;
     int f;
     while(nom != "FIN"){
-    std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), \nGestionar una classe(c), \neliminar ,classe o alumno,(e), \nponer notas(n)\n";
+    std::cout << "\nPrimero dime que quieres hacer\nPoner un alumno(p), \nGestionar una classe(c), \neliminar ,classe o alumno,(e), \nponer notas(n),  o Ver mostrar todas classes(m)\n";
     std::cout << "\nFin para terminar\n";
     std::cin >> nom;
     if(nom == "p"){
@@ -188,7 +208,7 @@ void final(){
         i++;
     }
     if(nom == "c"){
-        std::cout << "\nQue quieres hacer crear una classe(c),\n o poner alumnos en una classe(entrar)\n";
+        std::cout << "\nQue quieres hacer crear una classe(c),\n  poner alumnos en una classe(entrar)\n.";
         std::cin >> nom; 
         if(nom == "c"){
             std::cout << "\n Dime el nombre de la classe\n";
@@ -196,6 +216,7 @@ void final(){
             vclasse[e].nnclasse(nom);
             e++;
         }
+    }
         if(nom == "entrar"){
             std::cout << "\nlas classes disponibles son las siguientes. \n";
             for(int r = 0; r < e; r++){
@@ -218,14 +239,55 @@ void final(){
         std::cout << "Dime la classe que quieres poner o cambiar las notas\n";
         std::cout << "Las classes disponibles son las siguientes \n";
         for(int r = 0; r < e; r++){
-        vlclasse[r]. //continuar aqui
+        std::cout << "  " << vclasse[r].nclasse << "   " << r <<"  "; //continuar aqui
         }
+        std::cout << "\nDime la referncia\n";
         std::cin >> n; 
+        std::cout << "\nDime la alumna que quieras poner por referencia\n";
+            for(int r = 0; r < i; r++){
+            std::cout << " " <<  vclasse[n].nom[r].nombre << "   " <<r << "  (ref) ";
+            }
+        int r;
+        int q;
+        std::cin >> r;
+        std::cout << "Ahora dime la nota \n";
+        std::cin >> q;
+        vclasse[n].pnotas(q, r);
+        }
+    if(nom == "m"){
+        std::cout << "Mostrado las classes(con las notas): \n";
+        for(int r = 0; r < e; r++){
+            std::cout << "classe: " << vclasse[r].nclasse << "\n";
+        vclasse[r].mnotas();
         }
     }
+    if(nom == "e"){
+        int r = 0;
+        std::cout << "\nQue quieres eliminar ?¿ alumno(a), classe(c), nota(n)\n";
+        std::cin >> nom;
+        if(nom == "a"){
+            std::cout << " \nDime que quieres la referencia del alumno a echar\n ";
+            for(; r < i; r++){
+            std::cout << " " <<  vclasse[n].nom[r].nombre << "   " <<r << "  (ref) ";
+            }
+            std::cin >> r;
+            vclasse[r].sacaral(r);
+        }
+        if(nom == "c"){
+            int r = 0;
+            std::cout << " \n Dime la referencia de la classe \n ";
+            for(; r < e; r++){
+                std::cout << "    " << vclasse[r].nclasse << "  " << r << "\n";
+            }
+            std::cin >> r;
+            sacarclasse(r, e);
+        }
     
     }
-}
+    
+    
+    }}
+
 int main(int argc, char** argv) {
     final();
     std::cout << "Pulsa una tecla para terminar\n";
