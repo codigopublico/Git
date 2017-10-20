@@ -13,6 +13,7 @@ using namespace std;
 
 /*
  * Este es el programa base....
+ * Tengo que pasar los assientos a el array de los assientos en la grafica.
  */
 int imax = 220;
 class espectador{
@@ -21,6 +22,7 @@ public:
         string nom;
         string apellido;
         int edad;
+        int asiento[2];
     }pers[200];
     espectador(){
         ref = 0;
@@ -32,6 +34,11 @@ public:
         pers[ref].apellido = iapellido;
         ref++;
     
+    }
+    void clientes(){
+        for(int i = 0; i < ref; i++){
+            std::cout << pers[i].nom << "  " << pers[i].apellido << " id: " << i << "\n";
+        }
     }
 };
 class sala : public espectador{
@@ -57,7 +64,7 @@ public:
         std::cout << "aux: " << aux[i] << "  ";
         }
         for(int i = 0; i < 200; i++){//esto es la puesta a 0 de los assientos
-            for(int ii = 0; i < 200; ii++){
+            for(int ii = 0; ii < 200; ii++){
                 n[i][ii] = 0;
             }
         }
@@ -69,11 +76,55 @@ public:
     void mostrar(){
         grafica(aux, n);
     }
+    void reguistrar(int a[2], int id){
+        n[a[0]][a[1]] = 1;
+        for(int i = 0; i < 2; i++){
+        pers[id].asiento[i] = a[i];
+        }
+    }
 };
 void p1(){
-    int aux[2] = {2, 2};
+    int aux[2] = {20, 20};
+    string nom;
     sala rock(aux);
-    //rock.mostrar();
+    rock.mostrar();
+    rock.entrar("laura", "laura", 30);
+    int a[2] = {0, 0};
+    rock.reguistrar(a, 0);
+    rock.mostrar();
+    //Menu de gestion de teatro
+    int n;
+    while(nom != "FIN"){
+        limpiar();
+        std::cout << "Este es el menu de la gestion  de la sala\n reservar assiento (r), reguistrar cliente(c) \n ";
+        std::cin >> nom;
+    if(nom == "c"){
+        string inom;
+        string ap;
+        std::cout << "Dime su nombre\n";
+        std::cin >> nom;
+        inom = nom;
+        std::cout << "Dime su apellido";
+        std::cin >> nom;
+        ap = nom;
+        std::cout << "Dime su edad\n";
+        std::cin >> n;
+        rock.entrar(inom, ap, n);
+    }
+        if(nom == "r"){
+            rock.mostrar();
+            std::cout << "Dime el numero de assiento";
+            std::cout << "\n fila: ";
+            std::cin >> a[0];
+            std::cout << "Columna\n";
+            std::cin >> a[1];
+            std::cout << "Dime el numero de id del cliente\n";
+            rock.clientes();
+            std::cin >> n;
+            rock.reguistrar(a, n);
+        
+        }
+    }
 }
 int main(int argc, char** argv) {
     p1();

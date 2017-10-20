@@ -67,6 +67,7 @@ public:
         id = inid;
     }
     void elimnar(int n){
+        if(r > 0){
         std::cout << "\nEspejo; del codigo\n" << r << "\n";
         cuentas[199].d = 0;
         cuentas[199].titular = "  ";
@@ -87,7 +88,7 @@ public:
         r--;        
         std::cout << "\nEspejo; del codigo\n" << r << "\n";
 
-        
+        }
     }
     
 }; 
@@ -115,11 +116,11 @@ void p1(){
     banco by2;
     string nom;
     while(nom != "s"){
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 100; i++){//de esto tengo que hacer una libreria
         std::cout << "\n";
     }
     std::cout << "\nInicio del menu \n";
-    std::cout << "Dime que quieres hacer \n crear una cuenta(c), \n borrar una cuenta(b)\n operar con una cuenta(o)\n listar las cuentas\n salir(s)\n \n";
+    std::cout << "Dime que quieres hacer \n crear una cuenta(c), \n borrar una cuenta(b)\n operar con una cuenta(o)\n listar las cuentas(l)\n salir(s)\n \n";
     std:: cin >> nom;
     if(nom == "c"){
         std::cout << "Dime el nombre del titular\n";
@@ -168,7 +169,15 @@ void p1(){
         }
     }
     if(nom=="l"){
-    
+        std::cout << "Las cuentas son las siguientes:\n";
+        std::cout << "antes pon la contrasenya\n";
+        std::cin >> nom;
+        if(nom == "1234"){ by2.tmos(); }
+        else{
+            std::cout << "contrasenya erronia\n";
+        }
+        std::cout << "Pulsa una tecla para continuar\n";
+        std::cin >> nom;
     }
     }
     
