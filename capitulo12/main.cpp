@@ -16,6 +16,32 @@ using namespace std;
  * Tengo que pasar los assientos a el array de los assientos en la grafica.
  */
 int imax = 220;
+int null = -1;
+int*  catego(int aux[2], int n[200][200]){
+    int *r = new int[4]; // Al finalizar el programa se ya de poner el codigo(memoria) bien.....
+    int suma[3] = {0,0,0};
+    for(int i = 0; i < aux[0]; i++){
+        for(int ii = 0; ii < aux[1]; ii++){
+            if(n[i][ii] == 1 && i < 4){
+                suma[0]++;
+            }
+            if(n[i][ii] == 1 && i < 25 && i > 5){
+                suma[1]++;
+            }
+            if(n[i][ii] == 1 && i < 30 && i > 26){
+                suma[3]++;
+            }
+        }
+    }
+    for(int i = 0; i < 3; i++){
+        *r = suma[i];
+        *r++;
+    }
+    for(int i = 3; i > 0; i--){
+        *r--;
+    }
+    return r;
+}
 class espectador{
 public:
     struct persona{
@@ -40,7 +66,19 @@ public:
             std::cout << pers[i].nom << "  " << pers[i].apellido << " id: " << i << "\n";
         }
     }
+    int mayor(){
+        int max = 0;
+        for(int i = 0; i < ref; i++){
+            if(max < pers[i].edad){
+                max = pers[i].edad;
+            }
+        }
+        return max;
+        
+    }
+    
 };
+
 class sala : public espectador{
 public:
     //int smax = 220;
@@ -74,6 +112,14 @@ public:
      ref = 0;   
     }
     void mostrar(){
+        for(int i = 0; i < aux[0]; i++){
+            for(int ii = 0; ii < aux[1]; ii++){
+                n[i][ii] = 0;
+            }
+        }
+        for(int i = 0; i < ref; i++){
+                n[pers[i].asiento[0]][pers[i].asiento[1]] = 1;
+            }
         grafica(aux, n);
     }
     void reguistrar(int a[2], int id){
@@ -82,9 +128,22 @@ public:
         pers[id].asiento[i] = a[i];
         }
     }
+    void liberar(int a[2]){
+        for(int i = 0; i < aux[0]; i++){
+                if(pers[i].asiento[0] == a[0] && pers[i].asiento[0] == a[1]){
+                    pers[i].asiento[0] = null;
+                    pers[i].asiento[1] = null;
+                }
+        }
+    
+    }
+    int* categoria(){
+        int *r = catego(aux, n);
+        return r;
+    }
 };
 void p1(){
-    int aux[2] = {20, 20};
+    int aux[2] = {30, 30};
     string nom;
     sala rock(aux);
     rock.mostrar();
@@ -96,7 +155,8 @@ void p1(){
     int n;
     while(nom != "FIN"){
         limpiar();
-        std::cout << "Este es el menu de la gestion  de la sala\n reservar assiento (r), reguistrar cliente(c) \n ";
+        rock.mostrar();
+        std::cout << "Este es el menu de la gestion  de la sala\n reservar assiento (r), reguistrar cliente(c) \n, librar asiento(l)\n, cargar el systema de estadisticas(e)\n";
         std::cin >> nom;
     if(nom == "c"){
         string inom;
@@ -123,6 +183,32 @@ void p1(){
             std::cin >> n;
             rock.reguistrar(a, n);
         
+        }
+        if(nom == "l"){
+            std::cout << "Dime el asiento a liberar\n";
+        std::cout << "\n fila: ";
+            std::cin >> a[0];
+            std::cout << "Columna\n";
+            std::cin >> a[1];
+            rock.liberar(a);
+        }
+        if(nom == "e"){
+            std::cout << "Dime el tipo de estadistica que quieres hacer\n la persona con mas edad(m)\n categorias(c)\n";
+            std::cin >> nom;
+            if(nom == "m"){
+                std::cout << "El cliente de mayor de edad es:  " << rock.mayor() << "\n";
+            }
+            if(nom == "c"){
+                int *r2 = rock.categoria();
+                std::cout << "la categoria 0 tiene:  " << *r2 << "\n";
+                *r2++;
+                for(int i = 1; i < 3; i++){
+                    std::cout << "la categoria " << i << "tiene " << *r2 << "\n";
+                    *r2++;
+                }
+            }
+            std::cout << "Pulsa una tecla para continuar\n";
+                std::cin >> nom;
         }
     }
 }

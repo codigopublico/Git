@@ -15,20 +15,29 @@ void grafica(int iaux[2], int in[200][200]){//esta funcion se debe incluir en la
         std::cout << "\n";
     }
         std::cout << "Iniciando la grafica" << "\n";
-        std::cout << "El 0 es vacio i la X es lleno\n";
+        std::cout << "El * es vacio i la X es lleno\n";
         std::cout << "\n";
         for(int i = 0; i < iaux[0]; i++){
-        for(int ii = 0; ii < iaux[1]; ii++){        
-            if(in[i][ii] == 0){
-            std::cout << "0" << " ";
+            std::cout << i;
+            if(i < 10){
+                std::cout << "  ";
             }else{
-                std::cout << "X" << " "; 
+                std::cout << " ";
             }
         }
-        std::cout << " \n"; 
+        std::cout << "\n";
+        for(int i = 0; i < iaux[0]; i++){
+        for(int ii = 0; ii < iaux[1]; ii++){
+            if(in[i][ii] == 0){
+            std::cout << "*" << "  ";
+            }else{
+                std::cout << "X" << "  "; 
+            }
+        }
+        std::cout <<  i << "   \n"; 
     
     }
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 3; i++){
         std::cout  << " \n";
         }
     }
@@ -36,6 +45,14 @@ void limpiar(){
 for(int i = 0; i < 300; i++){
         std::cout << "\n";
     }
+}
+void barras(int aux[2], int n[200][200]){
+    for(int i = 0; i < aux[0]; i++){
+        for(int ii = 0; ii < aux[1]; ii++){
+            
+        }
+    }
+    
 }
 
 
