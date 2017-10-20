@@ -141,16 +141,29 @@ public:
         int *r = catego(aux, n);
         return r;
     }
+    int ocupacion(){
+                int r = 0;
+        for(int i = 0; i < aux[0]; i++){
+                if(pers[i].asiento[0] > 0){
+                    r++;
+            }
+        }
+                r = (r / (30 * 30)) * 100;
+        return r;
+    }
 };
 void p1(){
     int aux[2] = {30, 30};
     string nom;
     sala rock(aux);
     rock.mostrar();
+    for(int i = 0; i  < 30; i++){
+        for(int ii = 0; ii < 30; ii++){
     rock.entrar("laura", "laura", 30);
-    int a[2] = {0, 0};
+    a[2] = {ii, i};//arreglar esto en el tren.
     rock.reguistrar(a, 0);
     rock.mostrar();
+        }}
     //Menu de gestion de teatro
     int n;
     while(nom != "FIN"){
@@ -207,9 +220,13 @@ void p1(){
                     *r2++;
                 }
             }
-            std::cout << "Pulsa una tecla para continuar\n";
-                std::cin >> nom;
+           
         }
+        if(nom == "o"){
+            std::cout << "La ocupacion es de " << rock.ocupacion() << "%  \n";
+        }
+         std::cout << "Pulsa una tecla para continuar\n";
+                std::cin >> nom;
     }
 }
 int main(int argc, char** argv) {

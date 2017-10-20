@@ -46,11 +46,16 @@ for(int i = 0; i < 300; i++){
         std::cout << "\n";
     }
 }
-void barras(int aux[2], int n[200][200]){
+void barras(int aux[2], int n[200]){//wueno ya se hara
     for(int i = 0; i < aux[0]; i++){
         for(int ii = 0; ii < aux[1]; ii++){
-            
+            if(n[i] == 1){
+                std::cout << "*";
+            }else{
+            std::cout << " "; 
+            }
         }
+        std::cout << "\n";
     }
     
 }
