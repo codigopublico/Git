@@ -15,9 +15,9 @@ using namespace std;
  * Este es el programa base....
  * Tengo que pasar los assientos a el array de los assientos en la grafica.
  */
-int imax = 220;
+int imax = 900;
 int null = -1;
-int*  catego(int aux[2], int n[200][200]){
+int*  catego(int aux[2], int n[900][900]){
     int *r = new int[4]; // Al finalizar el programa se ya de poner el codigo(memoria) bien.....
     int suma[3] = {0,0,0};
     for(int i = 0; i < aux[0]; i++){
@@ -49,7 +49,7 @@ public:
         string apellido;
         int edad;
         int asiento[2];
-    }pers[200];
+    }pers[900];
     espectador(){
         ref = 0;
     }
@@ -82,9 +82,9 @@ public:
 class sala : public espectador{
 public:
     //int smax = 220;
-    int n[200][200];//este es el array que define si esta lleno vacio el array.
+    int n[900][900];//este es el array que define si esta lleno vacio el array.
     int aux[2];//este array es el que define el cuadrado de los assientos
-    int per[220][220];//este es la referncia de la persona.
+    int per[900][900];//este es la referncia de la persona.
     /*sala(int in[][], int inaux[]){//este es el contructor de la classe
         for(int i = 0; i < smax; i++){
             for(int ii; ii < smax; ii++){
@@ -142,8 +142,8 @@ public:
         return r;
     }
     int ocupacion(){
-                int r = 0;
-        for(int i = 0; i < aux[0]; i++){
+                double r = 0;
+        for(int i = 0; i < aux[0] * aux[1]; i++){
                 if(pers[i].asiento[0] > 0){
                     r++;
             }
@@ -157,15 +157,21 @@ void p1(){
     string nom;
     sala rock(aux);
     rock.mostrar();
-    for(int i = 0; i  < 30; i++){
+    int a[2];
+    int b = 0; 
+    /*for(int i = 0; i  < 29; i++){
         for(int ii = 0; ii < 30; ii++){
     rock.entrar("laura", "laura", 30);
-    a[2] = {ii, i};//arreglar esto en el tren.
-    rock.reguistrar(a, 0);
+    a[0] = ii;
+    a[1] = i;
+    b++;
+    rock.reguistrar(a, b);
     rock.mostrar();
-        }}
+        }}*///este codigo es para hacer en el tren.
     //Menu de gestion de teatro
+    //que mierdas le paso!!!!!!!
     int n;
+    std::cin >> nom;
     while(nom != "FIN"){
         limpiar();
         rock.mostrar();
@@ -206,7 +212,7 @@ void p1(){
             rock.liberar(a);
         }
         if(nom == "e"){
-            std::cout << "Dime el tipo de estadistica que quieres hacer\n la persona con mas edad(m)\n categorias(c)\n";
+            std::cout << "Dime el tipo de estadistica que quieres hacer\n la persona con mas edad(m)\n categorias(c)\n total de ocupacion";
             std::cin >> nom;
             if(nom == "m"){
                 std::cout << "El cliente de mayor de edad es:  " << rock.mayor() << "\n";
@@ -220,13 +226,13 @@ void p1(){
                     *r2++;
                 }
             }
-           
-        }
-        if(nom == "o"){
+            if(nom == "o"){
             std::cout << "La ocupacion es de " << rock.ocupacion() << "%  \n";
         }
          std::cout << "Pulsa una tecla para continuar\n";
                 std::cin >> nom;
+        }
+       
     }
 }
 int main(int argc, char** argv) {

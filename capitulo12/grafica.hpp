@@ -10,7 +10,7 @@
 #define	GRAFICA_HPP
 using namespace std;
 #include <iostream>
-void grafica(int iaux[2], int in[200][200]){//esta funcion se debe incluir en las librerias....
+void grafica(int iaux[2], int in[900][900]){//esta funcion se debe incluir en las librerias....
     for(int i = 0; i < 300; i++){
         std::cout << "\n";
     }
@@ -47,9 +47,14 @@ for(int i = 0; i < 300; i++){
     }
 }
 void barras(int aux[2], int n[200]){//wueno ya se hara
+    //aux es el tamanyo de l rectangulo .
+    int n2[200][200];
+    for(int i = 0; i < aux[0]; i++){
+        n2[n[i]][i] = 1;
+    }
     for(int i = 0; i < aux[0]; i++){
         for(int ii = 0; ii < aux[1]; ii++){
-            if(n[i] == 1){
+            if(n2[i][ii] == 1){
                 std::cout << "*";
             }else{
             std::cout << " "; 
