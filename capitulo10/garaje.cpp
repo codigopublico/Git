@@ -63,6 +63,9 @@ void gara::cambio(int p[2], int r){
         n[p[0]][p[1]] = r;
 
 }
+void gara::entrar(){
+    *vehic[id].incolor = color;
+}
 vehiculo::vehiculo(){
     std::cout << "Llamando al contructor de la classe(valores por defecto)\n";
     string color = "0";

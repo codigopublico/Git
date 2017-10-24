@@ -9,7 +9,9 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h> // esta es la liberria de rand()
+#include "garaje.hpp"
 using namespace std;
+using namespace g;
 
 /*
  *Falta hacer lo de eliminar.
@@ -154,6 +156,7 @@ for(int i = 0; i <= e; i++){//nada mas hace falta esto...........
         e--;
 }
 void final(){
+    //tengo que ponerle la funcion de limpeza
     int aux = 20;
     string nom = "alex";
     string fem = "laura";
@@ -287,9 +290,12 @@ void final(){
     
     
     }}
-
+void p8(){
+    gara alex;
+}
 int main(int argc, char** argv) {
-    final();
+    p8();
+    //final();
     std::cout << "Pulsa una tecla para terminar\n";
     cin.get();
     return 0;
