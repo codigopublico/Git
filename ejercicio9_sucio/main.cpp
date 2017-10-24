@@ -11,16 +11,26 @@ using namespace std;
 
 /*
  * Este es un ejemplo de usar librerias bien echas
+ * nada mas falta el display
  */
 using namespace g;
-void classe(){
-    gara maria;
-    maria.grafica();
-    maria.get(10, 10);
-    maria.grafica();
+void p3(){
+    gara autom;
+    autom.grafica();
+    autom.get(10, 10);
+    autom.grafica();
+    vehiculo seat;
+    seat.arrancar();
+    std::cout << "La velocidad es de " << seat.getvel() << "\n";
+    seat.radio_enceder();
+    seat.radio_sintonizar(20);
+    int *e = seat.radio_display();
+    std::cout << "El display de la radio muestra " << e;
+    e++;
+    std::cout << "   " << e;
 }
 int main(int argc, char** argv) {
-    classe();
+    p3();//gestion del garaje i del vehiculo
     return 0;
 }
 
