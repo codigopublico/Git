@@ -1,0 +1,6 @@
+#include "garaje.h"
+#include <iostream>
+#include <string>
+class hola(){
+
+};
