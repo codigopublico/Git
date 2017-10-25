@@ -1,10 +1,13 @@
 #include "garaje.hpp"
+#include <cstdlib>
+
 using namespace g;
 gara::gara(){
     std::cout << "Constructor de la classe";
     aux[2];
     aux[0] = 20;
     aux[1] = 20;
+    id = 0;
     std::cout << "La dimencion por defecto es: ";
     for(int i = 0; i < 2; i++){
         std::cout << aux[i] <<"  ";
@@ -14,7 +17,10 @@ gara::gara(){
  for(int i = 0; i < aux[0]; i++){
         for(int ii = 0; ii < aux[1]; ii++){
             n[i][ii] = 0;
-            
+            regui[i + ii]->incaballos = 0;
+            regui[i + ii]->imodelo = "0";
+            regui[i + ii]->incolor = "0";
+            regui[i + ii]->inmarca = "0";
         }
     }
 
@@ -63,8 +69,12 @@ void gara::cambio(int p[2], int r){
         n[p[0]][p[1]] = r;
 
 }
-void gara::entrar(){
-    *vehic[id].incolor = color;
+void gara::entrar(vehiculo en){
+    regui[id]->incolor = en.color;
+    regui[id]->imodelo = en.modelo;
+    regui[id]->incaballos = en.caballos;
+    regui[id]->inmarca = en.marca;
+    id++;
 }
 vehiculo::vehiculo(){
     std::cout << "Llamando al contructor de la classe(valores por defecto)\n";

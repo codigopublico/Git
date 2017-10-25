@@ -292,6 +292,9 @@ void final(){
     }}
 void p8(){
     gara alex;
+    vehiculo seat("seat", 30, "Seat", "Seat");
+    alex.entrar(seat);
+    
 }
 int main(int argc, char** argv) {
     p8();

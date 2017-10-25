@@ -56,7 +56,8 @@ public:
         float incaballos;
         string inmarca;
         string imodelo;
-    }*vehic[200];
+    }; 
+    struct vehi *regui[200];//este es el reguistro de los coches
     int aux[2];
     int fil;
     int col;
@@ -66,7 +67,7 @@ public:
     void grafica();
     void get(int, int);
     void cambio(int[2], int);
-    void entrar();
+    void entrar(vehiculo);
         
 };
 
