@@ -3,8 +3,7 @@
 
 using namespace g;
 gara::gara(){
-    std::cout << "Constructor de la classe";
-    aux[2];
+    std::cout << "Constructor de la classe\n";
     aux[0] = 20;
     aux[1] = 20;
     id = 0;
@@ -14,16 +13,19 @@ gara::gara(){
     }
     std::cout << "\n";
     n[aux[0]][aux[1]];
- for(int i = 0; i < aux[0]; i++){
-        for(int ii = 0; ii < aux[1]; ii++){
+    int iii = 0;
+ for(int i = 0; i < aux[0] - 15; i++){
+        for(int ii = 0; ii < aux[1] - 15; ii++){
+            std::cout << "Llevas las veces ... " << iii << "...." << i  << "..." << ii<< "\n";
             n[i][ii] = 0;
+            iii++;
             regui[i + ii]->incaballos = 0;
             regui[i + ii]->imodelo = "0";
             regui[i + ii]->incolor = "0";
             regui[i + ii]->inmarca = "0";
         }
     }
-
+    std::cout << "Fin del bucle";
 }
 void gara::grafica(){
     std::cout << "Iniciando la grafica \n el x es vacio \ni el * es lleno\n ";

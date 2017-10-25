@@ -5,7 +5,7 @@ int z = 0;
 int main() {
 int x = 7;
 int y = 8;
-int z2 = 0;//aqui esta el error deveria ser z. 
+int z = 0;//aqui esta el error deveria ser z. 
 z = sumar(x, y);
 cout << "z=" << z << endl;
 return 0;

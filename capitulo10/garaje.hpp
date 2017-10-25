@@ -56,12 +56,13 @@ public:
         float incaballos;
         string inmarca;
         string imodelo;
-    }; 
-    struct vehi *regui[200];//este es el reguistro de los coches
+    }vehic[900]; 
+    struct vehi *regui;//Este es el reguistro de los coches......
+    regui = &vehic;
     int aux[2];
     int fil;
     int col;
-    int n[200][200];
+    int n[900][900];
     int id;
     gara();
     void grafica();
