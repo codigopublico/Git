@@ -4,6 +4,7 @@
 using namespace g;
 gara::gara(){
     std::cout << "Constructor de la classe\n";
+    regui = &c[0];
     aux[0] = 20;
     aux[1] = 20;
     id = 0;
@@ -13,16 +14,14 @@ gara::gara(){
     }
     std::cout << "\n";
     n[aux[0]][aux[1]];
-    int iii = 0;
  for(int i = 0; i < aux[0] - 15; i++){
         for(int ii = 0; ii < aux[1] - 15; ii++){
-            std::cout << "Llevas las veces ... " << iii << "...." << i  << "..." << ii<< "\n";
+            std::cout << "Llevas las veces ... "  << "...." << i  << "..." << ii<< "\n";
             n[i][ii] = 0;
-            iii++;
-            regui[i + ii]->incaballos = 0;
-            regui[i + ii]->imodelo = "0";
-            regui[i + ii]->incolor = "0";
-            regui[i + ii]->inmarca = "0";
+            regui->incaballos = 0;
+            regui->imodelo = "0";
+            regui->incolor = "0";
+            regui->inmarca = "0";
         }
     }
     std::cout << "Fin del bucle";
@@ -72,10 +71,10 @@ void gara::cambio(int p[2], int r){
 
 }
 void gara::entrar(vehiculo en){
-    regui[id]->incolor = en.color;
-    regui[id]->imodelo = en.modelo;
-    regui[id]->incaballos = en.caballos;
-    regui[id]->inmarca = en.marca;
+    regui->incolor = en.color;
+    regui->imodelo = en.modelo;
+    regui->incaballos = en.caballos;
+    regui->inmarca = en.marca;
     id++;
 }
 vehiculo::vehiculo(){
@@ -150,7 +149,9 @@ void radio::radio_volumen(int v){
 }
 int* radio::radio_display(){
     int *r = new int[2];//cuando tenga tiempo lo arreglos
-    int p[2] = {freq, vol};
-    r = p;
+    int p[2] = new int[2];
+    p[0] = freq;
+    p[1] = vol;
+    r = &p[0];
     return r;
 }

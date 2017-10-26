@@ -1,7 +1,7 @@
 /* 
  * File:   garaje.hpp
  * Author: iper
- *Lo tengo que hacer es reguistrar vehiculos pero por punteros.
+ *Lo tengo que hacer es reguistrar vehiculos pero por punteros esto se tiene que preguntar como se hace i si lo puedo hacer sin punteros.
  * Created on 24 de octubre de 2017, 17:54
  */
 
@@ -10,8 +10,17 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+
 using namespace std;
 namespace g{
+    struct vehi{
+    public:
+        string incolor;
+        float incaballos;
+        string inmarca;
+        string imodelo;
+    };
     class radio{
 public:
     bool on;
@@ -26,6 +35,7 @@ public:
 };
     class vehiculo : public radio{
 public:
+    
     string color;
     int caballos;
     string marca;
@@ -33,7 +43,7 @@ public:
     int vel;
 
     vehiculo();
-    vehiculo(string incolor, int incaballos, string inmarca, string inmodelo);
+    vehiculo(string, int, string, string);
     
 void setcolor(string incolor);
 void setcaballos(int incaballos);
@@ -51,14 +61,8 @@ int getvel();
 };
 class gara : public vehiculo{
 public:
-    struct vehi{
-        string incolor;
-        float incaballos;
-        string inmarca;
-        string imodelo;
-    }vehic[900]; 
-    struct vehi *regui;//Este es el reguistro de los coches......
-    regui = &vehic;
+    struct vehi c[900];//Este es lo que hace falta.
+    struct vehi *regui;
     int aux[2];
     int fil;
     int col;
