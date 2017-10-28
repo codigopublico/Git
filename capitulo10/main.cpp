@@ -297,8 +297,8 @@ void p8(){
     
 }
 int main(int argc, char** argv) {
-    p8();
-    //final();
+    //p8();
+    final();
     std::cout << "Pulsa una tecla para terminar\n";
     cin.get();
     return 0;

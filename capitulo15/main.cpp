@@ -46,10 +46,11 @@ public:
     cuenta(int n){
         d = n;
     };
-    cuenta operator=(const cuenta &p1){
-        return p1.d;
+    operator unsigned int(){
+        return d;
     }
-    cuenta operator+(int n){
+    
+    cuenta operator +(int n){
         cuenta res(d + n);
         return res;
     }
@@ -90,6 +91,8 @@ void p1(){
     cuenta ale(10);
     //int x = ale;
     //std::cout << x;
+    int x = ale;
+    std::cout << x << "\n";
     
 }
 class Rectangulo 
@@ -131,6 +134,7 @@ cout << "caja 1: " << c1.getArea() <<endl;
 cout << "caja 2: " << c2.getArea() <<endl; 
 cout << "caja 3: " << c3.getArea() <<endl; 
 cout << "caja 3: " << c3.ancho <<endl;
+
 }
 int main(int argc, char** argv) {
     p1();

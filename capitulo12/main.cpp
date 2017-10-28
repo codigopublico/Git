@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: iper
- *
+ * falta revisar las preuvas de erres aunque esta bien echo.
  * Created on 19 de octubre de 2017, 14:49
  */
 

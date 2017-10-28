@@ -22,8 +22,20 @@ class hola{
     public:
     struct prueva c[900];
     struct prueva *l;
+    int n;
     hola(){
         l = &c[0];
+        
+    }
+    //esta es la prueva de la convertir un objeto en un int.
+    hola():
+    n(0)
+    {}
+    hola(int newn):
+    n(newn)
+    {}
+    operator unsigned int(){
+        return n;
     }
 };
 void p1(){
@@ -59,10 +71,32 @@ void p3(){
     //edad = 25;
     int const edad; 
 }
+void p4(){
+    //referencias
+    int x = 5;
+int &y = x;
+int &z = y;
+x = 7;
+cout << x;
+cout << y;
+cout << z << endl;
+//7
+y = 8;
+cout << x;
+cout << y;
+cout << z << endl;
+z = 9;
+cout << x;
+cout << y;
+cout << z << endl;
+return 0;
+
+}
 int main(int argc, char** argv) {
     //p1();
     //p2();
-    p3();
+    //p3();
+    p4();
     return 0;
 }
 
