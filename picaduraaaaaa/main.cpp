@@ -20,6 +20,7 @@ int &z = y;
 x = 7;
 cout << x;
 cout << y;
+
 cout << z << endl;
 //7
 y = 8;
@@ -49,13 +50,50 @@ void doblar(int &numero)
 {
 numero = numero * 2;
 }
+/*int* p(int n[10]){
+    int *n = new int[10];
+    for(int i = 0; i < 10; i++){
+        *n = i + i;
+        n++;
+    }
+    return n;
+}
+void p4(){
+    int n2[10];
+    int *n = p(n2);
+    n++;
+    std::cout << *n;
+}*/
+int& doblaNumero(int&);
+int& doblaNumero(int& numero)
+{
+numero = numero * 2;
+return numero;
+}
 
+void p5(){
+    int num1 = 25;
+int& num2 = doblaNumero(num1);
+num1 = 100;
+cout << "num2: " << num2;
 
+}
+void hola(const int &n){
+    n = n  * 2; //no se pude hacer ya que da una referncia mala porque es constante-
+}
+void p6(){
+    int n1 = 2;
+    hola(n1);
+    std::cout << n1;
+}
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";
     //p1();
     //p2();
-    p3();
+    //p3();
+    //p4();
+    //p5();
+    p6();
     return 0;
 }
 
