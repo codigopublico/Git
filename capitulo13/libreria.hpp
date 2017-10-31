@@ -11,26 +11,31 @@
 #include <string>
 using namespace std;
 namespace lib{
-    string cate[] ={"terror", "poesia"};
+    //string cate[] ={"terror", "poesia"};
     class libro{
     public:
         struct dlibro{
             string titulo;
             string autor;
             int categoria;
-        }dl;
+            int id;
+        };
+        dlibro uno;
         libro();
         libro(string, string, int);
     };
-    class libreria: public libro{
+    class libreria : public libro{
     public:
         dlibro vlibro[200];
         dlibro *pvlibro;
+        int total;
         libreria();
-        void intro_libro();
+        void mostrar();
+        void intro_libro(libro);
         void eli_libro();
         void Buscar_libro();
         void vender_libro();
+        void eliminar(string);
     };
 }
 
