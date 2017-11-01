@@ -1809,7 +1809,7 @@ void scr_draw_main_window(unsigned int fullinit)
 #ifndef UNICODE
     if (utf8_mode)
       scr_LogPrint(LPRINT_NORMAL,
-                   "WARNING: Esto no esta compilado para dar soporte a tu combianciones de teclas"); //esto es para hacer la salida del programa en mcabber. Tengo que mirar de donde deriva i hacerme un repositorio para mis programas.
+                   "WARNING: Esto no esta compilado para dar soporte a tu combianciones de teclas"); //esto es para hacer la salida del programa en mcabber.
 #endif
   } else {
     // Update panels

@@ -54,25 +54,32 @@ void libreria::eliminar(string l){
         }
     }
     int max = 100;
+    int c2 = 0;
+    int c3 = 0;
+    while(c2 < 10){//aqui se tiene que hacer una comprovacion bien echa.
+                c2++;
+                c3 = 0;
     for(int e = 0; e < total; e++){
-        if(vlibro[e].id == 0){
+        if(vlibro[e].categoria == 0){
             vlibro[max].autor = vlibro[e].autor;
-            vlibro[e].autor = vlibro[e-1].autor;
-            vlibro[e-1].autor = vlibro[max].autor;
+            vlibro[e].autor = vlibro[e+1].autor;
+            vlibro[e+1].autor = vlibro[max].autor;
             
             vlibro[max].categoria = vlibro[e].categoria;
-            vlibro[e].categoria = vlibro[e-1].categoria;
-            vlibro[e-1].categoria = vlibro[max].categoria;
+            vlibro[e].categoria = vlibro[e+1].categoria;
+            vlibro[e+1].categoria = vlibro[max].categoria;
             
             vlibro[max].id = vlibro[e].id;
-            vlibro[e].id = vlibro[e-1].id;
-            vlibro[e-1].id = vlibro[max].id;
+            vlibro[e].id = vlibro[e+1].id;
+            vlibro[e+1].id = vlibro[max].id;
             
-            vlibro[max].titulo = vlibro[e].titulo;
-            vlibro[e].titulo = vlibro[e-1].titulo;
-            vlibro[e-1].titulo = vlibro[max].titulo;
-            std::cout << "titulo a mover: " << vlibro[e].titulo << "\n";
+            vlibro[max].titulo = vlibro[e+1].titulo;
+            vlibro[e+1].titulo = vlibro[e].titulo;
+            vlibro[e].titulo = vlibro[max].titulo;
+            std::cout << "titulo a mover: " << c2 << "  " << vlibro[e].titulo << "\n";
+            c3++;
         }
     }
-    
+    }
+    total = total - c3;
 }
