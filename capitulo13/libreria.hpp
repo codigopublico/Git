@@ -32,7 +32,6 @@ namespace lib{
         libreria();
         void mostrar();
         void intro_libro(libro);
-        void eli_libro();
         void Buscar_libro();
         void vender_libro();
         void eliminar(string);
