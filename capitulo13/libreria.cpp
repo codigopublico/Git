@@ -5,12 +5,14 @@ libro::libro(){
     uno.titulo = "0";
     uno.categoria = 0;
     uno.id = 0;
+    uno.stock = 0;
 };
 libro::libro(string ia, string it, int ic){
      uno.autor = ia;
     uno.titulo = it;
     uno.categoria = ic;
     uno.id = 0;
+    uno.stock = 0;
 };
 libreria::libreria(){
     pvlibro = vlibro;
@@ -28,10 +30,14 @@ void libreria::intro_libro(libro vl){
 void libreria::mostrar(){
     int c = 0;
     for(int i = 0; i < total; i++){
-        std::cout <<"\n " << vlibro[i].titulo << "  titulo\n";
-        std::cout <<"\n " << vlibro[i].autor << "   autor\n";
-        std::cout <<"\n " << vlibro[i].categoria << "   categoria\n";
-        std::cout <<"\n " << vlibro[i].id << "   id\n";
+        std::cout << "\n";
+        std::cout << "\n";
+        std::cout <<"  " << vlibro[i].titulo << "  titulo  ";
+        std::cout <<"  " << vlibro[i].autor << "   autor   ";
+        std::cout <<"  " << vlibro[i].categoria << "   categoria  ";
+        std::cout <<"  " << vlibro[i].id << "   id   ";
+        std::cout <<"  " << vlibro[i].stock << "   stock   ";
+        std::cout << "\n";
         if(vlibro[i].categoria == 0){
             c++;
         }
@@ -45,18 +51,19 @@ void libreria::eliminar(string l){
     int c = 0;
     for(int e = 0;e < total; e++){
         if(vlibro[e].autor == l){
-            std::cout << "Encontre el libro1 " << vlibro[e].titulo << "\n";
+            //std::cout << "Encontre el libro1 " << vlibro[e].titulo << "\n";
             vlibro[e].autor = "0";
             vlibro[e].categoria = 0;
             vlibro[e].id = 0;
             vlibro[e].titulo = "0";
+            vlibro[e].stock = 0;
             c++;
         }
     }
     int max = 100;
     int c2 = 0;
     int c3 = 0;
-    while(c2 < 10){//aqui se tiene que hacer una comprovacion bien echa.
+    while(c2 < 10 * c){//aqui se tiene que hacer una comprovacion bien echa.
                 c2++;
                 c3 = 0;
     for(int e = 0; e < total; e++){
@@ -76,10 +83,47 @@ void libreria::eliminar(string l){
             vlibro[max].titulo = vlibro[e+1].titulo;
             vlibro[e+1].titulo = vlibro[e].titulo;
             vlibro[e].titulo = vlibro[max].titulo;
-            std::cout << "titulo a mover: " << c2 << "  " << vlibro[e].titulo << "\n";
+            
+            vlibro[max].stock = vlibro[e+1].stock;
+            vlibro[e+1].stock = vlibro[e].stock;
+            vlibro[e].stock = vlibro[max].stock;
+            //std::cout << "titulo a mover: " << c2 << "  " << vlibro[e].titulo << "\n";
             c3++;
         }
     }
     }
     total = total - c3;
 }
+void libreria::Buscar_libro(string in){
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].titulo == in){
+            std::cout << "Encontre el libro con el titulo:   " << vlibro[i].titulo << " referencia( " << vlibro[i].id << ")\n";
+        }
+    }
+    
+}
+void libreria::Buscar_libro(int in){//esta es pase por referncia al libro
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].id == in){
+            std::cout << "Encontre el libro con el titulo:   " << vlibro[i].titulo << " referencia( " << vlibro[i].id << ")\n";
+        }
+    }
+}
+void libreria::stock(int in, int ia){ // in es es la referncia a poner i ia es la es el numero a poner.
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].id == in){
+            vlibro[i].stock = ia;
+            std::cout <<  "\n stock " <<  vlibro[i].stock << "libro  " <<  vlibro[i].titulo << " id   " << vlibro[i].id <<"\n";
+        }
+    }
+    
+}
+void libreria::astock(int in, int ia){ // in es es la referncia a poner i ia es la es el numero a poner.
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].id == in){
+            vlibro[i].stock = vlibro[i].stock + ia;
+        }
+    }
+    
+}
+
