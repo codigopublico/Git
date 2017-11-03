@@ -33,12 +33,14 @@ namespace lib{
         libreria();
         void mostrar();
         void intro_libro(libro);
-        void Buscar_libro(string);
-        void Buscar_libro(int);//si tengo tiempo hare otra classe.
+        int Buscar_libro(string);
+        int Buscar_libro(int);//si tengo tiempo hare otra classe si es 0 no encontro si es 1 encontro.
         void vender_libro();
         void stock(int, int);
         void astock(int, int);
         void eliminar(string);
+        void vender(int);
+        void vender(string);
     };
 
 

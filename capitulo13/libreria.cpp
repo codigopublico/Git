@@ -94,20 +94,25 @@ void libreria::eliminar(string l){
     }
     total = total - c3;
 }
-void libreria::Buscar_libro(string in){
+int libreria::Buscar_libro(string in){
+    int n = 0;
     for(int i = 0; i < total; i++){
         if(vlibro[i].titulo == in){
             std::cout << "Encontre el libro con el titulo:   " << vlibro[i].titulo << " referencia( " << vlibro[i].id << ")\n";
+            n = 1;
         }
     }
-    
+    return n;
 }
-void libreria::Buscar_libro(int in){//esta es pase por referncia al libro
+int libreria::Buscar_libro(int in){//esta es pase por referncia al libro
+    int n = 0;
     for(int i = 0; i < total; i++){
         if(vlibro[i].id == in){
             std::cout << "Encontre el libro con el titulo:   " << vlibro[i].titulo << " referencia( " << vlibro[i].id << ")\n";
+            n = 1;
         }
     }
+    return n;
 }
 void libreria::stock(int in, int ia){ // in es es la referncia a poner i ia es la es el numero a poner.
     for(int i = 0; i < total; i++){
@@ -127,3 +132,21 @@ void libreria::astock(int in, int ia){ // in es es la referncia a poner i ia es 
     
 }
 
+void libreria::vender(int in){
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].id == in){
+            if(vlibro[i].stock > 0){
+            vlibro[i].stock--;
+            }
+        }
+    }
+}
+void libreria::vender(string in){
+    for(int i = 0; i < total; i++){
+        if(vlibro[i].titulo == in){
+            if(vlibro[i].stock > 0){
+            vlibro[i].stock--;
+            }
+        }
+    }
+}

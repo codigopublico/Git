@@ -55,7 +55,7 @@ void final2(){
         std::cout << "Fin para salir \n";
         std::cout << "Para mostrar(m) \n";
         std::cout << "Para crear_libro(c) \n";
-        std::cout << "Para cambiar_stock(s) \n";
+        std::cout << "Buscar libro, vender o cambiar stock(b) \n";
         std::cout << "\n";
         std::cin >> in;
         if(in == "m"){
@@ -77,15 +77,38 @@ void final2(){
             v.uno.stock = n;
             menu.intro_libro(v);
         }
-        if(in == "s"){
-            menu.mostrar();
+        if(in == "b"){
+            std::cout << "\nBuscar por referencia(r) o nombre del titulo(n)\n";
+            std::cin >> in;
+            if(in == "n"){
+                std::cout << "\nDime el titulo \n";
+                std::cin >> in;
+             aux = menu.Buscar_libro(in);   
+            }
+            if(in == "r"){
+                std::cout << "\n Dime la referencia \n";
+                std::cin >> n;
+                aux = menu.Buscar_libro(n);
+            }
+            if(aux > 0){
             std::cout << "Time la ref a usar:  \n";
             std::cin >> n; 
-            std::cout << "Dime si quieres anayadir(a), o modificar(m)";
+            std::cout << "Dime si quieres anyadir(a), o modificar(m)";
             std::cin >> in;
             if(in == "a"){
-                
+                std::cout<< "Dime los libros a añadir\n";
+                std::cin >> aux;
+                menu.astock(n, aux);
             }
+            if(in == "m"){
+                std::cout << "Dime la modificacion del stock\n";
+                std::cin >> aux;
+                menu.stock(n, aux);
+            }
+        }
+            else{
+            std::cout << "El libro no existe, chao\n";
+        }
         }
         
         std::cout << "Dame un dato para continuar\n";
