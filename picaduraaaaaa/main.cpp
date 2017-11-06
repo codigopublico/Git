@@ -79,12 +79,61 @@ cout << "num2: " << num2;
 
 }
 void hola(const int &n){
-    n = n  * 2; //no se pude hacer ya que da una referncia mala porque es constante-
+    //n = n  * 2; //no se pude hacer ya que da una referncia mala porque es constante-
 }
 void p6(){
     int n1 = 2;
     hola(n1);
     std::cout << n1;
+}
+using namespace std; 
+class Calculadora 
+{ 
+public: 
+Calculadora(int); 
+Calculadora();
+void doblaNumero(); 
+int* getNumero();
+~Calculadora();
+Calculadora(const Calculadora &a);
+private: 
+int *numero; 
+}; 
+Calculadora::Calculadora(){
+    numero = new int;
+    *numero = 0;
+}
+Calculadora::Calculadora(int num) 
+{ 
+numero = new int; 
+*numero = num; 
+} 
+void Calculadora::doblaNumero() 
+{ 
+*numero = *numero * 2; 
+} 
+int* Calculadora::getNumero() 
+{ 
+    //int num = *numero;
+return numero; 
+}
+Calculadora::~Calculadora(){
+delete numero;    
+}
+Calculadora::Calculadora(const Calculadora &a){
+    //numero = new int;
+    *numero = a.numero;
+}
+void p7(){
+Calculadora calc1(15); 
+calc1.doblaNumero(); 
+cout << "1: " << calc1.getNumero() << endl; 
+Calculadora calc2(calc1); //aqui esta el error es un error de copia de copia de  classes
+calc2.doblaNumero(); 
+cout << "2: " << calc2.getNumero() << endl; 
+cout << "3: " << calc1.getNumero() << endl;
+calc2.doblaNumero();
+cout << "4: " << calc2.getNumero() << endl;
 }
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";
@@ -93,7 +142,8 @@ int main(int argc, char** argv) {
     //p3();
     //p4();
     //p5();
-    p6();
+    //p6();
+    p7();
     return 0;
 }
 

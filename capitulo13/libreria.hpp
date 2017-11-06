@@ -11,7 +11,7 @@
 #include <string>
 using namespace std;
 namespace lib{
-    //string cate[] ={"terror", "poesia"};
+    string cat[2] ={"terror", "poesia"};
     class libro{
     public:
         struct dlibro{
@@ -38,7 +38,7 @@ namespace lib{
         void vender_libro();
         void stock(int, int);
         void astock(int, int);
-        void eliminar(string);
+        int eliminar(string);
         void vender(int);
         void vender(string);
     };

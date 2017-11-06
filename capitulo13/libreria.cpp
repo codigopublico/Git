@@ -1,5 +1,6 @@
 #include "libreria.hpp"
 using namespace lib;
+using namespace std;
 libro::libro(){
     uno.autor = "0";
     uno.titulo = "0";
@@ -29,12 +30,21 @@ void libreria::intro_libro(libro vl){
 }
 void libreria::mostrar(){
     int c = 0;
+    string aux;
+    if(total < 0){
+        total = 0;
+    }
     for(int i = 0; i < total; i++){
         std::cout << "\n";
         std::cout << "\n";
         std::cout <<"  " << vlibro[i].titulo << "  titulo  ";
         std::cout <<"  " << vlibro[i].autor << "   autor   ";
-        std::cout <<"  " << vlibro[i].categoria << "   categoria  ";
+        if(vlibro[i].categoria == 1){
+            aux = cat[1];
+        }else{
+            aux = cat[0];
+        }
+        std::cout <<"  " << aux << "   categoria  ";
         std::cout <<"  " << vlibro[i].id << "   id   ";
         std::cout <<"  " << vlibro[i].stock << "   stock   ";
         std::cout << "\n";
@@ -44,13 +54,13 @@ void libreria::mostrar(){
     }
     std::cout << "Hay " << c << "errres\n";
 }
-void libreria::eliminar(string l){
+int libreria::eliminar(string l){
     /*for(int i = 0; i < total; i++){
         *pvlibro--;
     }*/
     int c = 0;
     for(int e = 0;e < total; e++){
-        if(vlibro[e].autor == l){
+        if(vlibro[e].titulo == l){
             //std::cout << "Encontre el libro1 " << vlibro[e].titulo << "\n";
             vlibro[e].autor = "0";
             vlibro[e].categoria = 0;
@@ -92,7 +102,15 @@ void libreria::eliminar(string l){
         }
     }
     }
-    total = total - c3;
+    total = total - c;
+        if(total < 0){
+        total = 0;
+    }
+    if(c3 > 0){
+        return 1;
+    }else{
+        return 0;
+    }
 }
 int libreria::Buscar_libro(string in){
     int n = 0;

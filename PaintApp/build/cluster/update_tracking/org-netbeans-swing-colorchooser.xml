@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.netbeans.swing.colorchooser">
+    <module_version install_time="1509751192173" last="true" origin="installer" specification_version="1.0">
+        <file crc="1286397175" name="config/Modules/org-netbeans-swing-colorchooser.xml"/>
+        <file crc="2804938730" name="modules/ext/ColorChooser-license.txt"/>
+        <file crc="2337885657" name="modules/org-netbeans-swing-colorchooser.jar"/>
+    </module_version>
+</module>

@@ -55,17 +55,27 @@ void final2(){
         std::cout << "Fin para salir \n";
         std::cout << "Para mostrar(m) \n";
         std::cout << "Para crear_libro(c) \n";
+        std::cout << "Eliminar libro(e)  \n";
         std::cout << "Buscar libro, vender o cambiar stock(b) \n";
         std::cout << "\n";
         std::cin >> in;
         if(in == "m"){
             menu.mostrar();
         }
+        if(in == "e"){
+            std::cout << "Dime el libro titulo del libro a eliminar \n";
+            std::cin >> in;
+            if(menu.eliminar(in) == 1){
+                std::cout << "El libro elimando fue  " << menu.Buscar_libro(in);
+            }else{
+                std::cout << "Hubo un error al mostrar el libro\n";
+            }
+        }
         if(in == "c"){
             std::cout << "\nDame tu libro\n";
             std::cout << "\nDime el autor\n";
             std::cin >> in;
-            v.uno.autor == in;
+            v.uno.autor = in;
             std::cout << "\nDime el titulo\n";
             std::cin >> in;
             v.uno.titulo = in;
