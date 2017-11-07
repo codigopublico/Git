@@ -11,7 +11,7 @@
 #include <string>
 using namespace std;
 namespace lib{
-    string cat[2] ={"terror", "poesia"};
+    
     class libro{
     public:
         struct dlibro{

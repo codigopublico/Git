@@ -84,7 +84,7 @@ public:
                     q++;
                 }else{
                     q--;
-                    inter(tall[i].nombre, tall[i + 1].nombre);
+                    //inter(tall[i].nombre, tall[i + 1].nombre);
                 }
             }
         }

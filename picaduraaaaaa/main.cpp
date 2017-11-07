@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 #include <mi_teclado>
-#include <mis_funciones.hpp>
+#include <mia/mis_funciones.hpp>
 using namespace std;
 using namespace lib;
 

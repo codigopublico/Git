@@ -103,7 +103,7 @@ void final2(){
             if(aux > 0){
             std::cout << "Time la ref a usar:  \n";
             std::cin >> n; 
-            std::cout << "Dime si quieres anyadir(a), o modificar(m)";
+            std::cout << "Dime si quieres anyadir(a), o modificar(m) o vender(v)";
             std::cin >> in;
             if(in == "a"){
                 std::cout<< "Dime los libros a añadir\n";
@@ -114,6 +114,9 @@ void final2(){
                 std::cout << "Dime la modificacion del stock\n";
                 std::cin >> aux;
                 menu.stock(n, aux);
+            }
+            if(in == "v"){
+                menu.vender(n);
             }
         }
             else{

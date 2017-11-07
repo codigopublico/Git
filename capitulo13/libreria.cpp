@@ -1,6 +1,7 @@
 #include "libreria.hpp"
 using namespace lib;
 using namespace std;
+string cat[2] ={"terror", "poesia"};
 libro::libro(){
     uno.autor = "0";
     uno.titulo = "0";
