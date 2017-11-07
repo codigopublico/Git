@@ -7,8 +7,9 @@
 
 #include <cstdlib>
 #include <mi_teclado>
-
+#include <mis_funciones.hpp>
 using namespace std;
+using namespace lib;
 
 /*
  * Este arcivo son las pruevas de mis librerias.......
@@ -122,7 +123,7 @@ delete numero;
 }
 Calculadora::Calculadora(const Calculadora &a){
     //numero = new int;
-    *numero = a.numero;
+//    *numero = a.numero;
 }
 void p7(){
 Calculadora calc1(15); 
@@ -135,6 +136,19 @@ cout << "3: " << calc1.getNumero() << endl;
 calc2.doblaNumero();
 cout << "4: " << calc2.getNumero() << endl;
 }
+void p8(){
+    std::cout << "Este es el p8(), bienbiendo\n";
+            string h;
+            string b;
+            h = "hola";
+            b = "adios";
+            int n[2] = {1, 2};
+            std::cout << "h   " << h << " b   " << b << "\n";
+            //lib::inter(h, b);
+            std::cout << "h   " << h << " b   " << b << "\n";
+            lib::inter(n[0], n[1]);
+
+}
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";
     //p1();
@@ -143,7 +157,8 @@ int main(int argc, char** argv) {
     //p4();
     //p5();
     //p6();
-    p7();
+    //p7();
+    p8();//Este esta echo para provar el interncambio de variables de la libreria inter
     return 0;
 }
 
