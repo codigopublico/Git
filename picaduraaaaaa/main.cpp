@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 #include <mi_teclado>
-#include <mia/mis_funciones.hpp>
+#include <mia/porhacer/mis_funciones.hpp>
 using namespace std;
 using namespace lib;
 
@@ -144,10 +144,23 @@ void p8(){
             b = "adios";
             int n[2] = {1, 2};
             std::cout << "h   " << h << " b   " << b << "\n";
-            //lib::inter(h, b);
+            lib::inter(h, b);
             std::cout << "h   " << h << " b   " << b << "\n";
             lib::inter(n[0], n[1]);
 
+}
+class prueva{
+public:
+    virtual void eat(){
+        std::cout << "eat";//la hereda sin cuerpo..ni forma.
+    }
+};
+class p : public prueva{
+    
+};
+void p10(){
+    p a;
+    a.eat();
 }
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";

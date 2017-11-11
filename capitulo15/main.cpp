@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
-#include "mis_funciones.hpp"
+#include <mia/no_renderizadas/mis_funciones.hpp>
 using namespace std;
 
 /*
@@ -69,25 +69,30 @@ public:
         }
     }
     void eliminar(string n){
+        int c;
         for(int i = 0; i < id; i++){
             if(tall[i].nombre == n){
                 tall[i].nombre = "0";
                 tall[i].dinero = 0;
                 tall[i].nreparacion = 0;
+                c++;
             }
         }
         int q = 0;
-        while(q <= id){
+        while(q < id){
             q = 0;
             for(int i = 0; i < id; i++){
+                //std::cout << " tall " << tall[i].nombre << " tall2 " << tall[i + 1].nombre<<"\n" ;
                 if(tall[i].nombre != "0"){
-                    q++;
-                }else{
                     q--;
-                    //inter(tall[i].nombre, tall[i + 1].nombre);
+                }
+                if(tall[i].nombre == "0"){
+                    q++;
+                    lib::inter(tall[i].nombre, tall[i + 1].nombre);
                 }
             }
         }
+        id = id - c;
     }
     void pagar(int n){
        
@@ -241,8 +246,8 @@ cout << "caja 3: " << c3.ancho <<endl;
 }
 
 int main(int argc, char** argv) {
-    //p1();
-    //p2();
+    p1();
+    p2();
     p3();
     std::cout << "\n";
     return 0;

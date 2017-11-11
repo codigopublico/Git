@@ -28,65 +28,24 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef _HELLOFORM_H
-#define	_HELLOFORM_H
+#include "HelloForm.h"
 
-#include "ui_HelloForm.h"
-#include <string>
-#include <iostream>
-using namespace std;
-
-class HelloForm : public QDialog {
-    Q_OBJECT
-public:
-    HelloForm();
-    virtual ~HelloForm();
-public slots:
-    void textChanged(const QString& text);
-    //string retornTexto(QString text2);
-public:
-    Ui::HelloForm widget;
-};
-/* 
- * File:   libreria.hpp
- * Author: iper
- *
- * Created on 29 de octubre de 2017, 13:27
- */
-namespace lib{
-    
-    class libro{
-    public:
-        struct dlibro{
-            string titulo;
-            string autor;
-            int categoria;
-            int stock;
-            int id;
-        };
-        dlibro uno;
-        libro();
-        libro(string, string, int);
-    };
-    class libreria : public libro{
-    public:
-        dlibro vlibro[200];
-        dlibro *pvlibro;
-        int total;
-        libreria();
-        void mostrar();
-        void intro_libro(libro);
-        int Buscar_libro(string);
-        int Buscar_libro(int);//si tengo tiempo hare otra classe si es 0 no encontro si es 1 encontro.
-        void vender_libro();
-        void stock(int, int);
-        void astock(int, int);
-        int eliminar(string);
-        void vender(int);
-        void vender(string);
-    };
-
-
+HelloForm::HelloForm() {
+    widget.setupUi(this);
+    connect(widget.nameEdit, SIGNAL(textChanged(const QString&)), this, SLOT(textChanged(const QString&)));
 }
 
-#endif	/* _HELLOFORM_H */
+HelloForm::~HelloForm() {
+}
+
+void HelloForm::textChanged(const QString& text) {//aqui es donde va lo de la aplicacion
+    if (0 < text.trimmed().length()) {
+        
+        widget.helloEdit->setText("Hello " + text.trimmed() + "!");
+    } else {
+        widget.helloEdit->clear();
+    }
+}
+/*string HelloForm::retornTexto(QString text2){
+    return text2.trimmed();
+}*/

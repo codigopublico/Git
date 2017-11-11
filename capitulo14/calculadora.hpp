@@ -11,6 +11,8 @@ class Calculadora
 {
 public:
 Calculadora(int);
+Calculadora();
+Calculadora(Calculadora&);
 void doblaNumero();
 int getNumero();
 void suma(int);
@@ -25,6 +27,14 @@ void set(int);
 private:
 int *numero;
 };
+Calculadora::Calculadora(){
+    numero = new int;
+    *numero = 0;
+}
+Calculadora::Calculadora(Calculadora& v){
+    numero = new int;
+    numero = v.numero;
+}
 Calculadora::Calculadora(int num)
 {
 numero = new int;
