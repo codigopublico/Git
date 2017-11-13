@@ -21,10 +21,15 @@ void limpiar(){
 }
 class vehiculo{
 public:
+    struct repa{
+        bool n;//esta es la variable para saber si esta echa la reparcion.
+        int dinero; //este es el dinero que se cobra por la reparcion.
+    };
     struct vehicul{
         string nombre;
-        int dinero;
-        int nreparacion;
+        int dinero;//este es el dinero que deve el cliente....
+        repa q[200];//este es exclusivo del taller 200 es el numero maximo que puede soportar cada cohe.
+        int nr;
     };
     vehicul d;
     vehiculo(){
@@ -39,22 +44,44 @@ public:
         id = 200;
         for(int i = 0; i < id; i++){
         tall[i].dinero = 0;
-        tall[i].nreparacion = 0;
+        for(int ii = 0; ii < 200; ii++){
+        tall[i].q[ii].dinero = 0;
+        tall[i].q[ii].n = true;
+        tall[i].nr = 0;
+        }
         tall[i].nombre = "0";
         }
         id = 0;
     }
-    void reparar(int d){
-        tall[d].dinero = tall[id].dinero + d;
-        tall[d].nreparacion--;
-        if(tall[d].nreparacion < 0){
-            tall[d].nreparacion = 0;
+    void reparar(int d, int e){//el d es la varable para el coche el e es el numero de reparacion 
+        tall[d].dinero = tall[d].q[e].dinero;
+        tall[d].q[e].n = true;
+        tall[d].nr--;
+        
+    }
+    void areparacion(int d, int n){//d es la pasta i n es el numbre del coche.
+        tall[n].q[tall[d].nr].dinero = d;
+        tall[n].q[tall[d].nr].n = false;
+        tall[n].nr++;
+    }
+    void mrepacion(int d){
+        std::cout << "Estes es el historial\n";
+        for(int i = 0; i < 200; i++){
+            if(tall[d].q[i].n){
+                std::cout << "Dinero:  "<<tall[d].q[i].dinero <<"\n";
+            }
+        }
+        std::cout << "Estas son las reparaciones que faltan\n";
+        for(int i = 0; i < 200; i++){
+            if(!tall[d].q[i].n){
+                std::cout << "Dinero:  "<<tall[d].q[i].dinero <<"\n";
+                std::cout << "id:      " << i;
+            }
         }
     }
     void entrar(const vehiculo &en){
         tall[id].dinero = en.d.dinero;
         tall[id].nombre = en.d.nombre;
-        tall[id].nreparacion = en.d.nreparacion;
         id++;
 }
     void mostrar(){
@@ -62,10 +89,19 @@ public:
         for(int i = 0; i < id; i++){
             std::cout << "Nombre:          " << tall[i].nombre << "\n";
             std::cout << "Pagar:           " << tall[i].dinero << "\n";
-            std::cout << "N. reparaciones  " << tall[i].nreparacion << "\n";
+            std::cout << "id:              " << i << "\n";
             for(int ii = 0; ii < 3; ii++){
                 std::cout << "\n";
             }
+        }
+    }
+    void mostrar(int i){
+        if(i > id){
+            std::cout << "\nMe pasate un id incorrento, chao!!!!!!\n";
+        }else{
+        std::cout << "Nombre:          " << tall[i].nombre << "\n";
+        std::cout << "Pagar:           " << tall[i].dinero << "\n";
+        std::cout << "id:              " << i << "\n";
         }
     }
     void eliminar(string n){
@@ -74,7 +110,6 @@ public:
             if(tall[i].nombre == n){
                 tall[i].nombre = "0";
                 tall[i].dinero = 0;
-                tall[i].nreparacion = 0;
                 c++;
             }
         }
@@ -89,6 +124,11 @@ public:
                 if(tall[i].nombre == "0"){
                     q++;
                     lib::inter(tall[i].nombre, tall[i + 1].nombre);
+                    lib::inter(tall[i].dinero, tall[i + 1].dinero);
+                    for(int ii = 0; ii < 200; ii++){
+                        lib::inter(tall[i].q[ii].dinero, tall[i + 1].q[ii].dinero);
+                        lib::inter(tall[i].q[ii].n, tall[i + 1].q[ii].n);
+                    }
                 }
             }
         }
@@ -101,6 +141,7 @@ public:
 void p3(){
     string in;
     string aux;
+    int n;
     vehiculo vcoche;
     taller autom;
     do{
@@ -108,6 +149,8 @@ void p3(){
         std::cout << "\n Para crear un choche(c) \n";
         std::cout << "Para mostrar los coches(m) \n";
         std::cout << "Para eliminar un coches(e) \n";
+        std::cout << "Modificar vehiculo(v), (Modificar Reparaciones)\n";
+        std::cout << "Cobrar coche.(p)\n";//nada mas falta poner esto i cuantro cosas variables mas como el numbre de las reparacion.... i ya.
         std::cout << "Para salir Fin\n";
         std::cin >> in;
         if(in == "c"){
@@ -116,8 +159,6 @@ void p3(){
             std::cout << "Dime el nombre del vehiculo\n";
             std::cin >> in;
             vcoche.d.nombre = in;
-            std::cout << "Dime el numero de reparaciones que lleva en el taller\n";
-            std::cin >> vcoche.d.nreparacion;
             autom.entrar(vcoche);
         }
         if(in == "m"){
@@ -128,6 +169,28 @@ void p3(){
             std::cout << "Dime el nombre a eliminar\n";
             std::cin >> in;
             autom.eliminar(in);
+        }
+        if(in == "v"){
+            autom.mostrar();
+            std::cout << "Dime el id del cohce a modificar las reparaciones";
+            std::cin >> n;
+            std::cout << "Eliguste:   \n";
+            autom.mostrar(n);
+            std::cout << "Quires cargare un reparacion pendiente(a),\n Quires repararlo(r),\n  O simplemente listar las reparaciones(v) \n";
+            std::cin >> in;
+            if(in == "a"){
+                int d;
+                std::cout << "Cuanto cuesta la nueva reparacion a hacer\n";
+                std::cin >> d;
+                autom.areparacion(d, n);
+            }
+            if(in == "r"){
+                int d;
+                autom.mrepacion(n);
+                std::cout << "Que reparacion quieres hacer\n";
+                std::cin >> d;
+                autom.reparar(n, d);
+            }
         }
         if(in == "FIN"){
             std::cout << "Fin del programa\n";
