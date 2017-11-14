@@ -24,6 +24,7 @@ public:
     struct repa{
         bool n;//esta es la variable para saber si esta echa la reparcion.
         int dinero; //este es el dinero que se cobra por la reparcion.
+        string nombre; //esta es la variable del nombre de las reparciones...
     };
     struct vehicul{
         string nombre;
@@ -95,6 +96,12 @@ public:
             }
         }
     }
+    void cobrar(int d){
+        tall[d].dinero = 0;
+    }
+    void cobrar(int d, int e){
+        tall[d].dinero = tall[d].dinero - e;
+    }
     void mostrar(int i){
         if(i > id){
             std::cout << "\nMe pasate un id incorrento, chao!!!!!!\n";
@@ -149,8 +156,8 @@ void p3(){
         std::cout << "\n Para crear un choche(c) \n";
         std::cout << "Para mostrar los coches(m) \n";
         std::cout << "Para eliminar un coches(e) \n";
-        std::cout << "Modificar vehiculo(v), (Modificar Reparaciones)\n";
-        std::cout << "Cobrar coche.(p)\n";//nada mas falta poner esto i cuantro cosas variables mas como el numbre de las reparacion.... i ya.
+        std::cout << "Modificar vehiculo(v), (Modificar Reparaciones)\n";//falta poner el nobmre de las repaarciones...
+        std::cout << "Cobrar coche.(p)\n";
         std::cout << "Para salir Fin\n";
         std::cin >> in;
         if(in == "c"){
@@ -190,6 +197,21 @@ void p3(){
                 std::cout << "Que reparacion quieres hacer\n";
                 std::cin >> d;
                 autom.reparar(n, d);
+            }
+        }
+        if(in == "p"){
+            std::cout << "Dime el id del cohce al que quieres cobrar:\n";
+            std::cin >> n;
+            std::cout << "Te pago todo(s/n)\n";
+            std::cout >> in;
+            if(in =="s"){
+                std::cout << "Bien\n";
+                autom.cobrar(n);
+            }else{
+                int d;
+                std::cout << "Cuanto te pago\n";
+                std::cin >> d;
+                autom.cobrar(n, d);
             }
         }
         if(in == "FIN"){
