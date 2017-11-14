@@ -24,7 +24,7 @@ public:
     struct repa{
         bool n;//esta es la variable para saber si esta echa la reparcion.
         int dinero; //este es el dinero que se cobra por la reparcion.
-        string nombre; //esta es la variable del nombre de las reparciones...
+        string nombrer; //esta es la variable del nombre de las reparciones...
     };
     struct vehicul{
         string nombre;
@@ -48,6 +48,7 @@ public:
         for(int ii = 0; ii < 200; ii++){
         tall[i].q[ii].dinero = 0;
         tall[i].q[ii].n = true;
+        tall[i].q[ii].nombrer = "0";
         tall[i].nr = 0;
         }
         tall[i].nombre = "0";
@@ -65,16 +66,24 @@ public:
         tall[n].q[tall[d].nr].n = false;
         tall[n].nr++;
     }
+        void areparacion(int d, int n, string no){//d es la pasta i n es el numbre del coche.
+        tall[n].q[tall[d].nr].dinero = d;
+        tall[n].q[tall[d].nr].n = false;
+        tall[n].q[tall[d].nr].nombrer = no;
+        tall[n].nr++;
+    }
     void mrepacion(int d){
         std::cout << "Estes es el historial\n";
         for(int i = 0; i < 200; i++){
-            if(tall[d].q[i].n){
+            if(tall[d].q[i].n && tall[d].q[i].dinero > 0){
+                std::cout << "Nombre:  "<<tall[d].q[i].nombrer <<"\n";
                 std::cout << "Dinero:  "<<tall[d].q[i].dinero <<"\n";
             }
         }
         std::cout << "Estas son las reparaciones que faltan\n";
         for(int i = 0; i < 200; i++){
             if(!tall[d].q[i].n){
+                std::cout << "Nombre:  "<<tall[d].q[i].nombrer <<"\n";
                 std::cout << "Dinero:  "<<tall[d].q[i].dinero <<"\n";
                 std::cout << "id:      " << i;
             }
@@ -86,11 +95,20 @@ public:
         id++;
 }
     void mostrar(){
+        int e = 0;
         std::cout << "\n";
+        
         for(int i = 0; i < id; i++){
+            for(int ii = 0; ii < tall[i].nr; ii++){
+            if(!tall[i].q[ii].n){
+                e++;
+            }
+        }
             std::cout << "Nombre:          " << tall[i].nombre << "\n";
             std::cout << "Pagar:           " << tall[i].dinero << "\n";
             std::cout << "id:              " << i << "\n";
+            std::cout << "Reparaciones:    " << e;
+            e = 0;
             for(int ii = 0; ii < 3; ii++){
                 std::cout << "\n";
             }
@@ -141,9 +159,6 @@ public:
         }
         id = id - c;
     }
-    void pagar(int n){
-       
-    }
 };
 void p3(){
     string in;
@@ -189,7 +204,9 @@ void p3(){
                 int d;
                 std::cout << "Cuanto cuesta la nueva reparacion a hacer\n";
                 std::cin >> d;
-                autom.areparacion(d, n);
+                std::cout << "Cual es la etiqueta que le quieres poner\n";
+                std::cin >> in;
+                autom.areparacion(d, n, in);
             }
             if(in == "r"){
                 int d;
@@ -200,10 +217,11 @@ void p3(){
             }
         }
         if(in == "p"){
+            autom.mostrar();
             std::cout << "Dime el id del cohce al que quieres cobrar:\n";
             std::cin >> n;
             std::cout << "Te pago todo(s/n)\n";
-            std::cout >> in;
+            std::cin >> in;
             if(in =="s"){
                 std::cout << "Bien\n";
                 autom.cobrar(n);
