@@ -1,0 +1,343 @@
+
+SYSADMIT
+
+    Inicio ¡¡Bienvenidos a SYSADMIT!! Índice y referencias libros FAQ libros Formación Índice de contenido blog Enlaces 
+
+	
+	
+Home » Linux » Linux: Reemplazar texto en archivos con sed
+Linux: Reemplazar texto en archivos con sed
+Si queremos buscar y reemplazar texto en entornos Linux, disponemos de varias herramientas para ello.
+
+Una de ellas es con el comando sed.
+
+Linux SED: Reemplazar texto en archivos con sed
+
+El comando sed está presente en la mayoría de distribuciones de Linux y está pensado para manipular cadenas de texto.
+
+Si no disponemos del comando sed lo podemos instalar de la siguiente forma:
+
+    Para CentOS/RHEL: yum install sed
+    Para Debian/Ubuntu: apt-get install sed
+
+
+Sintaxis general y tres ejemplos para reemplazar texto en archivos:
+
+Sintaxis general:
+
+sed -i 's/texto-a-buscar/texto-a-reemplazar/g' "Fichero o directorio"
+
+Ejemplo 1: Cambiamos el texto Sysadmit por SYSADMIT del interior del fichero: test.txt
+
+[root@LINUX1 test]# cat test.txt
+Sysadmit1
+1Sysadmit
+90Sysadmit82
+HSysadmitH21
+ 
+[root@LINUX1 test]# sed -i 's/Sysadmit/SYSADMIT/g' "test.txt"
+ 
+[root@LINUX1 test]# cat test.txt
+SYSADMIT1
+1SYSADMIT
+90SYSADMIT82
+HSYSADMITH21
+
+Ejemplo 2: Cambiamos el texto SYSADMIT por --SYSADMIT-- en todos los ficheros *.txt a partir de la ruta /test/ de forma recursiva.
+
+Para ello utilizaremos los siguientes comandos:
+
+find: Nos realizará una búsqueda de todos los ficheros según el patrón definido.
+xargs: Ejecutará un comando (en este caso sed) para cada resultado generado por el comando find.
+| : Pipe o tubería, en este caso la salida de find corresponderá a la entrada de sed.
+sed: Realizará el "buscar-reemplazar".
+
+[root@LINUX1 test]# pwd
+/test
+
+[root@LINUX1 test]# du -ah
+4.0K    ./new/test.txt
+8.0K    ./new
+4.0K    ./test.txt
+16K     .
+
+[root@LINUX1 test]# cat ./new/test.txt
+SYSADMIT1
+1SYSADMIT
+90SYSADMIT82
+HSYSADMITH21
+
+[root@LINUX1 test]# cat ./test.txt
+SYSADMIT1
+1SYSADMIT
+90SYSADMIT82
+HSYSADMITH21
+
+[root@LINUX1 test]# find /test/ -name "*.txt" -print | xargs sed -i "s/SYSADMIT/--SYSADMIT--/g"
+
+[root@LINUX1 test]# cat ./new/test.txt
+--SYSADMIT--1
+1--SYSADMIT--
+90--SYSADMIT--82
+H--SYSADMIT--H21
+
+[root@LINUX1 test]# cat ./test.txt
+--SYSADMIT--1
+1--SYSADMIT--
+90--SYSADMIT--82
+H--SYSADMIT--H21
+
+Ejemplo 3: Cambiamos una URL por otra del interior de un fichero de texto (test.txt).
+
+El problema de las URLs es que contienen el carácter: "/".
+
+El carácter "/", sed lo utiliza para definir el texto original y el texto a reemplazar.
+
+En el siguiente ejemplo, reemplazaremos la URL:
+
+http://sysadmit.com
+
+por:
+
+http://www.sysadmit.com/p/faq-libros.html
+
+dentro del fichero: test.txt
+
+Para ello, utilizaremos el caracter: "%"
+
+[root@LINUX1 test]# cat test.txt
+http://sysadmit.com
+
+[root@LINUX1 test]# sed -i "s%http://sysadmit.com%http://www.sysadmit.com/p/faq-libros.html%g" "test.txt"
+
+[root@LINUX1 test]# cat test.txt
+http://www.sysadmit.com/p/faq-libros.html
+ 
+
+Publicado por SYSADMIT .com en lunes, julio 27, 2015 Enviar por correo electrónicoEscribe un blogCompartir con TwitterCompartir con FacebookCompartir en Pinterest
+Etiquetas: Linux
+
+Entradas relacionadas:
+
+    Linux: Cómo saber que tarjeta gráfica tengo
+    Linux: SSH login lento
+    VMWare ESXi: Instalar pfSense
+    VMWare: Kali Linux instalar
+    Linux: SYSSTAT monitorización
+
+11 comentarios:
+
+    Victor Rodriguez3 de febrero de 2017, 14:14
+
+    Gracias!.
+
+    Buen tutorial!.
+
+    Saludos,
+    Responder
+    Respuestas
+        SYSADMIT .com3 de febrero de 2017, 14:21
+
+        ¡Gracias a ti! ¡Me alegro que te haya gustado!
+
+        Un saludo,
+
+        Xavi.
+        Responder
+    Andres Jaña25 de marzo de 2017, 2:33
+
+    Excelente!!!, tengo un problema, necesito reemplazar solo una vez en el archivo (la primera vez)
+
+    Me explico, para el caso del ejemplo, si el archivo fuera
+    Sysadmit
+    Sysadmit
+    Sysadmit
+
+    después de ejecutar el comando que indicas (sed -i 's/Sysadmit/SYSADMIT/g' "test.txt") quedaría:
+    SYSADMIT
+    SYSADMIT
+    SYSADMIT
+
+    Pero yo necesito que quede:
+    SYSADMIT
+    Sysadmit
+    Sysadmit
+
+    ¿es posible hacer eso?
+    Responder
+    Respuestas
+        SYSADMIT .com25 de marzo de 2017, 16:54
+
+        Hola Andrés,
+
+        Aquí tienes como hacerlo:
+
+        [root@LINUX1]# cat test.txt
+        Sysadmit
+        Sysadmit
+        Sysadmit
+
+        [root@LINUX1]# sed -i '0,/Sysadmit/ s//SYSADMIT/' "test.txt"
+
+        [root@LINUX1]# cat test.txt
+        SYSADMIT
+        Sysadmit
+        Sysadmit
+
+        ¡¡Un saludo!!
+
+        Xavi.
+        Andres Jaña25 de marzo de 2017, 17:13
+
+        Xavi,
+        es justo lo que necesitaba.
+
+        muchas gracias!.
+        SYSADMIT .com25 de marzo de 2017, 17:14
+
+        ¡Gracias a ti!
+
+        ¡Un saludo!
+
+        Xavi.
+        Responder
+    Matias Bermann10 de agosto de 2017, 19:38
+
+    Hola! Necesito hacer sed s/patron1/patron2/g file.txt > filefinal. El tema es que patron 1 y patron 2 corresponden a col 1 y col 2 de otro archivo (index.txt). Cómo hago referencia a esas columnas y cómo le pido que repita el procedimiento desde la primer hasta la última fila? Gracias!
+    Responder
+    Respuestas
+        Pol11 de agosto de 2017, 11:45
+
+        Hola Matias,
+
+        Lo puedes hacer con este comando: sed s/`cat index.txt|awk '{ print $1 }'`/`cat index.txt |awk '{ print $2 }'`/g file.txt > final.txt
+
+        el secreto está en dónde hay patrón1 / patrón2 ejecutar un comando de awk: `cat index.txt|awk '{ print $1 }'`
+
+
+        Ejemplo para probarlo:
+
+        [root@SYSADMIT.LAB 2]# ls
+        file.txt index.txt
+        [root@SYSADMIT.LAB 2]# cat index.txt
+        Columna1 Columna2
+        [root@SYSADMIT.LAB 2]# cat file.txt
+        Columna1
+        Columna1
+        Columna1
+        Columna1
+        Columna1
+        Columna1
+        Columna1
+        Columna1
+        [root@SYSADMIT.LAB 2]# sed s/`cat index.txt|awk '{ print $1 }'`/`cat index.txt |awk '{ print $2 }'`/g file.txt
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        [root@SYSADMIT.LAB 2]# sed s/`cat index.txt|awk '{ print $1 }'`/`cat index.txt |awk '{ print $2 }'`/g file.txt > final.txt
+        [root@SYSADMIT.LAB 2]# cat final.txt
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Columna2
+        Responder
+    Charlo25 de agosto de 2017, 4:47
+
+    Muy bueno, lo uso también en bash del macOS
+    Responder
+    Respuestas
+        SYSADMIT .com25 de agosto de 2017, 9:02
+
+        ¡Muchas gracias por tu comentario!
+
+        Un saludo,
+
+        Xavi.
+        Responder
+    Alejandro Hernández1 de septiembre de 2017, 18:39
+
+    Hola que tal tengo un problema necesito sustituir una cadena así:
+    exten => _77[0-9]00[1-6],1,MixMonitor(/home/site/${STRFTIME(${EPOCH},,%Y%m%d-%H%M%S)}-${EXTEN}-${CALLERID(num)}.wav)
+
+    y lo intento así:
+
+    sed -i "s%exten => _77[0-9]00[1-6],1,MixMonitor(/home/site/${STRFTIME(${EPOCH},,%Y%m%d-%H%M%S)}-${EXTEN}-${CALLERID(num)}.wav)%hola%g" "extensions001.conf"
+
+    Aqui en el ejemplo quiero sustituirlo por hola, pero enrealidad seria por:
+    exten => _77[0-9]00[1-6],1,MixMonitor(/home/site/cabina1/${STRFTIME(${EPOCH},,%Y%m%d-%H%M%S)}-${EXTEN}-${CALLERID(num)}.wav)
+
+    Pero cuando lo intento me dice:
+
+    -bash: s%exten => _77[0-9]00[1-6],1,MixMonitor(/home/site/${STRFTIME(${EPOCH},,%Y%m%d-%H%M%S)}-${EXTEN}-${CALLERID(num)}.wav)%hola%g: sustitución errónea
+
+    Podrias ayudarme ..... Saludos.
+    Responder
+
+Cargar más...
+
+Entrada más reciente Entrada antigua Página principal
+Suscribirse a: Enviar comentarios (Atom)
+Formación SYSADMIT
+
+    Próximos cursos y seminarios
+
+Libros SYSADMIT
+Libros SYSADMIT
+Translate
+Select Language​▼
+Blog sponsors
+PRTG
+
+Nakivo
+
+Vembu
+
+
+
+Etiquetas
+
+    VMWare (147)
+    Windows Server (116)
+    Windows Client (101)
+    Linux (65)
+    Exchange (37)
+    Veeam Backup (30)
+    GPO (24)
+    Pol Padrisa (23)
+    Script-Windows (17)
+    PowerCLI (15)
+    Guest-Blogging (14)
+    PowerShell (14)
+    VMWorld (14)
+    Active Directory (12)
+    Wi-FI (12)
+    Temario-Cursos-SYSADMIT (8)
+    #SYSADMIT# (7)
+    Libros SYSADMIT (7)
+    Consulta técnica (5)
+    MSSQL (5)
+    Outlook (4)
+    Script-Linux (4)
+    Seguridad (4)
+    SysInternals (4)
+    mysql (3)
+    Ahmed Bilal (2)
+    CISCO (2)
+    MOBILE-APPS (2)
+    Noticia (2)
+    SMTP (2)
+    gielsb (2)
+    Hardware (1)
+    TCPIP (1)
+
+	
+Con la tecnología de Blogger.
