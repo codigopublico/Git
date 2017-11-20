@@ -28,7 +28,8 @@ using namespace std;
 sqlite3_close(db);
 }*/
 void final(){
-    taller::hola();
+    //taller::hola();
+    
 }
 int main(int argc, char** argv) {
     final();
