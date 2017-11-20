@@ -6,16 +6,17 @@
  */
 
 #include <cstdlib>
-#include <mia/no_renderizadas/sql/sqlite3.h>
+//#include <mia/no_renderizadas/sql/sqlite3.h>
 #include <iostream>
-#include <mia/no_renderizadas/qt/platilla1/platilla1.h>
+//#include <mia/no_renderizadas/qt/platilla1/platilla1.h>
+#include "taller.hpp"
 using namespace std;
 
 /*
  * Este es del ejercio 16
  */
 
-void sql(){
+/*void sql(){
     int rc; 
     sqlite3 *db;
     //Abrir la base de datos..
@@ -25,9 +26,12 @@ void sql(){
         }
 // Cerrar base de datos
 sqlite3_close(db);
+}*/
+void final(){
+    taller::hola();
 }
 int main(int argc, char** argv) {
-
+    final();
     return 0;
 }
 
