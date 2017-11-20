@@ -9,7 +9,8 @@
 //#include <mia/no_renderizadas/sql/sqlite3.h>
 #include <iostream>
 //#include <mia/no_renderizadas/qt/platilla1/platilla1.h>
-#include "taller.hpp"
+
+#include <mia/no_renderizadas/mis_funciones.hpp>
 using namespace std;
 
 /*
