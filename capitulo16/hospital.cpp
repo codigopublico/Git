@@ -17,8 +17,8 @@ hospi::enfermero::enfermero(){
 }
 hospi::enfermero::enfermero(int n, int n1, int n3){
     nomesp = "Enfermero";
-    if(n > nesp){//esto lo tengo que mejorar.
-        enf.Esp = nesp;
+    if(n > maxesp){//esto lo tengo que mejorar para ello lo que hara es ...
+        enf.Esp =  maxesp;
     }else{
         enf.Esp = n;
     }

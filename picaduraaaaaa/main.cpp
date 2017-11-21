@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 #include <mi_teclado>
-#include <mia/porhacer/mis_funciones.hpp>
+#include <mia/no_renderizadas/mis_funciones.hpp>
 using namespace std;
 using namespace lib;
 
@@ -162,6 +162,43 @@ void p10(){
     p a;
     a.eat();
 }
+//Estas son las funciones virtuales que hay que hacer...
+class persona{
+public:
+    struct datos{
+      int n;  
+    }d;
+    persona(){
+        
+    }
+    virtual void speak(){
+        std::cout << "hola como andas";
+    }
+    virtual int mostrar(){
+        
+    }
+    virtual ~persona(){
+        
+    }
+};
+class trabajo : public persona{
+public:
+    struct datos{
+        int d;
+    };
+    datos w;
+    trabajo(){
+        w.d = 0;
+    }
+    int mostrar(){
+        return w.d;
+    }
+};
+void p11(){
+    persona* javier;
+    javier = new trabajo;
+    std::cout << javier->mostrar() << "\n";
+}
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";
     //p1();
@@ -171,7 +208,8 @@ int main(int argc, char** argv) {
     //p5();
     //p6();
     //p7();
-    p8();//Este esta echo para provar el interncambio de variables de la libreria inter
+    //p8();//Este esta echo para provar el interncambio de variables de la libreria inter
+    p11();
     return 0;
 }
 
