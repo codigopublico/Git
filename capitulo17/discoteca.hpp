@@ -14,20 +14,22 @@ using namespace std;
 namespace dis{
     class disco{
     public:
-        struct dis{
+        struct Dis{//lo puse mayucula para distinguirlo de dis
             int n;//este es el numero del disco
             int dura; //esta es la duracion del disco
             string autor;
             string titulo;
         }d;
         disco();
-        virtual void crear(int, int, string, string);//este es para hacer la lista de arriva
+        virtual void crear(int, int, string, string){
+        
+        }//este es para hacer la lista de arriva
         ~disco();
     };
     class lugar : public disco{
     public:
         int discos[2];//el primero del array es para los virtuales i el es para los creados
-        disco* Pdiscos;
+        disco **Pdiscos;
         lugar(int p);
         void crear(int, int, string, string);
         ~lugar();
