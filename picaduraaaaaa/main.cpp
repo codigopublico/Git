@@ -177,6 +177,7 @@ public:
     virtual int mostrar(){
         
     }
+    virtual void get_datos(int a){}
     virtual ~persona(){
         
     }
@@ -193,10 +194,14 @@ public:
     int mostrar(){
         return w.d;
     }
+    void get_datos(int a){
+        w.d = a;
+    }
 };
 void p11(){
     persona* javier;
     javier = new trabajo;
+    javier->get_datos(12);
     std::cout << javier->mostrar() << "\n";
 }
 int main(int argc, char** argv) {

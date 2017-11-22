@@ -6,14 +6,20 @@
  */
 
 #include <cstdlib>
-
+#include <mia/no_renderizadas/mis_funciones.hpp>
+#include "hospital.hpp"
 using namespace std;
 
 /*
  * 
  */
+void p1(){
+    int a = 20;
+    hospi::hosipta St(a);
+    St.alta(0, 0, "Wichita");
+}
 int main(int argc, char** argv) {
-
+    p1();
     return 0;
 }
 

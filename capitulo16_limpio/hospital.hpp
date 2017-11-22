@@ -16,6 +16,7 @@ class persona{
 public:  
     persona();
     persona(string, int); 
+    virtual void setdatos(int a, int b, int c){}
 public:
     struct pers{
         string nombre;
@@ -35,12 +36,14 @@ public:
 public:
     enfermero();
     enfermero(int, int, int);
+    void setdatos(int, int, int);
 }; 
 class limpieza : public persona{
 protected: 
     datos_t limp;
     string nomesp;//esta es la etiqueta de limpieza;
     string esp[maxesp];
+    void setdatos(int, int, int);
 public: 
     limpieza();
     limpieza(int, int, int);
@@ -55,6 +58,7 @@ protected:
 public:
     medicos();
     medicos(int, int, int);
+    void setdatos(int, int, int);
 };
 class hosipta{
 public:
@@ -63,6 +67,7 @@ public:
     int Tra; //esta es para contar los trabajadores actuales echos.
     hospita(int);
     void alta(int, int, string); //el primero int es para la categoria, el segundo es para la especialidad, i el tercero es para el nombre.
+    ~hospita();
 };
 }
 

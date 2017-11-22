@@ -25,7 +25,11 @@ hospi::enfermero::enfermero(int n, int n1, int n3){
     enf.h = n1;
     enf.n = n3;
 }
-
+void hospi::enfermero::setdatos(int a, int b, int c){
+    enf.Esp = a;
+    enf.h = b;
+    enf.n = c;
+}
 
 hospi::limpieza::limpieza(){
     nomesp = "Limpiador";
@@ -39,6 +43,11 @@ hospi::limpieza::limpieza(int n, int n1, int n2){
     limp.h = n1;
     limp.n = n2;
 }
+void hospi::limpieza::setdatos(int a, int b, int c){
+    limp.Esp = a;
+    limp.h = b;
+    limp.n = c;
+}
 hospi::medicos::medicos(){
     nomesp = "Medico";
     medi.Esp = 0;
@@ -51,10 +60,15 @@ hospi::medicos::medicos(int n, int n1, int n2){
     medi.h = n1;
     medi.n = n2;
 }
+void hospi::medicos::setdatos(int a, int b, int c){
+    medi.Esp = a;
+    medi.h = b;
+    medi.n = c;
+}
 hospi::hosipta::hospita(int ip){
     p = ip;
-    persona* personal = new persona[p];
-    *Ppers = &persona[0]; //esto es un poco raro para ello usare classess virtuales.
+    //persona* personal = new persona[p];
+    //*Ppers = &personal[0]; //esto es un poco raro para ello usare classess virtuales.
 }
 hospi::hosipta::alta(int n, int n1, string nom){
     if(n == 0){
@@ -67,5 +81,10 @@ hospi::hosipta::alta(int n, int n1, string nom){
         Ppers = new enfermero;
     }
     Ppers->per.nombre = nom;
+    Ppers->setdatos(n1, 0, 0);
+    Tra++;
     //como es que no tengo la hacer es lo del polimorfismo..
+}
+hospi::hosipta::~hospita(){
+    delete Ppers;
 }

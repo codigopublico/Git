@@ -12,8 +12,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>hospital.cpp</itemPath>
-      <itemPath>hospital.hpp</itemPath>
+      <itemPath>discoteca.cpp</itemPath>
+      <itemPath>discoteca.hpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
