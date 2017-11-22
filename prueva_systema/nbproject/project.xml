@@ -2,7 +2,7 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>capitulo16</name>
+            <name>prueva_systema</name>
             <c-extensions/>
             <cpp-extensions>cpp</cpp-extensions>
             <header-extensions/>
