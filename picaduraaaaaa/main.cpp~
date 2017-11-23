@@ -214,9 +214,9 @@ inter(a, b);
 cout << a << b << "\n";
 string c = "Momento";
 string d = "para";
-std::cout << c <<  "  "<<d << "\n";
+std::cout << c << d << "\n";
 inter(c, d);
-std::cout << c << "  " << d << "\n";
+std::cout << c << d << "\n";
 }
 int main(int argc, char** argv) {
     //std::cout << det() << "\n";

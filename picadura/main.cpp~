@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include <mia/mis_funciones.hpp>
 using namespace std;
 
 /*
@@ -93,17 +92,11 @@ cout << z << endl;
 return 0;
 
 }
-void p5(){
-//esta es par la libreria de mis_funciones.
-int a = 5;
-int b = 1;
-lib::inter(a, b);
-}
 int main(int argc, char** argv) {
     //p1();
     //p2();
     //p3();
-    //p4();
+    p4();
     return 0;
 }
 

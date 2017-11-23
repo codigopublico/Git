@@ -9,7 +9,7 @@
 #define	DISCOTECA_HPP
 #include <iostream>
 #include <string>
-#include <mia/no_renderizadas/mis_funciones.hpp>
+//#include <mia/mis_funciones.hpp>
 using namespace std;
 namespace dis{
     class disco{
@@ -21,6 +21,7 @@ namespace dis{
             string titulo;
         }d;
         disco();
+        const disco operator=( disco&);
         virtual void crear(int, int, string, string){
         
         }//este es para hacer la lista de arriva
@@ -30,6 +31,7 @@ namespace dis{
     public:
         int discos[2];//el primero del array es para los virtuales i el es para los creados
         disco **Pdiscos;
+        lugar();
         lugar(int p);
         void crear(int, int, string, string);
         ~lugar();
