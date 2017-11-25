@@ -17,14 +17,11 @@ void p1(){
     string b;
     int c;
     dis::disco alan;
-    
     alan.crear(1, 2, "a");
     alan.ver(a, c, b);
     std::cout << a << "  " << b <<"   " << c << "\n";
-    dis::fiesta arbol(2);
-    arbol.crear(0, 10, "Templo_del_tigre");
-    arbol.ver(a, c, b);
-    std::cout << a << "  " << b <<"   " << c << "\n";
+    dis::fiesta piscina(2);
+    
 }
 int main(int argc, char** argv) {
     p1();

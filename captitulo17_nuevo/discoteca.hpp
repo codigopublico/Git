@@ -19,17 +19,19 @@ public:
       string nom;
     }d;
     disco();
-    disco operator=(disco&);
+    disco(int, int, string);
+    disco operator=(disco &a){
+        disco res(a.d.n, a.d.dura, a.d.nom);
+        return res;
+    }
     virtual void crear(int, int, string); 
     virtual void ver(int&, int&, string&);
 };
-class fiesta{
+class fiesta : public disco{
 public:
-    disco &disc;
-    int total[2]; //el primero es para el virtual es el sugdo para real.
+    int total[2];
+    disco *disc;
     fiesta(int);
-    void crear(int, int, string);
-    void ver(int&, int&, string&);
 };
 }
 
