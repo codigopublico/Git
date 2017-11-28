@@ -10,15 +10,19 @@
 #include <iostream>
 #include <string>
 using namespace std;
-namespace dis{
+namespace is{
 class disco{
 public:
     struct Dis{
       int n;//este es el indice;
       int dura; //esta es la duracion de la cancion;
       string nom;
-      Dis(){n = 0; dura = 0; nom = "0";};
-      Dis operator=(const struct Dis &a){
+      Dis(){
+      n = 0; 
+      dura = 0; 
+      nom = "0";
+      }
+      Dis operator=(const  Dis &a){
           Dis b;
           b.n = a.n;
           b.dura = a.dura;
@@ -38,8 +42,10 @@ public:
 class fiesta : public disco{
 public:
     int total[2];
-    struct Dis *Pd;
+    disco::Dis *Pd;
     fiesta(int);
+    void crear(int, int, string);
+    void ver(int&[200], int&[200], string&[200]);//aqui tengo que poner arrays a punteros--;P
 };
 }
 

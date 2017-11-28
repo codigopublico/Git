@@ -16,11 +16,12 @@ void p1(){
     int a;
     string b;
     int c;
-    dis::disco alan;
+    is::disco alan;
     alan.crear(1, 2, "a");
     alan.ver(a, c, b);
     std::cout << a << "  " << b <<"   " << c << "\n";
-    dis::fiesta piscina(2);
+    is::fiesta piscina(2);
+    piscina.crear(0, 0, "a");
     
 }
 int main(int argc, char** argv) {
