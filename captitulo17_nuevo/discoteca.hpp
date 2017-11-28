@@ -17,6 +17,14 @@ public:
       int n;//este es el indice;
       int dura; //esta es la duracion de la cancion;
       string nom;
+      Dis(){n = 0; dura = 0; nom = "0";};
+      Dis operator=(const struct Dis &a){
+          Dis b;
+          b.n = a.n;
+          b.dura = a.dura;
+          b.nom = a.nom;
+          return b;
+      }
     }d;
     disco();
     disco(int, int, string);
@@ -30,7 +38,7 @@ public:
 class fiesta : public disco{
 public:
     int total[2];
-    disco *disc;
+    struct Dis *Pd;
     fiesta(int);
 };
 }

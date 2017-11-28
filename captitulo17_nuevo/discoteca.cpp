@@ -18,8 +18,7 @@ void dis::disco::ver(int &a, int &c, string &b){
     b = d.nom;
     c = d.dura;
 } 
-
 dis::fiesta::fiesta(int a){
-    *disc =  new disco[a];//aqui es donde no funciona mirar operadores.
+    *Pd =  new struct Dis[a];
     total[2] = a;
 }
