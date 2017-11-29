@@ -24,7 +24,6 @@ is::fiesta::fiesta(int a){
     total[0] = 0;
 }
 void is::fiesta::crear(int a, int c, string b){
-    total[0]++;
     for(int i = 0; i < total[0]; i++){
         Pd++;
     }
@@ -32,9 +31,23 @@ void is::fiesta::crear(int a, int c, string b){
     Pd->nom = b;
     Pd->n = a;
     for(int i = 0; i < total[0]; i++){
-        Pd++;
+        Pd--;    
     }
+        total[0]++;
+
 }
-void is::fiesta::ver(int &a[200], int &b[200], string &c[200]){
-    
+void is::fiesta::ver(int *a, int *b, string *c){
+    std::cout << "La classe derivada\n";
+    a = new int[total[0]];
+    b = new int[total[0]];
+    c = new string[total[0]];
+        for(int i = 0; i < total[0]; i++){
+            *a = Pd->dura;
+            *c = Pd->nom;
+            *b = Pd->n;
+            Pd++;
+        }
+         for(int i = 0; i < total[0]; i++){
+        Pd--;    
+    }
 }

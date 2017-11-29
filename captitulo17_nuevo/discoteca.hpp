@@ -45,7 +45,7 @@ public:
     disco::Dis *Pd;
     fiesta(int);
     void crear(int, int, string);
-    void ver(int&[200], int&[200], string&[200]);//aqui tengo que poner arrays a punteros--;P
+    void ver(int*, int*, string*);//aqui tengo que poner arrays a punteros--;P
 };
 }
 
