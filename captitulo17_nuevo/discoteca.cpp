@@ -41,13 +41,18 @@ void is::fiesta::ver(int *a, int *b, string *c){
     a = new int[total[0]];
     b = new int[total[0]];
     c = new string[total[0]];
-        for(int i = 0; i < total[0]; i++){
+        for(int i = 0; i < total[0] - 1; i++){
             *a = Pd->dura;
             *c = Pd->nom;
             *b = Pd->n;
+            cout << "pd " << Pd->nom << "\n";
+            cout << "c  " << *c << "\n";
+            cout << "direccion de c " << c << "\n";
             Pd++;
         }
-         for(int i = 0; i < total[0]; i++){
+         for(int i = 0; i < total[0] - 2; i++){
         Pd--;    
     }
+    cout << "Fin de classe\n"; // El proeblema es como devolver los punteros.
+    
 }

@@ -30,9 +30,9 @@ void p1(){
         std::cout << "\n11111111111\n";
     piscina.ver(q, d, e);
     std::cout << "\n11111111111\n";
-    cout << "   " << *e  << "   \n";
-    e++;
     cout << "   " << e  << "   \n";
+    e++;
+    cout << "   " << *e  << "   \n";
 
     
 }
