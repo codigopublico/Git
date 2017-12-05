@@ -1,4 +1,0 @@
-
- /ECHO message
-
-Display "message" in the log window.

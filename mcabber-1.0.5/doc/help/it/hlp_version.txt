@@ -1,4 +1,0 @@
-
- /VERSION
-
-Mostra il numero di versione di mcabber.

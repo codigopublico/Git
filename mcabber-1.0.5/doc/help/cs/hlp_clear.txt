@@ -1,4 +1,0 @@
-
- /CLEAR
-
-Vymaže obsah okna rozhovoru. Jedná se vlastně o alias pro "/buffer clear".

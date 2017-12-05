@@ -1,5 +1,0 @@
-
- /INFO
-
-Display info on the selected entry (user, agent, group...).
-For users, resources are displayed with the status, priority and status message (if available) of each resource.

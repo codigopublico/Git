@@ -1,5 +1,0 @@
-
- /SET [option [= value]]
-
-Zeigt die Variable "option" an, bzw. setzt sie auf "value".
-Ohne Parameter werden alle gesetzten Optionen mit ihren Werten ausgegeben.

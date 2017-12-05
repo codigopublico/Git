@@ -1,4 +1,0 @@
-
- /CONNECT
-
-Cette commande établit la connexion au serveur Jabber.

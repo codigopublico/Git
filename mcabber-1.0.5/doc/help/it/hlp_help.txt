@@ -1,5 +1,0 @@
-
- /HELP [comando|+argomento]
-
-Visualizza l'help per il comando "comando" o l'argomento "argomento"
-Esempio: "/help buffer"

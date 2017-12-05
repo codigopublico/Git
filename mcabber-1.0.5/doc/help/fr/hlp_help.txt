@@ -1,5 +1,0 @@
-
- /HELP [cmd|+sujet]
-
-Affiche l'aide sur la commande "cmd" ou sur le sujet "sujet".
-Exemple: "/help buffer"

@@ -1,4 +1,0 @@
-
- /SCREEN_REFRESH
-
-Обновить экран mcabber'а.

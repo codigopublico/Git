@@ -1,4 +1,0 @@
-
- /QUIT
-
-Dieser Befehl schliesst alle Verbindungen und beendet mcabber.

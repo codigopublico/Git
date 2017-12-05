@@ -1,4 +1,0 @@
-
- /QUIT
-
-Questo comando chiude tutte le connessioni ed esce da mcabber.

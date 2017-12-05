@@ -1,5 +1,0 @@
-
- /HELP [befehl|+thema]
-
-Zeige die Hilfe fuer den Befehl "befehl" oder das Thema "thema" an.
-Beispiel: "/help buffer"

@@ -1,4 +1,0 @@
-
- /CONNECT
-
-Stabilisce una connessione con il server Jabber.

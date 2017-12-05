@@ -1,4 +1,0 @@
-
- /QUIT
-
-Polecenie to zamyka wszystkie połączenia i wychodzi z mcabbera.

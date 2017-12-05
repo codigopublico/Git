@@ -1,4 +1,0 @@
-
- /SCREEN_REFRESH
-
-Aggiorna lo schermo di mcabber.

@@ -1,5 +1,0 @@
-
- /SET [option [= value]]
-
-Display or set an option value.
-Without arguments prints a list of all set options with their values

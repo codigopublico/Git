@@ -1,5 +1,0 @@
-
- /CHAT_DISABLE [--show-roster]
-
-Den Chatmodus verlassen.
-Mit --show-roster" wird der Vollbildmodus unterdrückt.

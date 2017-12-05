@@ -1,4 +1,0 @@
-
- /CLEAR
-
-Polecenie to jest aliasem dla "/buffer clear". Czyści aktualne okno rozmowy.

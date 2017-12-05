@@ -1,4 +1,0 @@
-
- /CONNECT
-
-Eine Verbindung zum Jabber Server aufbauen.
