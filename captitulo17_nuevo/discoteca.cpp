@@ -53,6 +53,6 @@ void is::fiesta::ver(int *a, int *b, string *c){
          for(int i = 0; i < total[0] - 2; i++){
         Pd--;    
     }
-    cout << "Fin de classe\n"; // El proeblema es como devolver los punteros.
+    cout << "Fin de classe\n"; //Esto se tiene que hacer con referecias a punteros.
     
 }
