@@ -96,16 +96,31 @@ namespace hos{
         }Sprof;
         
 };
-class medico : public profecional{
+class medico : virtual public profecional{
+public:
     medico();
 };
-class limpiadora : public profecional{
+class limpiadora : virtual public profecional{
+public:
     limpiadora();
 };
-class enfermero : public profecional{
+class enfermero : virtual public profecional{
+public:
     enfermero();
 };
- };
+class hospital : public enfermero, public limpiadora, public medico{
+public:
+    //profecional *P;
+    hospital();
+    
+};
+ 
+
+
+
+
+
+};
        
 
     

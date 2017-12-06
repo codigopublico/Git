@@ -70,4 +70,13 @@ profecional profecional::operator=(const profecional &a){
     }
     return *Hprof;
 }*///esto es una cajada que no sirve para nada.....
+hos::limpiadora::limpiadora(){
+    Sprof.especialidad = "Limpiadora";
+}
+hos::enfermero::enfermero(){
+    Sprof.especialidad = "Enfermera";
+}
+hos::medico::medico(){
+    Sprof.especialidad = "medica";
+}
 
