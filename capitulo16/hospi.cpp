@@ -21,7 +21,7 @@ persona::persona(const string &a, const int &b){
     std::cout << "Nombre   :" << persona::Spers.Nombre << "\n";
     std::cout << "telefono :" << persona::Spers.telf << "\n";
 }
-virtual void persona::ver(string &a, int &b){
+void persona::ver(string &a, int &b){
     a = persona::Spers.Nombre;
     b = persona::Spers.telf;
 }
@@ -30,6 +30,7 @@ profecional::profecional(){
     std::cout << "Estas ejecutando el construcotior de profecional\n";
 };
 profecional::profecional(const string &a, const int &b){
+        std::cout << "Estas ejecutando el construcotior de profecional\n";
         persona::Spers.Nombre = a;
         persona::Spers.telf = b;
         std::cout << "Constructor.....\n";
@@ -37,15 +38,19 @@ profecional::profecional(const string &a, const int &b){
     std::cout << "telefono :" << persona::Spers.telf << "\n";
 };
 profecional::profecional(const string &a, const int &b, const float &c, const int d[2]){
+        std::cout << "Estas ejecutando el construcotior de profecional\n";
     persona::Spers.Nombre = a;
         persona::Spers.Nombre = b;
         profecional::Sprof.Planta = c;
         for(int i = 0; i < 2; i++){
         profecional::Sprof.horario[i] = d[i];
         }
+        std::cout << "Constructor.....\n";
+    std::cout << "Nombre   :" << persona::Spers.Nombre << "\n";
+    std::cout << "telefono :" << persona::Spers.telf << "\n";
 
 };
-profecional profecional::operator =(const profecional &a){
+profecional profecional::operator=(const profecional &a){
     profecional res;
     res.Spers.Nombre = a.Spers.Nombre;
     res.Spers.telf = a.Spers.telf;

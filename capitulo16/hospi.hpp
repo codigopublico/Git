@@ -16,6 +16,11 @@ namespace hos{
     class persona{
     public:
         virtual void ver(string&, int&);
+        persona  operator--(int){
+            Spers.Nombre = "0";
+            Spers.telf = 0;
+            return persona("0", 0);
+    }
         persona();
         persona(const string&, const int&);
         struct Spersona{
@@ -31,10 +36,7 @@ namespace hos{
             res.telf = a.telf;
             return res;
         }//este es el contructor de copias para el editor.
-        void operator-(Spersona &a){
-            a.Nombre = "0";
-            a.telf = 0;
-        }
+        
 }Spers;
 
         };
@@ -47,7 +49,19 @@ namespace hos{
      profecional operator=(const profecional&);
      //profecional* ver();
      //variables......
-     int n; 
+     int n;
+     profecional operator--(int){
+                int a[2] = {0, 0};
+                 string b = "0";
+                Spers.Nombre = "0";
+                Spers.telf = 0;
+                Sprof--;
+                for(int i = 0; i < 2; i++){
+                        Sprof.horario[i] = 0;
+                }
+                profecional res(b, 0, 0, a);
+                return res;
+        }
      struct Sprofecional{
         float Planta;
         string especialidad;
@@ -68,19 +82,25 @@ namespace hos{
             res.horario[i] = res.horario[i];
             }
         }
-        void operator-(Sprofecional &a){
-            a.Planta = 0;
-            a.especialidad = "0";
+        Sprofecional operator--(int){
+            Planta = 0;
+            especialidad = "0";
             for(int i = 0; i < 2; i++){
-            a.horario[i] = 0;
+                horario[i] = 0;
+                
             }
+            Sprofecional res;
+            return res;
         }
-}Sprof;
-
+        
+        }Sprof;
+        
+};
+class medico : public profecio
+    
      
- };
+ }
        
-    }
 
     
     
