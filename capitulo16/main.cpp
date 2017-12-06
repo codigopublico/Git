@@ -24,6 +24,8 @@ void p8(){
     Prog.ver(a, b);
     cout << "Nombre:  " << a << "\n";
     cout << "telf:    " << b << "\n";
+    hos::limpia(100);
+    hos::hospital Stcatarina(a);
 }
 int main(int argc, char** argv) {
     p8();

@@ -79,4 +79,6 @@ hos::enfermero::enfermero(){
 hos::medico::medico(){
     Sprof.especialidad = "medica";
 }
-
+hos::hospital::hospital(int &a){
+    *Ppro = new profecional[a];
+}

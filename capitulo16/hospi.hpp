@@ -110,9 +110,8 @@ public:
 };
 class hospital : public enfermero, public limpiadora, public medico{
 public:
-    //profecional *P;
-    hospital();
-    
+    profecional *Ppro;//este es el puntero que apuntara hacia el profecional correspondiente.
+    hospital(int&);
 };
  
 
