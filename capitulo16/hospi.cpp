@@ -13,6 +13,8 @@ void hos::limpia(const int &a){
 //esta es la seccion de persona
 persona::persona(){
     std::cout << "Estas ejecuntado el el constructor de Persona\n";
+    std::cout << "Nombre   :" << persona::Spers.Nombre << "\n";
+    std::cout << "telefono :" << persona::Spers.telf << "\n";
 };
 persona::persona(const string &a, const int &b){
     persona::Spers.Nombre = a; 
@@ -28,6 +30,9 @@ void persona::ver(string &a, int &b){
 //esta es la seccion de profecional
 profecional::profecional(){
     std::cout << "Estas ejecutando el construcotior de profecional\n";
+    std::cout << "Constructor.....\n";
+    std::cout << "Nombre   :" << persona::Spers.Nombre << "\n";
+    std::cout << "telefono :" << persona::Spers.telf << "\n";
 };
 profecional::profecional(const string &a, const int &b){
         std::cout << "Estas ejecutando el construcotior de profecional\n";
@@ -58,6 +63,7 @@ profecional profecional::operator=(const profecional &a){
     res.Sprof.especialidad = a.Sprof.especialidad;
     for(int i = 0; i < 2; i++){
     res.Sprof.horario[i] = a.Sprof.horario[i];
+    return res;
     }
 }
 /*profecional* profecional::ver(){
@@ -80,5 +86,29 @@ hos::medico::medico(){
     Sprof.especialidad = "medica";
 }
 hos::hospital::hospital(int &a){
-    *Ppro = new profecional[a];
+    cout << "Estas ejecutado el hosiptal\n";
+    for(int i = 0; i < a; i++){
+        *hospi = new Shospital[i];
+        *hospi++;
+    }
+    total[0] = 0;
+    total[1] = a;
+    for(int i = 0; i < a; i++){
+        *hospi--;
+    }
+}
+void hos::hospital::alta(const string &a, const int &b, const float &c, const int d[2]){
+    for(int i = 0; i < total[0]; i++){
+        *hospi++;
+    }
+    hospi->SApers.Nombre = a;
+    hospi->SApers.telf = b;
+    hospi->SAporf.Planta = c;
+    for(int i = 0; i < 2; i++){
+    hospi->SAporf.horario[i] = d[i];
+    }
+        for(int i = 0; i < total[0]; i++){
+            *hospi--;
+        }
+    total[0]++;
 }

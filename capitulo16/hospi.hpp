@@ -30,12 +30,20 @@ namespace hos{
             Nombre = "0";
             telf = 0;
         };//este es el contructor de la classe
+        Spersona(string &a, int &b){
+            Nombre = a;
+            telf = b;
+        }
         Spersona operator=(const Spersona &a){//tengo que hacer un operador igual que este pero para eliminar en la alura de profecional.
             Spersona res;
             res.Nombre = a.Nombre;
             res.telf = a.telf;
             return res;
         }//este es el contructor de copias para el editor.
+        Spersona operator--(int){
+            Nombre = "0";
+            telf = 0;
+        }
         
 }Spers;
 
@@ -47,6 +55,7 @@ namespace hos{
      profecional(const string&, const int&);
      profecional(const string&, const int&, const float&, const int[2]);
      profecional operator=(const profecional&);
+     
      //profecional* ver();
      //variables......
      int n;
@@ -94,6 +103,7 @@ namespace hos{
         }
         
         }Sprof;
+       
         
 };
 class medico : virtual public profecional{
@@ -110,15 +120,21 @@ public:
 };
 class hospital : public enfermero, public limpiadora, public medico{
 public:
-    profecional *Ppro;//este es el puntero que apuntara hacia el profecional correspondiente.
+    struct Shospital{
+        Sprofecional SAporf;
+        Spersona SApers;
+        Shospital* operator=(const Shospital &a){
+            
+            this->SApers = a.SApers;
+            this->SAporf = a.SAporf;
+            return *this;
+        }
+    }*hospi;
+    int total[2]; //El primero es para el real i el segundo para el virtual.
     hospital(int&);
+    void alta(const string&, const int&, const float&, const int[2]);
 };
  
-
-
-
-
-
 };
        
 
