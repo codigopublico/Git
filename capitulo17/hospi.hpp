@@ -28,18 +28,20 @@ public:
             nivel = 0;
             single = false;
         }
-    }Ddi;
+    };
     Bdisco();
     Bdisco(int&, string&, string&);
-    virtual Ddisco get() = 0;
+    virtual Ddisco* get() = 0;
     //virtual void single(bool&) = 0;
     virtual void put(Ddisco&) = 0;
     virtual ~Bdisco();
 };
 class lista : public Bdisco{
 public:
+    int total[2]; //el primero es para el virtual el sugundo es para el real
+    lista();
     lista(int);
-    Ddisco get();
+    Ddisco* get();
     void put(Ddisco&);
 private:
     Ddisco *Disco;

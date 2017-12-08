@@ -22,7 +22,7 @@ namespace punt{
             y = 0;
             z = 0;
         }
-        tresd(int &a, int &b, int &c){
+        tresd(int a, int b, int c){
             this->x = a;
             this->y = b;
             this->z = 0;
@@ -34,6 +34,12 @@ namespace punt{
             res.z = a.z;
             return res;
         }
+        /*tresd* operator=(const tresd &a){
+            this->x = a.x;
+            this->y = a.y;
+            this->z = a.z;
+            return this;
+        }**/
     };
 }
 void p1(){
@@ -45,6 +51,11 @@ void p1(){
     esfera++;
     cout << "Esta es la esfera  " <<esfera->x << "\n";
     esfera--;
+    cout << "Esta es la esfera  " <<esfera->x << "\n";
+    punt::tresd cubo(2, 5, 10);
+    esfera->x = cubo.x;
+    esfera->y = cubo.y;
+    esfera->z = cubo.z;//esta es una manera un poco arcaica 
     cout << "Esta es la esfera  " <<esfera->x << "\n";
 }
 int main(int argc, char** argv) {
