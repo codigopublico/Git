@@ -4,7 +4,7 @@
 using namespace std;
 using namespace hos;
 /*
- * 
+ * Tengo que saber como se hace un constructor de capias a un puntero......
  */
 void p8(){
     string a;
