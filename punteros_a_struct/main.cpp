@@ -55,7 +55,7 @@ void p1(){
     punt::tresd cubo(2, 5, 10);
     esfera->x = cubo.x;
     esfera->y = cubo.y;
-    esfera->z = cubo.z;//esta es una manera un poco arcaica 
+    esfera->z = cubo.z;//Esta es una manera un poco arcaica ya que no sobrecargo el operador = ya que es un punetero.
     cout << "Esta es la esfera  " <<esfera->x << "\n";
 }
 int main(int argc, char** argv) {
