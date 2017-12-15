@@ -51,21 +51,18 @@ private:
     Data* data;
     Node* next;
 public:
-    InternalNode(Data* data, Node* next);
-    virtual ~IndernalNode() {
-        delete next; 
-        delete data;
-    }
+    InternalNode(Data*, Node*);
+    virtual ~InternalNode() { delete next; delete data;}; //este tiene un error
     virtual Node* insert(Data* data);
     virtual void show(){
         std::cout << "Show:Internalnode";
         data->show(); next->show();
     }
 };
-    InternalNode::InternalNode(Data* data, Node* next){
-        data(data);
-        next(next);
-    }
+    InternalNode::InternalNode(Data* newdata, Node* newnext){
+        InternalNode::data = newdata;
+        InternalNode::next = newnext;
+    };
     Node* InternalNode::insert(Data* other){
         int result = data->compare(*other);
         switch(result)
