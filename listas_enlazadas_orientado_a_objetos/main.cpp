@@ -14,6 +14,12 @@ using namespace std;
 /*
  *este es un ejemplo wur lurgo di finvions dr pasara a la practica......... 
  */
+void limpiar(){
+    for(int i = 0; i < 10; i++){
+        std::cout << "\n";
+    }
+}
+
 class Data{
 private:
     int nivel;
@@ -50,11 +56,13 @@ public:
     int compare(const Data&);
     void nlista(string It, int Ia);
     void show(){ 
+        if(nivel != 0 || duracion != 0){
         std::cout << "Dato:         :" << nivel << "\n";  
         std::cout << "Duracion      :"<< duracion << "\n";
         std::cout << "titulo        :" << titulo  << "\n";
         std::cout << "autor         :" << autor << "\n";
         std::cout << "Numero_lista  :"  << lista<< "\n"; 
+        }
     //aqui se usara el booleano para hacer lo de la lista adeamas se puede usar un show espcial para mostar todos.
     }
     void Bshow(int a){
@@ -122,7 +130,7 @@ public:
     virtual Node* list(string It, int Ia);
     virtual Node* eliminar(string Ia);
     virtual void show(){
-        std::cout << "Show:Internalnode";
+        //std::cout << "Show:Internalnode";
         data->show(); next->show();
     }
     virtual void Bshow(int a){
@@ -157,16 +165,22 @@ public:
         data->nlista(It, Ia);
         next->insert(data);
         data->nlista(It, Ia);
+        next->list(It, Ia);
         return this;
     }
     Node* InternalNode::eliminar(string Ia){
+        Node* aux;
         int r;
         r = data->eliminar(Ia);
-        next->insert(data);
-        if(r == 1){
+        aux = next;
+        if(r == 1){//si es igual a 1 se deve elimninar
             data == NULL;
+            aux->eliminar(Ia);
+        }else{
+        next = aux;
+        next->eliminar(Ia);
+        next->insert(data);//porque no me sale vale porque tengo que hacer una copia eliminar el elemento alli i hacer una copia;
         }
-        next->insert(data);//porque no me sale
         return this;
     }
     class TailNode : public Node{
@@ -174,7 +188,7 @@ public:
         TailNode() {}
         virtual ~TailNode() {}
         virtual Node* insert (Data* data);
-        virtual Node* list(string It, int Ia) { }
+        virtual Node* list(string It, int Ia) { }//este tine el error de hacer que sea para hacer una lista no cambia los que van segundos terceros nada mas el primero.
         virtual Node* eliminar(string Ia) { }
         virtual void show() { }
         virtual void Bshow(int a) { }
@@ -195,7 +209,7 @@ public:
         virtual Node* list(string Ia, int It){ next->list(Ia, It); }
         virtual Node* eliminar(string Ia){ next->eliminar(Ia); }
         virtual void show(){
-            std::cout << "HeadNode:    ";
+            //std::cout << "HeadNode:    ";
             next->show();
         }
         virtual void Bshow(int a){
@@ -274,18 +288,53 @@ public:
         b->list(Ia, 1);
         }
     }
+    int menu2(){
+        int a;
+        for(int i = 0; i > 30; i++){
+            std::cout << "-";
+        }
+        std::cout << "\n";
+        std::cout << "1)Crear un disco \n";
+        std::cout << "2)Crear una lista \n";
+        std::cout << "3)Eliminar un disco \n";
+        std::cout << "4)Mostrar \n";
+        std::cout << "Elgue 1, 2,3, 4 Dame un numero(0 para salir)?";
+        std::cin >> a;
+        limpiar();
+        return a;
+    }
+    void eliminar(LinkedList *b){
+        string Ia;
+        while(Ia != "0"){
+        b->showall();
+        std::cout << "Dime que titulo quieres eliminar en la lista ?(0 para salir):  ";
+        std::cin >> Ia;
+        b->eliminar(Ia);
+        }
+    }
+    
 int main(int argc, char** argv){
     Data* pData;
     int val;
     LinkedList a;
     while (true)//tengo que hacer un menu mejor
     {
-        std::cout << "Dame un numero(0 para salir)?";
-        std::cin >> val;
+        val = menu2();
         if(!val)
             break;
+        if(val == 1){
         pData = new Data(menu());
-        a.insert(pData);
+            a.insert(pData);
+        }
+        if(val == 2){
+            lista(&a);
+        }
+        if(val == 3){
+            eliminar(&a);//Si tengo tiempo lo que tengo que hacer es eliminar de la lista el nodo.
+        }
+        if(val == 4){
+            a.showall();
+        }
         //a.list("a", 0);
     }
     a.showall();
