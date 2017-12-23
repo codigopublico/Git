@@ -8,12 +8,15 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include<stdlib.h> //esta es la libreria de random
+#include <stdlib.h> //esta es la libreria de random
+#include <stdio.h>/* printf, scanf, puts, NULL */
+#include <time.h> 
 using namespace std;
 
 /*
  *este es un ejemplo wur lurgo di finvions dr pasara a la practica......... 
  */
+
 void limpiar(){
     for(int i = 0; i < 10; i++){
         std::cout << "\n";
@@ -55,6 +58,7 @@ public:
     ~Data (){}
     int compare(const Data&);
     void nlista(string It, int Ia);
+    void nlista(int It, int Ia);
     void show(){ 
         if(nivel != 0 || duracion != 0){
         std::cout << "Dato:         :" << nivel << "\n";  
@@ -104,6 +108,12 @@ void Data::nlista(string It, int Ia){
     }
     //return this;
 }
+void Data::nlista(int It, int Ia){
+    int iSecret = rand() % 2 + 1;
+    if(It == iSecret){
+        this->lista = Ia;
+    }
+}
 class Node;
 class HeadNode;
 class TailNode;
@@ -114,6 +124,7 @@ public:
     virtual ~Node() {}
     virtual Node* insert(Data* data) = 0;
     virtual Node* list(string It, int Ia) = 0;
+    virtual Node* list(int Ia, int It) = 0;
     virtual Node* eliminar(string Ia) = 0;
     virtual void show() = 0;
     virtual void Bshow(int a) = 0;
@@ -128,6 +139,7 @@ public:
     virtual ~InternalNode() { delete next; delete data;}; //este tiene un error
     virtual Node* insert(Data* data);
     virtual Node* list(string It, int Ia);
+    virtual Node* list(int Ia, int It);
     virtual Node* eliminar(string Ia);
     virtual void show(){
         //std::cout << "Show:Internalnode";
@@ -168,6 +180,13 @@ public:
         next->list(It, Ia);
         return this;
     }
+    Node* InternalNode::list(int It, int Ia){
+        data->nlista(It, Ia);
+        next->insert(data);
+        data->nlista(It, Ia);
+        next->list(It, Ia);
+        return this;
+    }
     Node* InternalNode::eliminar(string Ia){
         Node* aux;
         int r;
@@ -189,6 +208,7 @@ public:
         virtual ~TailNode() {}
         virtual Node* insert (Data* data);
         virtual Node* list(string It, int Ia) { }//este tine el error de hacer que sea para hacer una lista no cambia los que van segundos terceros nada mas el primero.
+        virtual Node* list(int Ia, int It) { }
         virtual Node* eliminar(string Ia) { }
         virtual void show() { }
         virtual void Bshow(int a) { }
@@ -207,6 +227,7 @@ public:
         virtual ~HeadNode(){ delete next;}
         virtual Node* insert(Data* data);
         virtual Node* list(string Ia, int It){ next->list(Ia, It); }
+        virtual Node* list(int Ia, int It){ next->list(Ia, It); }
         virtual Node* eliminar(string Ia){ next->eliminar(Ia); }
         virtual void show(){
             //std::cout << "HeadNode:    ";
@@ -237,6 +258,9 @@ public:
         void showall(){head->show();}
         void Bshowall(int a){ head->Bshow(a); } 
         void eliminar(string Ia){ head->eliminar(Ia); } //aqui falta una variable para la elecion de la eliminacion 
+        void list(int Ia, int It){  
+            head->list(Ia, It);
+        }
     };
     LinkedList::LinkedList(){
         head = new HeadNode;
@@ -281,11 +305,20 @@ public:
     }
     void lista(LinkedList *b){
         string Ia;
+        int n;
+        std::cout << "1)Manual \n2)aleatoria\n(o para salir)\n";
+        std::cin >> n;
+        if(n == 2){
+            int iSecret = rand() % 100 + 1;
+            b->list(iSecret, 1);
+        }
+        if(n == 1){
         while(Ia != "0"){
         b->showall();
         std::cout << "Dime que titulo quieres poner en la lista ?";
         std::cin >> Ia;
         b->list(Ia, 1);
+        }
         }
     }
     int menu2(){
