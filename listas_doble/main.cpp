@@ -16,12 +16,13 @@ using namespace std;
  */
 class node{
 public:
-    node(int a, node *sig = 0, node *ant = 0) { v = a; siguiente = sig; anterior = ant; }//aqui esta la magia
-    node(node *sig, node *ant = 0){
+    node(int a, node *sig = 0, node *ant = 0) { v = a; siguiente = sig; anterior = ant;  e = true;}//aqui esta la magia
+    node(node *sig = 0, node *ant = 0){
         //i si sobrecargo esto....
         v = 0; //falta lo de node();
         siguiente = sig;
         anterior = ant;
+        e = false;
     }
     /*node(int a, node *sig = 0, node *ant = 0){
         v = a;
@@ -32,7 +33,8 @@ public:
     }*/
     friend class lista;
 private:
-    int v; 
+    int v;
+    bool e;//este es para saber si esta vacio o no 
     node *siguiente;
     node *anterior;
 };
@@ -56,34 +58,42 @@ lista::lista(){
     //Pnode(NULL); I si no lo apunto a nada esto creo que funcionara ......:P
 }
 void lista::Primero(){
-    while(Pnode && Pnode->anterior) Pnode = Pnode->anterior;//la pregunta es la misma a ver me tragare todo lo de c++
+    while(Pnode->e && Pnode->anterior->e) Pnode = Pnode->anterior;//la pregunta es la misma a ver me tragare todo lo de c++
 }
 void lista::Ultimo(){
-    while(Pnode && Pnode->siguiente) Pnode = Pnode->siguiente;
+    while(Pnode->e && Pnode->siguiente->e) Pnode++;
 }
 void lista::insertar(int Iv){
+     
     std::cout << "1.2\n";
-    Primero();
+    //Primero();
     std::cout << "1.3\n";
-    if(Pnode != NULL){//la pregunta es como detectar que esta igualado a 0 aqui tengo un error como saber si la lista esta vacia...
+    if(Pnode->e != false){//la pregunta es como detectar que esta igualado a 0 aqui tengo un error como saber si la lista esta vacia...
         std::cout << "1.5\n La lista no esta vacia....\n";
-    while(Pnode->v < Iv &&  Pnode){
+        int a = 0;
+    while(Pnode->v < Iv &&  Pnode->e){
+        ++a;
         Pnode = Pnode->siguiente;
-        std::cout << "Me temo que aqui la lista no llega.....\n";
+        std::cout << "Me temo que aqui la lista no llega.....! " << a <<  "\n";
     }
-    Pnode->siguiente = new node(Iv, Pnode->siguiente, Pnode->anterior);
+        std::cout << "Creando el nuevo nodo\n";
+    Pnodo aux = new node(Pnode->v, Pnode->siguiente, Pnode->anterior);
+    Pnode->siguiente = new node(Iv, aux, aux); //tiene que ser un nodo que apunte aplguna parte;
+    Pnode->anterior = new node(Pnode->anterior->v, aux, aux);
     std::cout << "Llegara\n";
     //aqui se hace que no se pueda hacer todo
     }
-    if(Pnode == NULL){
+    if(!Pnode->e){//puse esto para hacer que a ver si funciona
      //Pnode = node;//se pone que los punteros de delante i detras estan vacios no se si dara error en compilacion
      //demomento lo da no se que hacer.
         std::cout << "Aqui llegara la lista..\n";
-        Pnode = new node(Iv);//raramente fucniona pero tengo que ver como va todo....
+        Pnodo aux = new node(Pnode->v, Pnode->siguiente, Pnode->anterior);
+        Pnode = new node(Iv, aux, aux);//raramente fucniona pero tengo que ver como va todo....
         std::cout << "1.4\n";
     }
-    std::cout << "Aqui estara el error\n";
+    std::cout << "Inicio de Primero\n";
     //Primero();//este codigo se ha de pasar a limpio.....
+    std::cout << "Fin de la lista\n";
 }
 void lista::siguiente(){
     if(Pnode) Pnode = Pnode->siguiente;
@@ -100,9 +110,20 @@ int lista::valor_actual(){
     return Pnode->v;
 }
 void lista::mostrar(){
-    Primero(); //aqui es donde falla
-    std::cout << "Tengo violacion \n";
+    std::cout << "Pnode: " << Pnode->e << "Pensar\n";
+    Ultimo(); //aqui es donde falla
+    //std::cout << "Pnode: " << Pnode->anterior->e << "Pensar\n";
+    //std::cout << "Tengo violacion \n";
+    int a = 0;
+    while(Pnode->e && a < 5){
     std::cout << "Valor :" << Pnode->v << "\n";
+    std::cout << "Valor :" << Pnode->siguiente->v << "\n";
+    std::cout << "Valor :" << Pnode->v << "\n";
+    std::cout << "Hola  :\n"; 
+    //Pnode = Pnode->siguiente;
+    a++;
+    }
+    Primero();
 }
 int main(int argc, char** argv) {
 //vale ahora tengo que provar las cosas que funcionen...........
@@ -110,8 +131,12 @@ int main(int argc, char** argv) {
     lista prueva;
     std::cout << "1\n";
     prueva.insertar(5);
+    prueva.insertar(10);
+    prueva.insertar(20);
+    //prueva.borrar(20);
     std::cout << "2\n";
     prueva.mostrar();
     return 0;
 }
 
+//A veces es mejor poner un boleano para comporvar los nodos
