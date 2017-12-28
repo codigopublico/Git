@@ -20,16 +20,97 @@ using namespace std;
 
 #define ASCENDENTE 1
 #define DESCENDENTE 0
-
+void sepa(){
+    std::cout << "\n";
+    for(int i = 0; i < 10; i++){
+        std::cout << "-";
+    }
+    std::cout << "\n";
+}
+struct libros{
+    bool e;  //esta es interna i que dice si existe este objecto en la lista.
+    string titulo;
+    string autor;
+    int n_pag;
+    libros(){
+        titulo = "0";
+        autor = "0";
+        n_pag = 0;
+        e = false;
+    }
+};
+struct peliculas{
+    bool e;
+    string titulo;
+    string director;
+    int dura; //esta es la duracion de la cancion.....
+    peliculas(){
+        titulo = "0";
+        director = "0";
+        dura = 0;
+        e = false;
+    }
+};
+struct discos{
+    bool e;
+    string titulo;
+    string autor;
+    int n; //este es para el numero de duracion;
+    discos(){
+        titulo = "0";
+        autor = "0";
+        e = false;
+        n = 0;
+    }
+};
+class material{
+public:
+    material() { }//que mierdas pasa con las vtable.
+    virtual void insert(string, string, int) = 0;
+    virtual void mostrar() = 0;
+    virtual void eliminar(string) = 0; //se eliminara por el titulo....
+};
 class nodo {
    public:
     nodo(int v, nodo *sig = NULL, nodo *ant = NULL) :
        valor(v), siguiente(sig), anterior(ant) {}
+    nodo(discos ID, nodo *sig = 0, nodo *ant = 0)
+    {
+        disc.autor = ID.autor;
+        disc.n = ID.n;
+        disc.titulo = ID.titulo;
+        disc.e = true;
+        anterior = ant;
+        //std::cout << "Estoy creado un disco en la lista de discos\n";
+        siguiente = sig;
+    }
+    nodo(peliculas ID, nodo *sig = 0, nodo  *ant = 0)
+    {
+        peli.director = ID.director;
+        peli.dura = ID.dura;
+        peli.titulo = ID.titulo;
+        peli.e = true;
+        //std::cout << "Estoy crando un disco\n";
+        siguiente = sig;
+        anterior = ant;
+    }
+    nodo(libros ID, nodo *sig = 0, nodo *ant = 0){
+        lib.autor = ID.autor;
+        lib.n_pag = ID.n_pag;
+        lib.titulo = ID.titulo;
+        lib.e = true;
+        //std::cout << "Estoy creando un libro\n";
+        siguiente = sig;
+        anterior = ant;
+    }
 
    private:
     int valor;
     nodo *siguiente;
     nodo *anterior;
+    discos disc;
+    peliculas peli;
+    libros lib;
         
    friend class lista;
 };
@@ -38,10 +119,13 @@ typedef nodo *pnodo;
 
 class lista {
    public:
-    lista() : plista(NULL) {}
+    lista(){ plista = NULL; c = 0; }
     ~lista();
     
     void Insertar(int v);
+    void Insertar(libros ID);
+    void Insertar(peliculas ID);
+    void Insertar(discos ID);
     void Borrar(int v);
     bool ListaVacia() { return plista == NULL; } 
     void Mostrar(int);
@@ -54,6 +138,7 @@ class lista {
     
    private:
     pnodo plista;
+    int c;
 };
 
 lista::~lista()
@@ -67,7 +152,84 @@ lista::~lista()
       delete aux;
    }
 }
-
+void lista::Insertar(peliculas ID)
+{
+   pnodo nuevo;
+   std::cout << "Esto se ejecuta\n";
+   Primero();
+   std::cout << "Esto es despues de Primero\n";
+   // Si la lista está vacía
+   if(ListaVacia() == true) {
+       std::cout << "Esta la lista vacia\n ";
+      // Asignamos a lista un nuevo nodo de valor v y
+      // cuyo siguiente elemento es la lista actual                    
+      nuevo = new nodo(ID, plista);
+      if(!plista) plista = nuevo;
+      else plista->anterior = nuevo;
+   }else {
+      // Buscar el nodo de valor menor a v 
+      // Avanzamos hasta el último elemento o hasta que el siguiente tenga 
+      // un valor mayor que v 
+      std::cout << "La lista no esta vacia\n";
+      while(plista->siguiente && plista->siguiente->valor <= c) c++; Siguiente();
+      // Creamos un nuevo nodo después del nodo actual
+      nuevo = new nodo(ID, plista->siguiente, plista);
+      plista->siguiente = nuevo;
+      if(nuevo->siguiente) nuevo->siguiente->anterior = nuevo;
+   }
+}
+void lista::Insertar(discos ID)
+{
+   pnodo nuevo;
+   std::cout << "Esto se ejecuta\n";
+   Primero();
+   std::cout << "Esto es despues de Primero\n";
+   // Si la lista está vacía
+   if(ListaVacia() == true) {
+       std::cout << "Esta la lista vacia\n ";
+      // Asignamos a lista un nuevo nodo de valor v y
+      // cuyo siguiente elemento es la lista actual                    
+      nuevo = new nodo(ID, plista);
+      if(!plista) plista = nuevo;
+      else plista->anterior = nuevo;
+   }else {
+      // Buscar el nodo de valor menor a v 
+      // Avanzamos hasta el último elemento o hasta que el siguiente tenga 
+      // un valor mayor que v 
+      std::cout << "La lista no esta vacia\n";
+      while(plista->siguiente && plista->siguiente->valor <= c) c++; Siguiente();
+      // Creamos un nuevo nodo después del nodo actual
+      nuevo = new nodo(ID, plista->siguiente, plista);
+      plista->siguiente = nuevo;
+      if(nuevo->siguiente) nuevo->siguiente->anterior = nuevo;
+   }
+}
+void lista::Insertar(libros ID)
+{
+   pnodo nuevo;
+   std::cout << "Esto se ejecuta\n";
+   Primero();
+   std::cout << "Esto es despues de Primero\n";
+   // Si la lista está vacía
+   if(ListaVacia() == true) {
+       std::cout << "Esta la lista vacia\n ";
+      // Asignamos a lista un nuevo nodo de valor v y
+      // cuyo siguiente elemento es la lista actual                    
+      nuevo = new nodo(ID, plista);
+      if(!plista) plista = nuevo;
+      else plista->anterior = nuevo;
+   }else {
+      // Buscar el nodo de valor menor a v 
+      // Avanzamos hasta el último elemento o hasta que el siguiente tenga 
+      // un valor mayor que v 
+      std::cout << "La lista no esta vacia\n";
+      while(plista->siguiente && plista->siguiente->valor <= c) c++; Siguiente();
+      // Creamos un nuevo nodo después del nodo actual
+      nuevo = new nodo(ID, plista->siguiente, plista);
+      plista->siguiente = nuevo;
+      if(nuevo->siguiente) nuevo->siguiente->anterior = nuevo;
+   }
+}
 void lista::Insertar(int v)
 {
    pnodo nuevo;
@@ -75,6 +237,7 @@ void lista::Insertar(int v)
    Primero();
    // Si la lista está vacía
    if(ListaVacia() || plista->valor > v) {
+       std::cout << "Esta la lista vacia default\n";
       // Asignamos a lista un nuevo nodo de valor v y
       // cuyo siguiente elemento es la lista actual                    
       nuevo = new nodo(v, plista);
@@ -91,6 +254,7 @@ void lista::Insertar(int v)
       plista->siguiente = nuevo;
       if(nuevo->siguiente) nuevo->siguiente->anterior = nuevo;
    }
+   std::cout << "Fin de la insercion\n";
 }
 
 void lista::Borrar(int v)
@@ -118,8 +282,31 @@ void lista::Mostrar(int orden)
       Primero();
       nodo = plista;
       while(nodo) {
-         cout << nodo->valor << "-> ";
-         nodo = nodo->siguiente;
+          if(!nodo->lib.e && !nodo->disc.e && !nodo->peli.e){
+         cout << nodo->valor << "-> " << nodo->lib.e << "  ";
+          }
+          if(nodo->lib.e){
+              sepa();
+              std::cout << "Esto es un libro\n";
+              std::cout << "El autor es:  " << nodo->lib.autor << "\n";
+              sepa();
+          }
+          if(nodo->disc.e){
+              sepa();
+              std::cout << "Esto es un disco\n";
+              std::cout << "El titulo es: " << nodo->disc.titulo << "\n";
+              sepa();
+          }
+          if(nodo->peli.e){
+              sepa();
+              std::cout << "Esto es una pelicula\n";
+              std::cout << "El titulo es: " << nodo->peli.titulo << "\n";
+              sepa();
+          }
+          nodo = nodo->siguiente;
+         /*if(nodo->lib.e){
+             std::cout << " " << nodo->lib.e << "\n";
+         }*/
       }
    }
    else {
@@ -155,21 +342,28 @@ void lista::Ultimo()
 
 int main(int argc, char** argv) {
   lista Lista;
-   
+   libros ID;
+   peliculas I;
+   discos A;
+   ID.autor = "Orwell";
+   I.titulo = "1984";
+   A.titulo = "Mundo feliz";
+   //Lista.Insertar(ID);
    Lista.Insertar(20);
    Lista.Insertar(10);
    Lista.Insertar(40);
    Lista.Insertar(30);
-
+   Lista.Insertar(20);
+   Lista.Insertar(ID);
+   Lista.Insertar(I);
+   Lista.Insertar(A);
    Lista.Mostrar(ASCENDENTE);
    Lista.Mostrar(DESCENDENTE);
 
    Lista.Primero();
    cout << "Primero: " << Lista.ValorActual() << endl;
-   
    Lista.Ultimo();
    cout << "Ultimo: " << Lista.ValorActual() << endl;
-   
    Lista.Borrar(10);
    Lista.Borrar(15);
    Lista.Borrar(45);
@@ -181,3 +375,4 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+//nada mas lo tengo que limpiar
