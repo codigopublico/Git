@@ -127,6 +127,7 @@ class lista {
     void Insertar(peliculas ID);
     void Insertar(discos ID);
     void Borrar(int v);
+    void Borrar(libros ID);
     bool ListaVacia() { return plista == NULL; } 
     void Mostrar(int);
     void Siguiente();
@@ -260,7 +261,7 @@ void lista::Insertar(int v)
 void lista::Borrar(int v)
 {
    pnodo nodo;
-   
+
    nodo = plista;
    while(nodo && nodo->valor < v) nodo = nodo->siguiente;
    while(nodo && nodo->valor > v) nodo = nodo->anterior;
@@ -274,7 +275,42 @@ void lista::Borrar(int v)
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;
 }
-
+void lista::Borrar(libros ID)
+{
+   pnodo nodo;
+   Primero();
+   nodo = plista;
+   /*while(nodo && nodo->valor < v) nodo = nodo->siguiente; // de momento esto es mierda
+   if(nodo->anterior) // no es el primer elemento 
+      nodo->anterior->siguiente = nodo->siguiente;
+   if(nodo->siguiente) // no el el último nodo
+      nodo->siguiente->anterior = nodo->anterior;
+   delete nodo;*/
+   while(nodo){
+       std::cout << "While de borrado\n";
+       if(!nodo->lib.e){
+       }else{
+       if(nodo->lib.e){
+           if(nodo->lib.titulo == ID.titulo){
+               std::cout << "\nLibro encontrado\n";
+               break;
+           }
+       }
+       }
+       if(!nodo->siguiente) std::cout << "No esta lo que buscas\n";
+       if(!nodo->siguiente) break;
+       nodo = nodo->siguiente;
+   }
+   if(nodo->lib.e && nodo->lib.titulo == ID.titulo){
+       std::cout << "Borrando nodo\n";
+       //aqui es donde se borra el nodo
+       if(nodo->anterior) // no es el primer elemento 
+      nodo->anterior->siguiente = nodo->siguiente;
+   if(nodo->siguiente) // no el el último nodo
+      nodo->siguiente->anterior = nodo->anterior;
+   delete nodo;
+   }
+}
 void lista::Mostrar(int orden)
 {
    pnodo nodo;
@@ -365,14 +401,17 @@ int main(int argc, char** argv) {
    Lista.Ultimo();
    cout << "Ultimo: " << Lista.ValorActual() << endl;
    Lista.Borrar(10);
-   Lista.Borrar(15);
    Lista.Borrar(45);
+   sepa();
    Lista.Borrar(40);
-   
+   sepa();
+   Lista.Borrar(ID);
+   sepa();
+   Lista.Borrar(ID);
    Lista.Mostrar(ASCENDENTE);
    Lista.Mostrar(DESCENDENTE);
 
     return 0;
 }
 
-//nada mas lo tengo que limpiar
+//tengo un error en borrar lo unico que habia que hacer es simplemente es poner un break en caso de que no fucione
