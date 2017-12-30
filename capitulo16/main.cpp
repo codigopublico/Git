@@ -232,7 +232,7 @@ void limpieza::Mos(){
     std::cout << "Hola soy una limpiadora\n";
     std::cout << "Mis datos son: ";
     std::cout << "Nombre :" << Dpers.nombre << "\n";
-    std::cout << "Telf   :" << Dpers.telf << "\n";
+    std::cout << "Telf   :" << Dpers.telf << "\n";//vale es por esto que no funciona
     std::cout << "Mi especialidad :" << Dpers.DAmedico.especial << "\n";
     std::cout << "Estoy en la planta :" << Dpers.DAmedico.Planta << "\n";
     std::cout << "I tengo el hoario\n";
@@ -535,4 +535,4 @@ int main(int argc, char** argv) {
    //esto se pondra en una funcion que se llame test();
     return 0;
 }
-//tengo un error con las plantas i los horarios falta de corregir
+//tengo un error con las plantas i los horarios falta de corregir mmmmm
