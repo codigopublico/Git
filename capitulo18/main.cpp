@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 using namespace std;
+void limpiar(){
+    for(int i = 0; i < 10; i++){
+    std::cout << "\n";
+    }
+}
 struct libros{
     bool e;  //esta es interna i que dice si existe este objecto en la lista.
     string titulo;
@@ -84,6 +89,7 @@ class lista {
     void Borrar(string IT, int n);
     bool ListaVacia() { return actual == NULL; }
     void Mostrar();
+    void Mostrar(int n);
     void Siguiente();
     bool Actual() { return actual != NULL; }
     int ValorActual() { return actual->valor; }
@@ -199,7 +205,7 @@ void lista::Borrar(string IT, int n){
         //2 peli
         //3 libro
    nodo = actual;
-
+   if(nodo){
    // Hacer que lista apunte al nodo anterior al de valor v
    if(n == 1){
    do {
@@ -262,41 +268,78 @@ void lista::Borrar(string IT, int n){
    }
    
    }
+   }else {
+       std::cout << "No hay nada que borrar\n";
+   }
 }
 void lista::Mostrar()
 {
    pnodo nodo = actual;
    int n = 0;
+   if(nodo){
    do {
       cout << nodo->valor << "-> ";
       if(nodo->disc.e){
       cout << "Esto es un disco\n";
-      cout << "La duracion es de  :" <<  nodo->disc.n <<"\n";
-      cout << "Con el titulo:  " <<  nodo->disc.titulo << "\n";
-      cout << "Con el autor:   " << nodo->disc.autor << "\n";
+      cout << "La duracion es de  :" <<  nodo->disc.n <<"  ";
+      cout << "Con el titulo:  " <<  nodo->disc.titulo << " ";
+      cout << "Con el autor:   " << nodo->disc.autor << "  ";
       cout << "\n";
       }//esto se deve hacer en todos. Para procecion cuando meta las classes virtuales.
       if(nodo->peli.e){
           cout << "Esto es una pelicula\n";
-      cout << "La duracion es de  :" <<  nodo->peli.dura <<"\n";
-      cout << "Con el titulo      :" <<  nodo->peli.titulo << "\n";
-      cout << "Con el director:   :" << nodo->peli.director << "\n";
+      cout << "La duracion es de  :" <<  nodo->peli.dura <<"  ";
+      cout << "Con el titulo      :" <<  nodo->peli.titulo << "  ";
+      cout << "Con el director:   :" << nodo->peli.director << "";
       }
       if(nodo->lib.e){
       cout << "Esto es un libro\n";
-      cout << "El numero de paguinas es  :" <<  nodo->lib.n_pag <<"\n";
-      cout << "Con el titulo:  " <<  nodo->peli.titulo << "\n";
-      cout << "Con el autor:   " << nodo->lib.autor << "\n";
+      cout << "El numero de paguinas es  :" <<  nodo->lib.n_pag <<"  ";
+      cout << "Con el titulo:  " <<  nodo->peli.titulo << "  ";
+      cout << "Con el autor:   " << nodo->lib.autor << "  ";
       }
-      else{
-                std::cout << "Este es un nodo :"<< nodo->valor <<"\n";
-      }
+      
       nodo = nodo->siguiente;
    } while(nodo != actual);
-
+   }
    cout << endl;
 }
-
+void lista::Mostrar(int n){
+    pnodo nodo = actual;
+   //sint n = 0;
+   if(nodo){
+   do {
+       if(n == 1){
+      cout << nodo->valor << "-> ";
+      if(nodo->disc.e){
+      cout << "Esto es un disco\n";
+      cout << "La duracion es de  :" <<  nodo->disc.n <<"  ";
+      cout << "Con el titulo:  " <<  nodo->disc.titulo << " ";
+      cout << "Con el autor:   " << nodo->disc.autor << "  ";
+      cout << "\n";
+      }//esto se deve hacer en todos. Para procecion cuando meta las classes virtuales.
+       }
+       if(n == 2){
+      if(nodo->peli.e){
+          cout << "Esto es una pelicula\n";
+      cout << "La duracion es de  :" <<  nodo->peli.dura <<"  ";
+      cout << "Con el titulo      :" <<  nodo->peli.titulo << "  ";
+      cout << "Con el director:   :" << nodo->peli.director << "";
+      }
+       }
+       if(n == 3){
+      if(nodo->lib.e){
+      cout << "Esto es un libro\n";
+      cout << "El numero de paguinas es  :" <<  nodo->lib.n_pag <<"  ";
+      cout << "Con el titulo:  " <<  nodo->peli.titulo << "  ";
+      cout << "Con el autor:   " << nodo->lib.autor << "  ";
+      }
+       }
+      nodo = nodo->siguiente;
+   } while(nodo != actual);
+   }
+   cout << endl;
+}
 void lista::Siguiente()
 {
    if(actual) actual = actual->siguiente;
@@ -386,7 +429,82 @@ void final(){
     nuevo.mostrar();
     std::cout << "Acabado de mostrar\n";//falta  un menu() pero primero se haran las estructuras
 }
+void menu1(){
+    string aux;
+    int n;
+    do{
+        limpiar();
+        if(aux == "3"){
+            if(n == 0){
+            PUlist.Mostrar();
+            }else{
+                PUlist.Mostrar(n);
+            }
+        }
+    std::cout << "Iniciando el menu\n";
+    std::cout << "1) Para incertar\n, 2) Para borrar\n, 3)Para ver\n ";
+    std::cin >> aux;
+    if(aux == "1"){
+        int n;
+        std::cout << "Dime si es 1)disco\n, 2)una pelicula\n, 3)libro\n";
+        std::cin >> n;
+        if(n == 1){
+            discos ID;
+            std::cout << "Dime el titulo\n";
+            std::cin >> ID.titulo;
+            std::cout << "Dime el autor\n";
+            std::cin >> ID.autor;
+            std::cout << "Dime la duracion\n";
+            std::cin >> ID.n;
+            PUlist.Insertar(ID);
+        }
+        if(n == 2){
+            pelis ID;
+            string aux2;
+            string aux3;
+            std::cout << "Dime el titulo\n";
+            std::cin >> aux2;
+            std::cout << "Dime el autor\n";
+            std::cin >>  aux3;
+            std::cout << "Dime la duracion\n";
+            std::cin >> n;
+            ID.insert(aux2, aux3, n);
+            //PUlist.Insertar(ID);
+        }
+        if(n == 3){
+            libros ID;
+            std::cout << "Dime el titulo\n";
+            std::cin >> ID.titulo;
+            std::cout << "Dime el autor\n";
+            std::cin >> ID.autor;
+            std::cout << "Dime la duracion\n";
+            std::cin >> ID.n_pag;
+            PUlist.Insertar(ID);
+        }
+    }
+    if(aux == "2"){
+        PUlist.Mostrar();
+        int n;
+        string aux;
+        std::cout << "Dime si es 1)disco\n, 2)una pelicula\n, 3)libro\n";
+        std::cin >> n;
+        std::cout << "Dime el titulo\n";
+        std::cin >> aux;
+        PUlist.Borrar(aux, n);
+    }
+    if(aux == "3"){
+        //1 es un disco
+    //2 es un libro
+    //3 es una pelicula
+        std::cout << "Dime que quieres ver\n";
+        std::cout << "1) disco\n, 2) Un libro\n, 3) Una pelicula(0 todo)\n";
+        std::cin >> n;
+    }
+    }while(aux != "0");
+}
+
 int main(int argc, char** argv) {
-    final();
+    //final();
+    menu1();
     return 0;
 }

@@ -218,6 +218,14 @@ void abrirMal(Vehiculo *p){
     }
 }
 }
+class avion{
+protected:
+    int a;
+    
+};
+class avioneta : public avion{
+    
+};
 void p3(){
 Np3::Vehiculo* v1 = new Np3::Coche("Amarillo", 1100, 6);
 Np3::Vehiculo* v2 = new Np3::Moto("Amarillo", 1100, true);
@@ -226,10 +234,14 @@ Np3::abrirMal(v1);
 cout << "Moto \n";
 Np3::abrirMal(v2);
 }
+void p4(){
+    
+}
 int main(int argc, char** argv) {
     //p1();
     //p2();
-    p3();
+    //p3();
+    p4();
     return 0;
 }
 

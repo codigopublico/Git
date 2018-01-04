@@ -12,6 +12,7 @@ using namespace std;
 
 /*
  *  Este es una replica rapida de capitulo16 Implentar todo con fuciones virtuales
+ * capitulo16
  */
 void limpiar(){
     for(int i = 0; i < 100; i++){
@@ -161,11 +162,11 @@ void enfermero::Mos(){
     std::cout << "Mis datos son: ";
     std::cout << "Nombre :" << Dpers.nombre << "\n";
     std::cout << "Telf   :" << Dpers.telf << "\n";
-    std::cout << "Mi especialidad :" << Dpers.DAmedico.especial << "\n";
-    std::cout << "Estoy en la planta :" << Dpers.DAmedico.Planta << "\n";
+    std::cout << "Mi especialidad :" << Dpers.DAenfermera.especial << "\n";
+    std::cout << "Estoy en la planta :" << Dpers.DAenfermera.Planta << "\n";
     std::cout << "I tengo el hoario\n";
     for(int i = 0; i < 2; i++){
-        std::cout << Dpers.DAmedico.H[i];
+        std::cout << Dpers.DAenfermera.H[i];
         if( i != 1){
         std::cout << " a ";
         }
@@ -233,11 +234,11 @@ void limpieza::Mos(){
     std::cout << "Mis datos son: ";
     std::cout << "Nombre :" << Dpers.nombre << "\n";
     std::cout << "Telf   :" << Dpers.telf << "\n";//vale es por esto que no funciona
-    std::cout << "Mi especialidad :" << Dpers.DAmedico.especial << "\n";
-    std::cout << "Estoy en la planta :" << Dpers.DAmedico.Planta << "\n";
+    std::cout << "Mi especialidad :" << Dpers.DAlimpieza.especial << "\n";
+    std::cout << "Estoy en la planta :" << Dpers.DAlimpieza.Planta << "\n";
     std::cout << "I tengo el hoario\n";
     for(int i = 0; i < 2; i++){
-        std::cout << Dpers.DAmedico.H[i];
+        std::cout << Dpers.DAlimpieza.H[i];
         if( i != 1){
         std::cout << " a ";
         }
@@ -512,6 +513,7 @@ void menu(){
             Stcris.InsPorf(D);
         }
         if(aux == "2"){
+            Stcris.Mos();
             std::cout << "Dime el nombre  que quieres eliminar\n";
             std::cin >> aux;
             Stcris.elimanar(aux);

@@ -61,21 +61,25 @@ public:
     void nlista(int It, int Ia);
     void show(){ 
         if(nivel != 0 || duracion != 0){
-        std::cout << "Dato:         :" << nivel << "\n";  
-        std::cout << "Duracion      :"<< duracion << "\n";
-        std::cout << "titulo        :" << titulo  << "\n";
-        std::cout << "autor         :" << autor << "\n";
-        std::cout << "Numero_lista  :"  << lista<< "\n"; 
+        std::cout << "Nivel: :" << nivel << "  ";  
+        std::cout << "Duracion  :"<< duracion << " ";
+        std::cout << "titulo :" << titulo  << " ";
+        std::cout << "autor   :" << autor << "  ";
+        std::cout << "Numero_lista :"  << lista<< "  "; 
+        if(sig) std::cout << "Es single  \n";
+        if(!sig) std::cout << "No es single \n";
         }
     //aqui se usara el booleano para hacer lo de la lista adeamas se puede usar un show espcial para mostar todos.
     }
     void Bshow(int a){
         if(lista == a){
-        std::cout << "Dato:         :" << nivel << "\n";  
-        std::cout << "Duracion      :"<< duracion << "\n";
-        std::cout << "titulo        :" << titulo  << "\n";
-        std::cout << "autor         :" << autor << "\n";
-        std::cout << "Numero_lista  :"  << lista<< "\n"; 
+        std::cout << "Nivel: :" << nivel << "  ";  
+        std::cout << "Duracion :"<< duracion << "  ";
+        std::cout << "titulo   :" << titulo  << " ";
+        std::cout << "autor   :" << autor << "  ";
+        std::cout << "Numero_lista  :"  << lista<< "  ";
+        if(sig) std::cout << "Es single  \n";
+        if(!sig) std::cout << "No es single \n";
         }
     }
     int eliminar(string Ia){//aqui falta un operando para comparar si es el titulo
@@ -293,9 +297,6 @@ public:
         if(sig == "n"){
             Bsig = false;
         }
-        else{
-            Bsig = false;
-        }
         for(int i = 0; i < 10; i++){
             std::cout << ".\n";
         }
@@ -331,6 +332,7 @@ public:
         std::cout << "2)Crear una lista \n";
         std::cout << "3)Eliminar un disco \n";
         std::cout << "4)Mostrar \n";
+        std::cout << "5)Mostrar una lista \n";
         std::cout << "Elgue 1, 2,3, 4 Dame un numero(0 para salir)?";
         std::cin >> a;
         limpiar();
@@ -345,7 +347,23 @@ public:
         b->eliminar(Ia);
         }
     }
-    
+    int menu3(LinkedList *c){
+        int a = 0;
+        bool e = true;
+        while(e){
+        if(a == -1){
+            c->showall();
+        }
+        std::cout << "Dime un numero de lista\n";
+        std::cout << "-1)Para mostrar\n";
+        std::cout << "-2)Para salir\n";
+        std::cin >> a;
+        limpiar();
+        if(a == -2) e = false;
+        if(a > 0) e = false;
+        }
+        return a;
+    }
 int main(int argc, char** argv){
     Data* pData;
     int val;
@@ -368,15 +386,11 @@ int main(int argc, char** argv){
         if(val == 4){
             a.showall();
         }
+        if(val == 5){
+            a.Bshowall(menu3(&a));
+        }
         //a.list("a", 0);
     }
-    a.showall();
-    std::cout << "Show alternativo \n.";
-    lista(&a);
-    std::cout << "Espacio\n";
-    a.Bshowall(1);
-    std::cout << "Eliminar los titulos de a\n";
-    a.eliminar("a");
-    a.showall();
+    
     return 0;
-}
+}//tengo error en lo single ya esta era un else mal puesto

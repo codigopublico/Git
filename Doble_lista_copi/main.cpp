@@ -372,6 +372,15 @@ void lista::Borrar(libros ID)
    if(nodo->siguiente) // no el el último nodo
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;*/
+	bool e = true;
+	if(!nodo->siguiente){ e = false; }
+        std::cout << "es falso  "<<e << "\n";
+        if(!e){
+            plista->disc.e = false;
+            plista->lib.e = false;
+            plista->peli.e = false;
+        }
+	if(e){
    while(nodo){
        std::cout << "While de borrado\n";
        if(!nodo->lib.e){
@@ -396,11 +405,12 @@ void lista::Borrar(libros ID)
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;
    }
-   plista = nodo;
 }
+   plista = nodo;
+}//vale tengo dos caminos este nada mas le hace falta arreglar el borrardo
 void lista::Borrar(peliculas ID)
 {
-   pnodo nodo;
+    pnodo nodo;
    Primero();
    nodo = plista;
    /*while(nodo && nodo->valor < v) nodo = nodo->siguiente; // de momento esto es mierda
@@ -409,12 +419,21 @@ void lista::Borrar(peliculas ID)
    if(nodo->siguiente) // no el el último nodo
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;*/
+	bool e = true;
+	if(!nodo->siguiente){ e = false; }
+        std::cout << "es falso  "<<e << "\n";
+        if(!e){
+            plista->disc.e = false;
+            plista->lib.e = false;
+            plista->peli.e = false;
+        }
+	if(e){
    while(nodo){
        std::cout << "While de borrado\n";
-       if(!nodo->peli.e){
+       if(!nodo->lib.e){
        }else{
-       if(nodo->peli.e){
-           if(nodo->peli.titulo == ID.titulo){
+       if(nodo->lib.e){
+           if(nodo->lib.titulo == ID.titulo){
                std::cout << "\nLibro encontrado\n";
                break;
            }
@@ -424,7 +443,7 @@ void lista::Borrar(peliculas ID)
        if(!nodo->siguiente) break;
        nodo = nodo->siguiente;
    }
-   if(nodo->peli.e && nodo->peli.titulo == ID.titulo){
+   if(nodo->lib.e && nodo->lib.titulo == ID.titulo){
        std::cout << "Borrando nodo\n";
        //aqui es donde se borra el nodo
        if(nodo->anterior) // no es el primer elemento 
@@ -433,11 +452,12 @@ void lista::Borrar(peliculas ID)
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;
    }
+}
    plista = nodo;
 }
 void lista::Borrar(discos ID)
 {
-   pnodo nodo;
+      pnodo nodo;
    Primero();
    nodo = plista;
    /*while(nodo && nodo->valor < v) nodo = nodo->siguiente; // de momento esto es mierda
@@ -446,13 +466,22 @@ void lista::Borrar(discos ID)
    if(nodo->siguiente) // no el el último nodo
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;*/
+	bool e = true;
+	if(!nodo->siguiente){ e = false; }
+        std::cout << "es falso  "<<e << "\n";
+        if(!e){
+            plista->disc.e = false;
+            plista->lib.e = false;
+            plista->peli.e = false;
+        }
+	if(e){
    while(nodo){
        std::cout << "While de borrado\n";
-       if(!nodo->disc.e){
+       if(!nodo->lib.e){
        }else{
-       if(nodo->disc.e){
-           if(nodo->disc.titulo == ID.titulo){
-               //std::cout << "\nLibro encontrado\n";
+       if(nodo->lib.e){
+           if(nodo->lib.titulo == ID.titulo){
+               std::cout << "\nLibro encontrado\n";
                break;
            }
        }
@@ -461,7 +490,7 @@ void lista::Borrar(discos ID)
        if(!nodo->siguiente) break;
        nodo = nodo->siguiente;
    }
-   if(nodo->disc.e && nodo->disc.titulo == ID.titulo){
+   if(nodo->lib.e && nodo->lib.titulo == ID.titulo){
        std::cout << "Borrando nodo\n";
        //aqui es donde se borra el nodo
        if(nodo->anterior) // no es el primer elemento 
@@ -470,7 +499,8 @@ void lista::Borrar(discos ID)
       nodo->siguiente->anterior = nodo->anterior;
    delete nodo;
    }
-    plista = nodo;
+}
+   plista = nodo;
 }
 void lista::Mostrar(int orden)
 {
