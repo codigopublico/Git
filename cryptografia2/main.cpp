@@ -191,6 +191,12 @@ void decrypt(string a){
 }
 int main(int argc, char** argv) {
     //pruevas();
+	if(argc < 1){
+	std::cout << "El primer caracter es para cifrar o descifrar";
+            std::cout << "e para cifrar";
+            std::cout << "d para descifrar";
+	std::cout << "help para mostrar este meni\n";
+}
     if(argc > 1){
         if(argv[1] == "help"){
             std::cout << "El primer caracter es para cifrar o descifrar";
@@ -213,7 +219,7 @@ int main(int argc, char** argv) {
     //pruevas_crypt(argv[1]);
     }
     else{
-        std::cout << "Haz help para continuar";
+        std::cout << "Haz help para mostrar las opiciones";
     }
     for(int i = 0; i < argc; i++){
         std::cout << "argv " << argv[i] << "  " << i << "\n" ;

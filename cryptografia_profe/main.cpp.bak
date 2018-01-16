@@ -142,14 +142,9 @@ public:
     crypto();
     string encrypt(string, int); //int es la contrasenya
     string decrypt(string, int);
-    static int getHowCrypt(){ return Cc; }
-private:
-   static int Cc;
 };
-int crypto::Cc = 0;
 crypto::crypto(){
         abc = "abcdefghijklmnoupkqrstvwxyz";
-	Cc++;
 }
 string  crypto::encrypt(string a, int c){
     int *z;
@@ -213,7 +208,6 @@ void lim(int n){
 }
 void salida(int a, string in, int c){
     std::cout << "Resultado  ";
-        std::cout << "Se uso la funcion crypt  :  "<< crypto::getHowCrypt() << "\n";
     if(a == 1){
         std::cout << "Texto encritado: ";
         encrypt(in, c);
@@ -246,7 +240,6 @@ void menu(){
     if(aux == "2"){
         n = 2;
     }
-    if(aux != "1" && aux != "2"){ break; }
     if(n == 1 || n == 2){
         std::cout << "Dime la palabra\n";
         std::cin >> aux;

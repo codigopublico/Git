@@ -68,6 +68,7 @@ hola[i] = "Luna";
 }
 ptr[i]->saludo(hola[i]);
 }
+
 }
 int main(int argc, char** argv) {
 	//b();
