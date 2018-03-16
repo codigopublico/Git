@@ -1,0 +1,4 @@
+echo "estamos buscado......";
+echo "$1";
+cd ~/Descargas/trisquel
+find -name "$1"  

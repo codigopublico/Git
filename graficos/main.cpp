@@ -12,6 +12,10 @@ using namespace std;
 /*
  * Este es un arch ivos para hacer que  los graficos funcionen....
  */
+struct punt{
+int x;
+int y;
+}p;
 class grafica{
 public:
 int x, y;
@@ -19,40 +23,40 @@ int x, y;
 int *vx;
 int *vy;
 grafica(int ix, int iy){ x = ix; y = iy; vx = new int[x]; vy = new int[y];}; //uso de momoria dinamica
-virtual void dibujar(int *ix, int *iy);
+virtual void dibujar(punt *in);
 };
-void grafica::dibujar(int *ix, int *iy){
-std::cout << "Las entras son " << ix[0] << "  " << iy[0] << "\n";
+void grafica::dibujar(punt *in){
+std::cout << "Las entras son " << in->x << "  " << in->y << "\n";
 int aux;
 for(int i = 0; i < x; i++){
-std::cout << "i" << i << "\n";
+std::cout <<  i << " ";
 }
 for(int i = 0; i < x ; i++){
 std::cout << "\n";
 	for(int e = 0; e < y; e++){
-		if(ix[i] > 5){
-		if(iy[e] > 5){
-			std::cout << "*";
-		}}
-		if(ix[i] < 5){
-		if(iy[e] < 5){
-			std::cout << "-";
-		}}
+		if(in->x == i && in->y == e){
+			std::cout << i << " ";
+		}
+		if(in->x != i || in->y != e){
+			std::cout << "- ";
+		}
 		aux = e;
 	}
-	std::cout << "aux" << aux;
+	std::cout << "aux" << i;
 }
 }
 void p1(){
-int  *ix = new int[5];
-int *iy = new int[10];
-int x , y;
-x = 10;
-y = 10;
-iy[5] = 10;
-ix[5] = 10;
-grafica Pg(x, y);
-Pg.dibujar(ix, iy);
+	int  *ix = new int[10];//aqi estava el error !!!!!!!!!!!!
+	int *iy = new int[10];
+	int x , y;
+	x = 20;
+	y = 20;
+	//punt *in;
+	punt *in = new punt[5];
+	in->x = 5;
+	in->y = 9;
+	grafica Pg(x, y);
+	Pg.dibujar(in);
 }
 int main(int argc, char** argv) {
 	p1();
