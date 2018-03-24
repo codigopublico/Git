@@ -1,0 +1,197 @@
+/* 
+ * File:   base.hpp
+ * Author: iper
+ *
+ * Created on 18 de marzo de 2018, 17:42
+ */
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <stack>
+#include <fstream>
+#include <cmath>
+#include <ctime>
+#include <array>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+
+#ifndef BASE_HPP
+#define	BASE_HPP
+/*
+ Esta libreria tendra que tener una classe llamada red neurinal es para luego hacer
+ * que nada mas disiendole que entrene i resultados haga lo dicho
+ * Total una red neuronal que se adaptara automaticamente a la cantidad de imputs
+ * i dificultad de resolver el problema. 
+ */
+using namespace std;
+void prueva_lib(){
+    std::cout << "La libreria funciona\n";
+}
+
+class red{
+public:
+    int **In;
+    int *Ou;
+    int au;
+    int au2;
+    red(int *I, int *O, int &aux, int &aux2){ 
+    //el I es para el numero de imputs  el O es para los ouptus el aux es para saber el total de imputs i ouputs 
+    // el aux2 es para hacer los bloques de datos de I 
+    int q = 0;
+    In = new int*[aux];
+    Ou = O;
+    au = aux;
+    au2 = aux2;
+    int z = 0;
+    In[0] = new int[aux2];
+    for(int i = 0; i < aux; i++){
+        if(aux2 > q){
+        q++;
+	//std::cout << "  " << q << "  " << aux2 << "\n" ;
+        }
+        if(aux2 <= q){
+            std::cout << "Este es un grupo de datos\n" << "numero " << z <<  "\n";
+            q = 0;
+	    z++;
+	    In[z] = new int[aux2];
+        }
+        std::cout << " I ";
+        In[z][q] = I[i];
+	std::cout << In[z][q] << " "  <<  z << " " << q <<  "\n";
+        }
+
+   }
+
+private:
+    //de momento hare las pruevas con  esto para luego psarlo a memria dinamica
+    //vale ya tengo la memoria dinamica echa lo que falta es simplemente es hacer que funcione
+   //esta en el apartado de arriva
+  //tengo que usar el puntero this para hacer que funcione
+    //aqui se copian las funciones que no se deben ver
+/* De momento  lo comentare para poder hacer que  sean un apunte las tengo que adaptar 
+//tengo que hacer la cosa de divide i venceras
+    int check_output_t (int a, int check[4][3],int org[4][3]){
+        // calculates a value t - the correct value of out put which we want to achieve
+    int found = 0;
+        for (int i = 0; i <= 3; i++)  {
+            found = 0;
+            for (int j = 0; j <= 2; j++)  {
+                if ( check[a][j] == org[i][j] ) found++;
+            }
+            if (found == 3) return true;
+        }
+    return false;
+}
+// calculate x*w, vector multiplication of inputs and weights values
+double calculate_xw (int a, int x[4][3], double w[3]) {
+    //temgo que hacer la substitucion de memoria por memria dinamica
+    double result = 0;
+        for (int j = 0; j <= 2; j++)  {
+            result += (x[a][j] * w[j]);
+        }
+    return result;
+}
+//este es para entrar la array de nueronas para entrenar pero un  poco con todo
+bool entrenar(){
+    int seed = time(NULL); // neede for rand()
+    // setup initial values of weight in a random way
+double val2;
+int w_array[2];
+
+for (int x = 0; x <= 2; x++) {
+    /* pick random number from -1 to 1 and output it */
+/*
+    srandom(seed);
+    val2 = (random() % 200) -100;
+    w_array[x]=val2/100;
+}
+
+    
+//  train network
+    int learning_cycles=1;
+    int y;
+    int t;
+    double l = 0.5; // learning speed
+    double xw;
+    double correct;
+    int x_array[3][2];//esto tendria que ser un array dinamico;
+    int original_str[3];
+    int t_array[4][3];
+    // initialize original array with solutions (2 means nothing)
+    for (int i = 0; i <= 3; i++){
+        for (int j = 0; j <= 2; j++){
+            t_array[i][j]=2;
+        }
+    }
+while (learning_cycles) {
+    // stop training after ... found correct (4) means all
+    correct=4;
+    
+    cout << "x0   x1    x2    |  w0       w1      w2        | x*w   |  y    | t  |   "<<endl;
+    
+//este es para los imputs
+//parce ser para imprimir se hara una funcion
+//se tiene que usar el puntero this
+    for (int x = 0; x <= 3; x++) {
+    for (int yy= 0; yy <= 2; yy++) {
+        //esto molaria hacerlo pero con array dinamicos
+        x_array[x][yy] =  In[x+yy];
+    }
+}
+    // display x values
+for (int x = 0; x <= 3; x++) {
+    for (int yy= 0; yy <= 2; yy++) {
+        
+        cout << x_array[x][yy] << "     " ;
+        }
+        
+    // display valuies of weights
+        for (int i= 0; i <= 2; i++) {
+
+            cout << w_array[i] << "     "  ;
+        }
+        
+        // calculate wx, y amd t
+        xw = calculate_xw(x,x_array, w_array);
+        if (xw<0) y = 0;
+        else y=1;
+        t = check_output_t(x,x_array, t_array);
+        
+        cout <<  " | " << xw <<  " |    " << y;
+        cout <<  " |    " << t <<  " | ";
+        
+        
+        // adjust weights based on results
+
+        
+        if (y==t) correct--;
+        else if (y<t) {
+            // y is smaller than needed so we need to make values bigger
+            for (int i= 0; i <= 2; i++) {
+                if (x_array[x][i]==1) w_array[i] = w_array[i]+l   ;
+                else if (x_array[x][i]==-1) w_array[i] = w_array[i]-l   ;
+            }
+        } else if (y>t)
+        {
+            for (int i= 0; i <= 2; i++) {
+                if (x_array[x][i]==1) w_array[i] = w_array[i]-l   ;
+                else if (x_array[x][i]==-1) w_array[i] = w_array[i]+l   ;
+            }
+        }
+
+        cout << endl;
+    }
+   
+    cout << "incorrect: " << correct;
+    cout << endl << endl;
+   if (!correct) learning_cycles=0;
+  //  learning_cycles--;
+}
+}
+*/
+};
+
+
+#endif	/* BASE_HPP */
+
